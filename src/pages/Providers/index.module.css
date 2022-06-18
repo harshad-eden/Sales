@@ -1,0 +1,47 @@
+
+.container{
+    height: 100vh;
+    padding: 2.5% 7%;
+}
+
+.topMenu{
+    margin: 30px 0px 60px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.search {
+    width: 310px;
+    height: 35px;
+    border-radius: 20px;
+    background-color: #fff;
+}
+
+.addBox{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.whiteBox {
+    display: grid;
+    place-items: center;
+    width: 170px;
+    height: 35px;
+    background-color: #fff; 
+}
+
+.addBox:hover{
+    color: #f87d4e;
+    border: 0.5px solid #f87d4e; 
+}
+
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 2fr));
+    grid-gap: 1rem;
+    color: #444;
+}
+
+
