@@ -4,59 +4,8 @@ import { message, Upload, Button } from 'antd';
 import styles from './index.module.css';
 const { Dragger } = Upload;
 
-const App = ({ setStep }) => {
-  const [value, setValue] = useState(null);
-
-  const onChange = (e) => {
-    console.log('radio checked', e.target.value);
-    setValue(e.target.value);
-  };
-
-  const renderButtons = () => {
-    if (value === null) {
-      return (
-        <div style={{ float: 'right', display: 'flex', gap: 15, marginTop: 30 }}>
-          <Button onClick={() => setStep(0)} size="middle" type="dashed" htmlType="submit">
-            Prev
-          </Button>
-          <Button
-            disabled
-            onClick={() => setStep(2)}
-            size="middle"
-            type="primary"
-            htmlType="submit"
-          >
-            Next
-          </Button>
-        </div>
-      );
-    }
-    if (value === 'Yes') {
-      return (
-        <div style={{ float: 'right', display: 'flex', gap: 15, marginTop: 30 }}>
-          <Button onClick={() => setStep(0)} size="middle" type="dashed" htmlType="submit">
-            Prev
-          </Button>
-          <Button onClick={() => setStep(2)} size="middle" type="primary" htmlType="submit">
-            Next
-          </Button>
-        </div>
-      );
-    }
-    if (value === 'No') {
-      return (
-        <div style={{ float: 'right', display: 'flex', gap: 15, marginTop: 30 }}>
-          <Button onClick={() => setStep(0)} size="middle" type="dashed" htmlType="submit">
-            Prev
-          </Button>
-          <Button onClick={() => setStep(2)} size="middle" type="primary" htmlType="submit">
-            Submit
-          </Button>
-        </div>
-      );
-    }
-  };
-
+const App = ({ setStep, handleFinish, setDocumentFile }) => {
+ 
   return (
     <div>
       <div>
@@ -65,7 +14,10 @@ const App = ({ setStep }) => {
           <span style={{ color: '#f87d4e' }}> *</span>
         </p>
 
-        <Dragger style={{ height: 500 }}>
+        <Dragger beforeUpload={() => false}
+          onChange={(e) => setDocumentFile(e.fileList[0].originFileObj)}
+          style={{ height: 500 }}
+          accept=".doc,.docx,.pdf,.excel">
           <p className="ant-upload-drag-icon">
             <InboxOutlined />
           </p>
@@ -78,7 +30,7 @@ const App = ({ setStep }) => {
         <Button onClick={() => setStep(0)} size="middle" type="dashed" htmlType="submit">
           Prev
         </Button>
-        <Button onClick={() => setStep(2)} size="middle" type="primary" htmlType="submit">
+        <Button onClick={() => handleFinish()} size="middle" type="primary" htmlType="submit">
           Submit
         </Button>
       </div>
