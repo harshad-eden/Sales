@@ -29,7 +29,7 @@ const Index = () => {
         branch: [updateVal]
       })
       .then((res) => {
-        navigate('/providers')
+        navigate('/')
         console.log(res)
       })
   };

@@ -13,9 +13,9 @@ const RouteSetup = () => {
   return (
     <Suspense fallback={<LoaderComponenet />}>
       <Routes>
+        <Route path="/" element={<Providers /> } />
         <Route path="/" element={<Dashboard />} />
-        <Route path="/providers" element={<Providers />} />
-        <Route path="/providers/:detail" element={<ProviderDetail />} />
+        <Route path="/:detail" element={<ProviderDetail />} />
         <Route path="/onboard" element={<Onboard />} />
         <Route path="/addbranch/:docId" element={<AddBranch />} />
         <Route path="*" element={<NotFound />} />

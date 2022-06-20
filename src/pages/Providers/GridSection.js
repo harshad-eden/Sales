@@ -37,7 +37,7 @@ const GridSection = ({ state }) => {
             </div> */}
            
             <div style={{ display: 'flex', gap: 20, justifyContent: 'center' }}>
-              <Button onClick={() => navigate(`/providers/:${item.id}`, {state: item})} size="large" type="" style={{ width: '90%' }}>
+              <Button onClick={() => navigate(`/${item.id}`, {state: item})} size="large" type="" style={{ width: '90%' }}>
                 View in detail
               </Button>
               <Button type="primary" onClick={() => navigate(`/addbranch/${item.id}`)} size="large" style={{ width: '90%' }}>

@@ -64,7 +64,7 @@ const Index = () => {
       
       try {
         addDoc(providersCollectionref, updatedValue);
-        navigate('/providers')
+        navigate('/')
       } catch (error) {
         alert(error)
         console.log(error);

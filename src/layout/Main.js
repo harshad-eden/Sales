@@ -7,7 +7,7 @@ function Main({ children, pageName }) {
   return (
     <>
       <div style={{ display: 'flex', height: '100vh' }}>
-        <SideBar />
+        {/* <SideBar /> */}
         <div className={styles.contain}>
           <Header pageName={pageName} />
           <div>{children}</div>
