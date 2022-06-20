@@ -49,9 +49,10 @@
 
 
 
-
-
-/* .icons:hover{
-    color: #f87d4e;
-   
-} */
+@media only screen and (max-width: 600px){
+    .contain{
+        width: 95%;
+        margin: 10px auto;
+        
+    }
+}
