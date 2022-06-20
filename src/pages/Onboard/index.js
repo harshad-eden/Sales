@@ -8,9 +8,13 @@ import { firestore, storage } from '../../firebase';
 import { collection, addDoc, getDocs } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import FormTwo from './FormTwo';
+import { v4 as uuidv4 } from 'uuid';
+import { useNavigate } from 'react-router-dom';
 
 const Index = () => {
+  const navigate = useNavigate()
   const [form] = Form.useForm();
+  const [loading, setLoading] = useState(false);
   const [step, setStep] = useState(0);
   const [state, setState] = useState(0);
   const [imgFile, setImgFile] = useState(0);
@@ -24,42 +28,45 @@ const Index = () => {
   };
 
 
+
+  
+
+
   //HandleSubmit
   const handleFinish = async () => {
-   
-    let fileName = state.providerName.replace(/\s/g, '') + state.providerContactNumber.slice(-4)
-
-
+    setLoading(true)
+    let uuid = uuidv4()
     let firebaseImgUrl
     let firebaseDocUrl
-   
     if(imgFile){
-      const imgRef = ref(storage, `images/${fileName}-${imgFile.name}`)
+      const imgRef = ref(storage, `images/${uuid}-${imgFile.name}`)
       let imgSapnshot =  await uploadBytes(imgRef, imgFile)
        firebaseImgUrl = await getDownloadURL(imgSapnshot.ref).then( url => url)
     }
 
     if(documentFile){
-      const docRef = ref(storage, `documents/${fileName}-${documentFile.name}`)
+      const docRef = ref(storage, `documents/${uuid}-${documentFile.name}`)
       let imgSapnshot =  await uploadBytes(docRef, documentFile)
       firebaseDocUrl = await getDownloadURL(imgSapnshot.ref).then( url =>url)
     } else {
       alert('Please upload doc')
     }
 
-    
-   
-
     if(!imgFile && firebaseDocUrl || firebaseImgUrl && firebaseDocUrl){
       let updatedValue = {
         ...state,
         document: firebaseDocUrl,
-        logo: firebaseImgUrl ? firebaseImgUrl : false
+        logo: firebaseImgUrl ? firebaseImgUrl : false,
+        uuid,
+        status: 'Inactive',
+        createdAt: new Date()
       }
       
       try {
         addDoc(providersCollectionref, updatedValue);
+        navigate('/providers')
       } catch (error) {
+        alert(error)
         console.log(error);
       }
     }   
@@ -79,7 +86,7 @@ const Index = () => {
       return (
         <div>
           <h1 className={styles.pageTitleThree}>Service Details</h1>
-          <FormTwo setStep={setStep} handleFinish={handleFinish} setDocumentFile={setDocumentFile}/>
+          <FormTwo loading={loading}  setStep={setStep} handleFinish={handleFinish} setDocumentFile={setDocumentFile}/>
         </div>
       );
     }

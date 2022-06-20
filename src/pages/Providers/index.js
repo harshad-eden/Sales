@@ -9,6 +9,7 @@ import { AudioOutlined } from '@ant-design/icons';
 import { DownloadOutlined } from '@ant-design/icons';
 import Table from './Table';
 import GridSection from './GridSection';
+import { Link } from 'react-router-dom';
 
 const { Search } = Input;
 
@@ -18,8 +19,14 @@ const Index = () => {
 
   useEffect(() => {
     async function getData() {
-      let response = await getDocs(providersCollectionref);
-      setState(response.docs.map((item) => item.data()));
+      getDocs(providersCollectionref)
+      .then((snap) => {
+        let providers = []
+        snap.forEach(doc => {
+          providers.push({...doc.data(), id: doc.id})
+        })
+        setState(providers)
+      })
     }
     getData();
   }, []);
@@ -32,6 +39,8 @@ const Index = () => {
       }}
     />
   );
+
+  console.log('state',state)
 
   const onSearch = (value) => console.log(value);
 
@@ -48,13 +57,16 @@ const Index = () => {
             style={{ width: 304 }}
           />
 
-          <div className={styles.addBox}>
+          <Link to='/onboard' className={styles.addBox}>
             <img src="/icons/plusSign.webp" style={{ height: 35 }} alt="" />
             <div className={styles.whiteBox}>New Provider</div>
+            </Link>
           </div>
-        </div>
+       
 
+        <div style={{marginTop: 90}}>
         <GridSection state={state} />
+        </div>
       </div>
     </Main>
   );

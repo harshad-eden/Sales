@@ -63,7 +63,7 @@ const Links = ({ form, handleFinish, state, setImgFile }) => {
           <span className={styles.formLabel}>
             Super admin email <span style={{ color: '#f87d4e' }}>*</span>
           </span>
-          <Form.Item name="SuperAdminEmail" rules={[{ required: true }]}>
+          <Form.Item name="superAdminEmail" rules={[{ required: true }]}>
             <Input
               type="email"
               size="large"

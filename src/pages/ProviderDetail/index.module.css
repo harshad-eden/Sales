@@ -1,0 +1,22 @@
+
+.container{
+    padding: 0% 7% 1% 12%;
+    display: flex;
+    align-items: center; 
+}
+
+
+.innerContainer{
+    width: 70%;
+    padding: 3%;
+}
+
+.pageTitle{
+    color: #f87d4e;
+    margin-bottom: 50px;
+    font-size: 30px;
+    text-transform: uppercase;
+    /* border-bottom: 2px solid #f3dcd3; */
+    /* border-bottom-style: dashed; */
+    width: fit-content;
+}

@@ -4,7 +4,7 @@ import { message, Upload, Button } from 'antd';
 import styles from './index.module.css';
 const { Dragger } = Upload;
 
-const App = ({ setStep, handleFinish, setDocumentFile }) => {
+const App = ({ setStep, handleFinish, setDocumentFile, loading }) => {
  
   return (
     <div>
@@ -30,7 +30,7 @@ const App = ({ setStep, handleFinish, setDocumentFile }) => {
         <Button onClick={() => setStep(0)} size="middle" type="dashed" htmlType="submit">
           Prev
         </Button>
-        <Button onClick={() => handleFinish()} size="middle" type="primary" htmlType="submit">
+        <Button loading={loading} onClick={() => handleFinish()} size="middle" type="primary" htmlType="submit">
           Submit
         </Button>
       </div>

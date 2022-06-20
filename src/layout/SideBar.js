@@ -22,7 +22,7 @@ const SideBar = () => {
           />
           <p>Dashboard</p>
         </NavLink>
-        <NavLink
+        {/* <NavLink
           to={'/onboard'}
           className={({ isActive }) => (isActive ? styles.linkItemActive : styles.linkItem)}
         >
@@ -31,7 +31,7 @@ const SideBar = () => {
             className={({ isActive }) => (isActive ? styles.iconsActive : styles.icons)}
           />
           <p>Onboard</p>
-        </NavLink>
+        </NavLink> */}
         <NavLink
           to={'/providers'}
           className={({ isActive }) => (isActive ? styles.linkItemActive : styles.linkItem)}
