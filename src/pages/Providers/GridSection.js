@@ -21,7 +21,7 @@ const GridSection = ({ state }) => {
               <div>
                 <h3 style={{ marginBottom: 5 }}>{item.providerName}</h3>
                 <p style={{ marginBottom: 0 }}>Type: {item.providerType}</p>
-                <p style={{ marginBottom: 0 }}>Branches: {item.branch?.length}</p>
+                <p style={{ marginBottom: 0 }}>Branches: {item.branch ? item.branch?.length : 0}</p>
               </div>
             </div>
             <div>
