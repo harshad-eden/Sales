@@ -1,6 +1,6 @@
 
 .container{
-    height: 100vh;
+    min-height: 100vh;
     padding: 2.5% 7%;
 }
 
@@ -41,7 +41,56 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(310px, 2fr));
     grid-gap: 1rem;
-    color: #444;
+
 }
+
+@media only screen and (max-width: 1000px){
+    .container{
+        min-height: 100vh;
+        padding: 2.5% 0%;
+    }
+
+    .wrapper {
+        grid-template-columns: repeat(auto-fit, minmax(270px, 2fr));
+    }
+}
+
+
+@media only screen and (max-width: 800px){
+    .search{
+        width: 100%;
+    }
+    .topMenu{
+        margin: 12% 0%;
+        width: 100%;
+        flex-direction: column-reverse;
+        align-items: flex-start;
+    }
+
+    .addBox{
+        font-size: 14px;
+        width: 140px;
+        margin-bottom: 20px;
+    }
+}
+
+
+
+@media only screen and (max-width: 600px){
+    .container {
+    padding: 1rem;
+}
+
+}
+
+@media only screen and (max-width: 400px){
+	.container{
+    padding: 0.5rem;
+}
+
+
+}
+
+
 
 

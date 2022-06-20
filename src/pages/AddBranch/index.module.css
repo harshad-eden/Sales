@@ -2,14 +2,11 @@
 .container{
     padding: 0% 7% 1% 12%;
     display: flex;
-    align-items: center;
-   
-    
 }
 
 
 .formContainer{
-    width: 70%;
+    width: 80%;
     padding: 3%;
 }
 
@@ -57,4 +54,93 @@
     color: #f87d4e;
     border: 0.5px solid #f87d4e;
    
+}
+
+.formDiv{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.formitem{
+    width: 50%;
+}
+
+
+
+@media only screen and (max-width: 1100px){
+    .container{
+        padding: 0% 5% 1% 5%;
+        display: flex;
+    }
+    .formContainer{
+        width: 90%;
+    }
+}
+
+
+@media only screen and (max-width: 1000px){
+    .container{
+        height: 100vh;
+        padding:  0%;
+    }
+}
+
+
+@media only screen and (max-width: 800px){
+    .container{
+        height: 100vh;
+        padding:  0%;
+    }
+    .formContainer{
+        width: 100%;
+    }
+    .search{
+        width: 100%;
+    }
+    .topMenu{
+        margin: 12% 0%;
+        width: 100%;
+        flex-direction: column-reverse;
+        align-items: flex-start;
+    }
+    .addBox{
+        font-size: 14px;
+        width: 140px;
+        margin-bottom: 20px;
+    } 
+}
+
+
+
+@media only screen and (max-width: 600px){
+    .container {
+        padding: 0.5rem;
+    }
+
+    .formDiv{
+        display: flex;
+        flex-direction: column;
+        gap: 0px;
+        align-items: center;
+        width: 100%;
+    }
+
+    .formitem{
+        width: 100%;
+    }
+
+}
+
+@media only screen and (max-width: 400px){
+	.container{
+    padding: 0.5rem;
+}
+
+
+
+
+
+
+
 }

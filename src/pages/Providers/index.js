@@ -50,23 +50,20 @@ const Index = () => {
         <div className={styles.topMenu}>
           <Search
             size="large"
-            placeholder="input search text"
+            placeholder="Search providers"
             onSearch={onSearch}
             enterButton
             allowClear
-            style={{ width: 304 }}
+            className={styles.search}
           />
 
           <Link to='/onboard' className={styles.addBox}>
             <img src="/icons/plusSign.webp" style={{ height: 35 }} alt="" />
             <div className={styles.whiteBox}>New Provider</div>
-            </Link>
+          </Link>
           </div>
        
-
-        <div style={{marginTop: 90, marginBottom: 100}}>
-        <GridSection state={state} />
-        </div>
+          <GridSection state={state} />
       </div>
     </Main>
   );

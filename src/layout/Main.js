@@ -9,7 +9,7 @@ function Main({ children, pageName }) {
       <div style={{ display: 'flex', height: '100vh' }}>
         {/* <SideBar /> */}
         <div className={styles.contain}>
-          <Header pageName={pageName} />
+          {/* <Header pageName={pageName} /> */}
           <div>{children}</div>
         </div>
       </div>

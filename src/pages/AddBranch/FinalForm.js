@@ -10,15 +10,15 @@ const ThirdForm = ({ form, handleFinish }) => {
 
   return (
     <Form form={form} onFinish={handleFinish}>
-      <div style={{ display: 'flex', gap: 20, alignItems: 'center' }}>
-        <div style={{ width: '50%' }}>
+      <div className={styles.formDiv}>
+        <div className={styles.formitem}>
           <span className={styles.formLabell}>Branch name</span>
           <Form.Item name="branchName" rules={[{ required: true }]}>
             <Input size="large" placeholder="Branch Name" className="ant-custom-input" />
           </Form.Item>
         </div>
 
-        <div style={{ width: '50%' }}>
+        <div className={styles.formitem}> 
           <span className={styles.formLabell}>
             Contact number <span style={{ color: '#f87d4e' }}>*</span>
           </span>
@@ -32,8 +32,8 @@ const ThirdForm = ({ form, handleFinish }) => {
           </Form.Item>
         </div>
       </div>
-      <div style={{ display: 'flex', gap: 20, alignItems: 'center' }}>
-        <div style={{ width: '50%' }}>
+      <div className={styles.formDiv}>
+        <div className={styles.formitem}>
           <span className={styles.formLabell}>
             Name of branch admin <span style={{ color: '#f87d4e' }}>*</span>
           </span>
@@ -42,7 +42,7 @@ const ThirdForm = ({ form, handleFinish }) => {
           </Form.Item>
         </div>
 
-        <div style={{ width: '50%' }}>
+        <div className={styles.formitem}>
           <span className={styles.formLabell}>
             Email of branch admin <span style={{ color: '#f87d4e' }}>*</span>
           </span>
@@ -60,8 +60,8 @@ const ThirdForm = ({ form, handleFinish }) => {
         <p style={{ textDecoration: 'underline', color: 'gray', marginBottom: 13 }}>
           Payment details
         </p>
-        <div style={{ display: 'flex', gap: 20, alignItems: 'center' }}>
-          <div style={{ width: '50%' }}>
+        <div className={styles.formDiv}>
+          <div className={styles.formitem}>
             <span className={styles.formLabell}>
               Account number <span style={{ color: '#f87d4e' }}>*</span>
             </span>
@@ -70,7 +70,7 @@ const ThirdForm = ({ form, handleFinish }) => {
             </Form.Item>
           </div>
 
-          <div style={{ width: '50%' }}>
+          <div className={styles.formitem}>
             <span className={styles.formLabell}>
               Name of beneficiary <span style={{ color: '#f87d4e' }}>*</span>
             </span>
@@ -98,7 +98,7 @@ const ThirdForm = ({ form, handleFinish }) => {
       </div>
       {[...Array(users).keys()].map((i) => (
         <div key={i + 1} style={{ display: 'flex', gap: 20, alignItems: 'center' }}>
-          <div style={{ width: '50%' }}>
+          <div className={styles.formitem}>
             <span className={styles.formLabell}>User Email address</span>
             <Form.Item name={`userEmail ${i + 1}`} rules={[{ required: true }]}>
               <Input
@@ -110,7 +110,7 @@ const ThirdForm = ({ form, handleFinish }) => {
             </Form.Item>
           </div>
 
-          <div style={{ width: '50%' }}>
+          <div className={styles.formitem}>
             <span className={styles.formLabell}>Role</span>
             <Form.Item name={`userType ${i + 1}`}>
               <Select size="large" initialvalues="lucy" onChange={() => console.log()}>

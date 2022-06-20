@@ -10,23 +10,11 @@ import { collection, addDoc, getDocs } from 'firebase/firestore';
 
 
 const Links = ({ form, handleFinish, state, setImgFile }) => {
-  
-  // let providerName = form.getFieldValue("providerName")
-  // let providerNumber = form.getFieldValue("providerContactNumber")
-  // const handleLogoUpload = (file) => {
-  //   if (providerName && providerNumber) {
-  //     console.log('trimmed', providerName.replace(/\s/g, '') + providerNumber.slice(-4))
-  //   } else {
-  //     alert('Please add above fields')
-  //   }
-  // }
-
-
 
   return (
     <Form initialValues={state} form={form} onFinish={handleFinish}>
-      <div style={{ display: 'flex', gap: 20, alignItems: 'center' }}>
-        <div style={{ width: '50%' }}>
+      <div className={styles.formDiv}>
+        <div className={styles.formitem}>
           <span className={styles.formLabel}>
             Name of the service provider <span style={{ color: '#f87d4e' }}>*</span>
           </span>
@@ -35,7 +23,7 @@ const Links = ({ form, handleFinish, state, setImgFile }) => {
           </Form.Item>
         </div>
 
-        <div style={{ width: '50%' }}>
+        <div className={styles.formitem} >
           <span className={styles.formLabel}>
             Service provider type <span style={{ color: '#f87d4e' }}>*</span>
           </span>
@@ -49,8 +37,8 @@ const Links = ({ form, handleFinish, state, setImgFile }) => {
         </div>
       </div>
 
-      <div style={{ display: 'flex', gap: 20, alignItems: 'center' }}>
-        <div style={{ width: '50%' }}>
+      <div className={styles.formDiv}>
+        <div className={styles.formitem}>
           <span className={styles.formLabel}>
             Super admin name <span style={{ color: '#f87d4e' }}>*</span>
           </span>
@@ -59,7 +47,7 @@ const Links = ({ form, handleFinish, state, setImgFile }) => {
           </Form.Item>
         </div>
 
-        <div style={{ width: '50%' }}>
+        <div className={styles.formitem}>
           <span className={styles.formLabel}>
             Super admin email <span style={{ color: '#f87d4e' }}>*</span>
           </span>
@@ -74,8 +62,8 @@ const Links = ({ form, handleFinish, state, setImgFile }) => {
         </div>
       </div>
 
-      <div style={{ display: 'flex', gap: 20, alignItems: 'center' }}>
-        <div style={{ width: '50%' }}>
+      <div className={styles.formDiv}>
+        <div className={styles.formitem}>
           <span className={styles.formLabel}>
             Contact Number <span style={{ color: '#f87d4e' }}>*</span>
           </span>
@@ -89,7 +77,7 @@ const Links = ({ form, handleFinish, state, setImgFile }) => {
           </Form.Item>
         </div>
 
-        <div style={{ width: '50%' }}>
+        <div className={styles.formitem}>
           <span className={styles.formLabel}>
             More than one branch ?<span style={{ color: '#f87d4e' }}> *</span>
           </span>

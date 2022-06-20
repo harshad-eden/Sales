@@ -3,7 +3,6 @@ import Main from '../../layout/Main';
 import styles from './index.module.css';
 import { Button, Form } from 'antd';
 import InitialForm from './InitailForm';
-import FinalForm from './FinalForm';
 import { firestore, storage } from '../../firebase';
 import { collection, addDoc, getDocs } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
@@ -26,9 +25,6 @@ const Index = () => {
     setState(value)
     setStep(1);
   };
-
-
-
   
 
 

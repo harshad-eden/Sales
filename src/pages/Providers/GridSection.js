@@ -11,7 +11,7 @@ const GridSection = ({ state }) => {
     <div className={styles.wrapper}>
       {state &&
         state.map((item, index) => (
-          <div key={index} style={{ backgroundColor: 'white', padding: 20, maxWidth: 400 }}>
+          <div key={index} style={{ backgroundColor: 'white', padding: 20, }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 15, marginBottom: 10 }}>
               {item.logo ? <img style={{height: 100, width: 100, borderRadius: 50}} src={item.logo} alt="" /> : <div
                 style={{ height: 100, width: 100, backgroundColor: 'cornsilk', borderRadius: 50 }}
