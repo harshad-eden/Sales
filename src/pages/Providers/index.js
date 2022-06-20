@@ -64,7 +64,7 @@ const Index = () => {
           </div>
        
 
-        <div style={{marginTop: 90}}>
+        <div style={{marginTop: 90, marginBottom: 100}}>
         <GridSection state={state} />
         </div>
       </div>
