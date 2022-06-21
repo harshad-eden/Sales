@@ -4,7 +4,7 @@ import { firestore } from '../../firebase';
 import { collection, getDocs } from 'firebase/firestore';
 import Main from '../../layout/Main';
 import styles from './index.module.css';
-import {  Input} from 'antd';
+import { Input } from 'antd';
 import { AudioOutlined } from '@ant-design/icons';
 import GridSection from './GridSection';
 import { Link } from 'react-router-dom';
@@ -16,22 +16,20 @@ const Index = () => {
   const [tempState, setTempState] = useState();
   const providersCollectionref = collection(firestore, 'providers');
 
-  let unsubscribe
+  let unsubscribe;
 
   useEffect(() => {
-    getDocs(providersCollectionref)
-    .then((snap) => {
-      let providers = []
-      snap.forEach(doc => {
-        console.log(doc.data())
-        providers.push({...doc.data(), id: doc.id})
-      })
-      setState(providers)
-    })
-
-    
-  }, []);
-
+    function getData() {
+      getDocs(providersCollectionref).then((snap) => {
+        let providers = [];
+        snap.forEach((doc) => {
+          providers.push({ ...doc.data(), id: doc.id });
+        });
+        setState(providers);
+      });
+    }
+    getData();
+  }, [state]);
 
   const suffix = (
     <AudioOutlined
@@ -42,16 +40,16 @@ const Index = () => {
     />
   );
 
-
   const onSearch = (value) => {
-   if(value){
-    const results = state.filter(item => item.providerName.replace(/ /g,'').toLowerCase().includes(value.toLowerCase()))
-    setTempState(results)
-   } else {
-    setTempState(null)
-   }
+    if (value) {
+      const results = state.filter((item) =>
+        item.providerName.replace(/ /g, '').toLowerCase().includes(value.toLowerCase()),
+      );
+      setTempState(results);
+    } else {
+      setTempState(null);
+    }
   };
-
 
   return (
     <Main pageName="Providers">
@@ -66,13 +64,13 @@ const Index = () => {
             className={styles.search}
           />
 
-          <Link to='/onboard' className={styles.addBox}>
+          <Link to="/onboard" className={styles.addBox}>
             <img src="/icons/plusSign.webp" style={{ height: 35 }} alt="" />
             <div className={styles.whiteBox}>New Provider</div>
           </Link>
-          </div>
-       
-          <GridSection state={tempState ? tempState : state} />
+        </div>
+
+        <GridSection state={tempState ? tempState : state} />
       </div>
     </Main>
   );

@@ -1,16 +1,20 @@
 import { useState } from 'react';
-import { Form, Select, Input, Button } from 'antd';
+import { Form, Select, Input, Button, Space } from 'antd';
 const { Option } = Select;
 const { TextArea } = Input;
 import styles from './index.module.css';
 import { UserAddOutlined } from '@ant-design/icons';
-import { MdPersonRemove } from 'react-icons/md'
+import { MdPersonRemove } from 'react-icons/md';
 
 const ThirdForm = ({ form, handleFinish }) => {
-  const [users, setUsers] = useState(1);
+  let roleTypes = ['Front-desk', 'Claim team'];
 
   return (
-    <Form form={form} onFinish={handleFinish}>
+    <Form
+      form={form}
+      onFinish={handleFinish}
+      initialValues={{ users: [{ userEmail: '', userRole: '' }] }}
+    >
       <div className={styles.formDiv}>
         <div className={styles.formitem}>
           <span className={styles.formLabell}>Branch name</span>
@@ -19,7 +23,7 @@ const ThirdForm = ({ form, handleFinish }) => {
           </Form.Item>
         </div>
 
-        <div className={styles.formitem}> 
+        <div className={styles.formitem}>
           <span className={styles.formLabell}>
             Contact number <span style={{ color: '#f87d4e' }}>*</span>
           </span>
@@ -81,48 +85,78 @@ const ThirdForm = ({ form, handleFinish }) => {
           </div>
         </div>
       </div>
-      <div
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: 10,
-          marginBottom: 13,
-        }}
-      >
-        <p style={{ textDecoration: 'underline', marginBottom: 0, color: 'gray' }}>Add users</p>
-        <Button
-          onClick={() => setUsers(users + 1)}
-          type=""
-          icon={<UserAddOutlined />}
-          size="small"
-        />
-      </div>
-      {[...Array(users).keys()].map((i, index) => (
-        <div key={i + 1} style={{ display: 'flex', gap: 20, alignItems: 'center' }}>
-          <div className={styles.formitem}>
-            <span className={styles.formLabell}>User Email address</span>
-            <Form.Item name={`userEmail ${i + 1}`} rules={[{ required: true }]}>
-              <Input
-                type="email"
-                size="large"
-                placeholder="Provider name"
-                className="ant-custom-input"
-              />
-            </Form.Item>
-          </div>
 
-          <div className={styles.formitem}>
-            <span className={styles.formLabell}>Role</span>
-            <Form.Item name={`userType ${i + 1}`}>
-              <Select size="large" onChange={() => console.log()}>
-                <Option value="Front-desk">Front-desk</Option>
-                <Option value="Claim team">Claim team</Option>
-              </Select>
-            </Form.Item>
-          </div>
-          {index !== 0 && <MdPersonRemove onClick={() => setUsers(users-1)} style={{cursor: 'pointer'}} />}
-        </div>
-      ))}
+      <Form.List style={{ width: '100%' }} name="users">
+        {(fields, { add, remove }) => (
+          <>
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: 10,
+                marginBottom: 13,
+              }}
+            >
+              <p style={{ textDecoration: 'underline', marginBottom: 0, color: 'gray' }}>
+                Add users
+              </p>
+              <Button onClick={() => add()} type="" icon={<UserAddOutlined />} size="small" />
+            </div>
+            {fields.map((field, index) => (
+              <div className={styles.formDiv} key={field.key}>
+                <div className={styles.formitem}>
+                  <span className={styles.formLabell}>User email</span>
+                  <Form.Item
+                    {...field}
+                    name={[field.name, 'userEmail']}
+                    rules={[
+                      {
+                        required: true,
+                        message: 'Missing user email',
+                      },
+                    ]}
+                  >
+                    <Input size="large" placeholder="User email" className="ant-custom-input" />
+                  </Form.Item>
+                </div>
+
+                <div className={styles.formitem}>
+                  <span className={styles.formLabell}>User role</span>
+                  <Form.Item
+                    noStyle
+                    shouldUpdate={(prevValues, curValues) =>
+                      prevValues.area !== curValues.area || prevValues.sights !== curValues.sights
+                    }
+                  >
+                    {() => (
+                      <Form.Item
+                        {...field}
+                        name={[field.name, 'userRole']}
+                        rules={[
+                          {
+                            required: true,
+                            message: 'Missing user role',
+                          },
+                        ]}
+                      >
+                        <Select size="large">
+                          {roleTypes.map((item) => (
+                            <Option key={item} value={item}>
+                              {item}
+                            </Option>
+                          ))}
+                        </Select>
+                      </Form.Item>
+                    )}
+                  </Form.Item>
+                </div>
+
+                {index > 0 && <MdPersonRemove onClick={() => remove(field.name)} />}
+              </div>
+            ))}
+          </>
+        )}
+      </Form.List>
 
       <div>
         <span className="form-label">
@@ -132,7 +166,7 @@ const ThirdForm = ({ form, handleFinish }) => {
           <TextArea rows={4} placeholder="Branch address" required />
         </Form.Item>
 
-        <div style={{ float: 'right', display: 'flex', }}>
+        <div style={{ float: 'right', display: 'flex' }}>
           <Button size="middle" type="primary" htmlType="submit">
             submit
           </Button>

@@ -6,10 +6,7 @@ const { Option } = Select;
 const { TextArea } = Input;
 import { UploadOutlined } from '@ant-design/icons';
 
-
-
 const Links = ({ form, handleFinish, state, setImgFile }) => {
-
   return (
     <Form initialValues={state} form={form} onFinish={handleFinish}>
       <div className={styles.formDiv}>
@@ -22,16 +19,16 @@ const Links = ({ form, handleFinish, state, setImgFile }) => {
           </Form.Item>
         </div>
 
-        <div className={styles.formitem} >
+        <div className={styles.formitem}>
           <span className={styles.formLabel}>
             Service provider type <span style={{ color: '#f87d4e' }}>*</span>
           </span>
           <Form.Item name="providerType" rules={[{ required: true }]}>
             <Select size="large" onChange={() => console.log()}>
-            <Option value="Hospital">Hospital</Option>
-                <Option value="Independent Clinic">Independent Clinic</Option>
-                <Option value="Diagnostic, Pharmacy">Diagnostic</Option>
-                <Option value="Diagnostic, Pharmacy">Pharmacy</Option>
+              <Option value="Hospital">Hospital</Option>
+              <Option value="Independent Clinic">Independent Clinic</Option>
+              <Option value="Diagnostic, Pharmacy">Diagnostic</Option>
+              <Option value="Diagnostic, Pharmacy">Pharmacy</Option>
             </Select>
           </Form.Item>
         </div>
@@ -78,20 +75,24 @@ const Links = ({ form, handleFinish, state, setImgFile }) => {
         </div>
 
         <div className={styles.formitem}>
-          <span className={styles.formLabel}>
-          Logo
-          </span>
-          <Form.Item >
-            <Upload accept='.jpg,.jpeg,.png' beforeUpload={() => false}
-              onChange={(e) => setImgFile(e.fileList[0].originFileObj)}>
-              <Button size="large" style={{ width: '100%', borderRadius: 6, fontSize: 14 }} icon={<UploadOutlined />}>
-                Click to Upload</Button>
+          <span className={styles.formLabel}>Logo</span>
+          <Form.Item>
+            <Upload
+              accept=".jpg,.jpeg,.png"
+              beforeUpload={() => false}
+              onChange={(e) => setImgFile(e.fileList[0].originFileObj)}
+            >
+              <Button
+                size="large"
+                style={{ width: '100%', borderRadius: 6, fontSize: 14 }}
+                icon={<UploadOutlined />}
+              >
+                Click to Upload
+              </Button>
             </Upload>
           </Form.Item>
         </div>
       </div>
-
-
 
       <div>
         <span className={styles.formLabel}>

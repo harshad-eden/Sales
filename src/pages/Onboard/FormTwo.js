@@ -5,7 +5,6 @@ import styles from './index.module.css';
 const { Dragger } = Upload;
 
 const App = ({ setStep, handleFinish, setDocumentFile, loading }) => {
- 
   return (
     <div>
       <div>
@@ -14,10 +13,12 @@ const App = ({ setStep, handleFinish, setDocumentFile, loading }) => {
           <span style={{ color: '#f87d4e' }}> *</span>
         </p>
 
-        <Dragger beforeUpload={() => false}
+        <Dragger
+          beforeUpload={() => false}
           onChange={(e) => setDocumentFile(e.fileList[0].originFileObj)}
           style={{ height: 500 }}
-          accept=".doc,.docx,.pdf,.excel">
+          accept=".doc,.docx,.pdf,.excel"
+        >
           <p className="ant-upload-drag-icon">
             <InboxOutlined />
           </p>
@@ -30,7 +31,13 @@ const App = ({ setStep, handleFinish, setDocumentFile, loading }) => {
         <Button onClick={() => setStep(0)} size="middle" type="dashed" htmlType="submit">
           Prev
         </Button>
-        <Button loading={loading} onClick={() => handleFinish()} size="middle" type="primary" htmlType="submit">
+        <Button
+          loading={loading}
+          onClick={() => handleFinish()}
+          size="middle"
+          type="primary"
+          htmlType="submit"
+        >
           Submit
         </Button>
       </div>

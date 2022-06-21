@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Main from '../../layout/Main';
 import styles from './index.module.css';
-import {  Form, notification } from 'antd';
+import { Form, notification } from 'antd';
 import InitialForm from './InitailForm';
 import { firestore, storage } from '../../firebase';
 import { collection, addDoc } from 'firebase/firestore';
@@ -9,10 +9,10 @@ import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import FormTwo from './FormTwo';
 import { v4 as uuidv4 } from 'uuid';
 import { useNavigate, Link } from 'react-router-dom';
-import { AiOutlineArrowLeft } from 'react-icons/ai'
+import { AiOutlineArrowLeft } from 'react-icons/ai';
 
 const Index = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
   const [step, setStep] = useState(0);
@@ -23,88 +23,92 @@ const Index = () => {
 
   //Initial form
   const handleFirstForm = (value) => {
-    setState(value)
+    setState(value);
     setStep(1);
   };
 
   const openNotification = (msg) => {
     notification.open({
-      message: msg
+      message: msg,
     });
   };
-  
-
 
   //HandleSubmit
   const handleFinish = async () => {
-    
-    let uuid = uuidv4()
-    let firebaseImgUrl
-    let firebaseDocUrl
-    if(imgFile){
-      const imgRef = ref(storage, `images/${uuid}-${imgFile.name}`)
-      let imgSapnshot =  await uploadBytes(imgRef, imgFile)
-       firebaseImgUrl = await getDownloadURL(imgSapnshot.ref).then( url => url)
+    let uuid = uuidv4();
+    let firebaseImgUrl;
+    let firebaseDocUrl;
+    if (imgFile) {
+      const imgRef = ref(storage, `images/${uuid}-${imgFile.name}`);
+      let imgSapnshot = await uploadBytes(imgRef, imgFile);
+      firebaseImgUrl = await getDownloadURL(imgSapnshot.ref).then((url) => url);
     }
 
-    if(documentFile){
-      const docRef = ref(storage, `documents/${uuid}-${documentFile.name}`)
-      let imgSapnshot =  await uploadBytes(docRef, documentFile)
-      firebaseDocUrl = await getDownloadURL(imgSapnshot.ref).then( url =>url)
+    if (documentFile) {
+      const docRef = ref(storage, `documents/${uuid}-${documentFile.name}`);
+      let imgSapnshot = await uploadBytes(docRef, documentFile);
+      firebaseDocUrl = await getDownloadURL(imgSapnshot.ref).then((url) => url);
 
-      if(!imgFile && firebaseDocUrl || firebaseImgUrl && firebaseDocUrl){
+      if ((!imgFile && firebaseDocUrl) || (firebaseImgUrl && firebaseDocUrl)) {
         let updatedValue = {
           ...state,
           document: firebaseDocUrl,
           logo: firebaseImgUrl ? firebaseImgUrl : false,
           uuid,
           status: 'Inactive',
-          createdAt: new Date()
-        }
-        
+          createdAt: new Date(),
+        };
+
         try {
-          setLoading(true)
+          setLoading(true);
           addDoc(providersCollectionref, updatedValue);
-          openNotification('Form successfully Submitted')
+          openNotification('Form successfully Submitted');
           setInterval(() => {
-            navigate('/')
+            navigate('/');
           }, 1000);
         } catch (error) {
-          openNotification('Form submition failed')
-          setLoading(false)
-          alert(error)
+          openNotification('Form submition failed');
+          setLoading(false);
+          alert(error);
           console.log(error);
         }
-      }   
+      }
     } else {
-      return alert('Please upload doc')
+      return alert('Please upload doc');
     }
-
-   
-    
   };
 
   const renderStep = () => {
     if (step === 0) {
       return (
         <div>
-          <Link to="/" style={{display: 'flex', alignItems: 'center', gap: 20, marginBottom: 50}}>
-            <AiOutlineArrowLeft size={30} style={{marginBottom: 5, color: 'gray'}} />
+          <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: 20, marginBottom: 50 }}>
+            <AiOutlineArrowLeft size={30} style={{ marginBottom: 5, color: 'gray' }} />
             <h1 className={styles.pageTitle}>Service Provider Details</h1>
           </Link>
-          <InitialForm setImgFile={setImgFile} state={state} form={form} handleFinish={handleFirstForm} />
+          <InitialForm
+            setImgFile={setImgFile}
+            state={state}
+            form={form}
+            handleFinish={handleFirstForm}
+          />
         </div>
       );
     }
     if (step === 1) {
       return (
         <div>
-           <Link to="/" style={{display: 'flex', alignItems: 'center', gap: 20, marginBottom: 50}}>
-            <AiOutlineArrowLeft size={30} style={{marginBottom: 5, color: 'gray'}} />
+          <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: 20, marginBottom: 50 }}>
+            <AiOutlineArrowLeft size={30} style={{ marginBottom: 5, color: 'gray' }} />
             <h1 className={styles.pageTitle}>Service Details</h1>
           </Link>
-         
-          <FormTwo loading={loading}  setStep={setStep} handleFinish={handleFinish} setDocumentFile={setDocumentFile}/>
+
+          <FormTwo
+            loading={loading}
+            setStep={setStep}
+            handleFinish={handleFinish}
+            setDocumentFile={setDocumentFile}
+          />
         </div>
       );
     }
