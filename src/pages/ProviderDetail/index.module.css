@@ -15,10 +15,24 @@
     color: #f87d4e;
     font-size: 30px;
     text-transform: uppercase;
-    border-bottom: 2px solid #f3dcd3;
+    border-bottom: 2px solid #f6edea;
     border-bottom-style: dashed;
     width: fit-content;
 }
+
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(310px, 2fr));
+    grid-gap: 1rem;
+    margin-bottom: 70px;
+    
+}
+
+
+
+
+
+
 
 @media only screen and (max-width: 900px){
     .innerContainer{
@@ -48,3 +62,4 @@
 }
 
 }
+

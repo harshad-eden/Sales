@@ -4,9 +4,13 @@ const { Option } = Select;
 const { TextArea } = Input;
 import styles from './index.module.css';
 import { UserAddOutlined } from '@ant-design/icons';
+import { MdPersonRemove } from 'react-icons/md'
 
 const ThirdForm = ({ form, handleFinish }) => {
   const [users, setUsers] = useState(1);
+
+
+  
 
   return (
     <Form form={form} onFinish={handleFinish}>
@@ -96,7 +100,7 @@ const ThirdForm = ({ form, handleFinish }) => {
           size="small"
         />
       </div>
-      {[...Array(users).keys()].map((i) => (
+      {[...Array(users).keys()].map((i, index) => (
         <div key={i + 1} style={{ display: 'flex', gap: 20, alignItems: 'center' }}>
           <div className={styles.formitem}>
             <span className={styles.formLabell}>User Email address</span>
@@ -113,12 +117,13 @@ const ThirdForm = ({ form, handleFinish }) => {
           <div className={styles.formitem}>
             <span className={styles.formLabell}>Role</span>
             <Form.Item name={`userType ${i + 1}`}>
-              <Select size="large" defaultValue="Front-desk" onChange={() => console.log()}>
+              <Select size="large" onChange={() => console.log()}>
                 <Option value="Front-desk">Front-desk</Option>
                 <Option value="Claim team">Claim team</Option>
               </Select>
             </Form.Item>
           </div>
+          {index !== 0 && <MdPersonRemove onClick={() => setUsers(users-1)} style={{cursor: 'pointer'}} />}
         </div>
       ))}
 

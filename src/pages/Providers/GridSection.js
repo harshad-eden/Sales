@@ -14,10 +14,6 @@ const GridSection = ({ state }) => {
       {state &&
         state.sort((a, b) => a.providerName.localeCompare(b.providerName)).map((item, index) => (
           <div key={index} style={{ backgroundColor: 'white', padding: 20, position: 'relative' }}>
-            {/* <div style={{ display: 'flex', alignItems: 'center', gap: 5, position: 'absolute', top: '3%', right: '5%', }}>
-            <div style={{height: 10, width: 10, backgroundColor: '#f87d4e', borderRadius: 5, }} />
-            <span style={{fontSize: 12}}>Inactive</span>
-            </div> */}
             <div style={{ display: 'flex', alignItems: 'center', gap: 15, marginBottom: 10 }}>
               {item.logo ? <img style={{height: 100, width: 100, borderRadius: 50}} src={item.logo} alt="" /> : <div
                 style={{ height: 100, width: 100, backgroundColor: 'cornsilk', borderRadius: 50 }}
