@@ -79,7 +79,7 @@ const Links = ({ form, handleFinish, state, setImgFile }) => {
 
         <div className={styles.formitem}>
           <span className={styles.formLabel}>
-            More than one branch ?<span style={{ color: '#f87d4e' }}> *</span>
+          Logo
           </span>
           <Form.Item >
             <Upload accept='.jpg,.jpeg,.png' beforeUpload={() => false}

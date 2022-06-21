@@ -3,8 +3,8 @@ import Main from '../../layout/Main';
 import styles from './index.module.css';
 import { Button, Form } from 'antd';
 import FinalForm from './FinalForm';
-import { firestore } from '../../firebase';
-import { updateDoc, doc } from 'firebase/firestore';
+import { firestore, } from '../../firebase';
+import { updateDoc, doc, } from 'firebase/firestore';
 import { v4 as uuidv4 } from 'uuid';
 import { useNavigate, useParams, Link, useLocation } from 'react-router-dom';
 import {AiOutlineArrowLeft} from 'react-icons/ai'
@@ -27,22 +27,29 @@ const Index = () => {
       ...value,
       docId
     }
-    if(state){
-      branch = [...state, updateVal]
-    } else {
-      branch = [updateVal]
-    }
+    // if(state){
+    //   branch = [...state, updateVal]
+    // } else {
+    //   branch = [updateVal]
+    // }
+    branch = [updateVal]
     setLoading(true)
     let docRef = doc(firestore, 'providers', docId)
-   
+    // let arrUnion = docRef.update({
+    //   branch: firestore.branch.arrayUnion(branch)
+    // });
+    
       updateDoc(docRef, {
         branch
       })
       .then((res) => {
         navigate('/')
         console.log(res)
-      }) 
-  };
+      })
+
+
+ 
+      };
   
 
   return (
