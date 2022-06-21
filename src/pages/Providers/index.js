@@ -1,13 +1,11 @@
 /* eslint-disable no-unused-vars */
 import { useState, useEffect } from 'react';
 import { firestore } from '../../firebase';
-import { collection, addDoc, getDocs } from 'firebase/firestore';
+import { collection, getDocs } from 'firebase/firestore';
 import Main from '../../layout/Main';
 import styles from './index.module.css';
-import { Button, Input, Card, Avatar } from 'antd';
+import {  Input} from 'antd';
 import { AudioOutlined } from '@ant-design/icons';
-import { DownloadOutlined } from '@ant-design/icons';
-import Table from './Table';
 import GridSection from './GridSection';
 import { Link } from 'react-router-dom';
 
@@ -15,21 +13,25 @@ const { Search } = Input;
 
 const Index = () => {
   const [state, setState] = useState();
+  const [tempState, setTempState] = useState();
   const providersCollectionref = collection(firestore, 'providers');
 
+  let unsubscribe
+
   useEffect(() => {
-    async function getData() {
-      getDocs(providersCollectionref)
-      .then((snap) => {
-        let providers = []
-        snap.forEach(doc => {
-          providers.push({...doc.data(), id: doc.id})
-        })
-        setState(providers)
+    getDocs(providersCollectionref)
+    .then((snap) => {
+      let providers = []
+      snap.forEach(doc => {
+        console.log(doc.data())
+        providers.push({...doc.data(), id: doc.id})
       })
-    }
-    getData();
+      setState(providers)
+    })
+
+    
   }, []);
+
 
   const suffix = (
     <AudioOutlined
@@ -40,9 +42,16 @@ const Index = () => {
     />
   );
 
-  console.log('state',state)
 
-  const onSearch = (value) => console.log(value);
+  const onSearch = (value) => {
+   if(value){
+    const results = state.filter(item => item.providerName.replace(/ /g,'').toLowerCase().includes(value.toLowerCase()))
+    setTempState(results)
+   } else {
+    setTempState(null)
+   }
+  };
+
 
   return (
     <Main pageName="Providers">
@@ -51,7 +60,7 @@ const Index = () => {
           <Search
             size="large"
             placeholder="Search providers"
-            onSearch={onSearch}
+            onChange={(e) => onSearch(e.target.value)}
             enterButton
             allowClear
             className={styles.search}
@@ -63,7 +72,7 @@ const Index = () => {
           </Link>
           </div>
        
-          <GridSection state={state} />
+          <GridSection state={tempState ? tempState : state} />
       </div>
     </Main>
   );

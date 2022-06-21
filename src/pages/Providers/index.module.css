@@ -32,15 +32,16 @@
     background-color: #fff; 
 }
 
-.addBox:hover{
+/* .addBox:hover{
     color: #f87d4e;
     border: 0.5px solid #f87d4e; 
-}
+} */
 
 .wrapper {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(310px, 2fr));
     grid-gap: 1rem;
+    margin-bottom: 70px;
 
 }
 

@@ -2,8 +2,7 @@
 
 .container{
     padding: 0% 7% 1% 12%;
-    display: flex;
-    align-items: center; 
+    margin: auto;
 }
 
 
@@ -14,10 +13,38 @@
 
 .pageTitle{
     color: #f87d4e;
-    margin-bottom: 50px;
     font-size: 30px;
     text-transform: uppercase;
-    /* border-bottom: 2px solid #f3dcd3;
-    border-bottom-style: dashed; */
+    border-bottom: 2px solid #f3dcd3;
+    border-bottom-style: dashed;
     width: fit-content;
+}
+
+@media only screen and (max-width: 900px){
+    .innerContainer{
+        width: 90%;
+    }
+}
+
+
+@media only screen and (max-width: 600px){
+    .container {
+        padding: 0.5rem;
+    }
+
+    .innerContainer{
+        width: 100%;
+    }
+
+    .pageTitle{
+        font-size: 24px;
+    }
+
+}
+
+@media only screen and (max-width: 400px){
+	.container{
+    padding: 0.5rem;
+}
+
 }

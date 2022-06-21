@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Main from '../../layout/Main';
 import styles from './index.module.css';
 import { Button, Form } from 'antd';
@@ -6,32 +6,42 @@ import FinalForm from './FinalForm';
 import { firestore } from '../../firebase';
 import { updateDoc, doc } from 'firebase/firestore';
 import { v4 as uuidv4 } from 'uuid';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams, Link, useLocation } from 'react-router-dom';
+import {AiOutlineArrowLeft} from 'react-icons/ai'
 
 
 const Index = () => {
+  const {state} = useLocation();
   const navigate = useNavigate()
+
+
   const {docId} = useParams()
   const [form] = Form.useForm();
-  const [loading, setLoading] = useState(false);
-  
+  const [loading, setLoading] = useState(false);  
 
 
   //HandleSubmit
   const handleFinish = async (value) => {
-    setLoading(true)
-    let docRef = doc(firestore, 'providers', docId)
+    let branch
     let updateVal = {
       ...value,
       docId
     }
+    if(state){
+      branch = [...state, updateVal]
+    } else {
+      branch = [updateVal]
+    }
+    setLoading(true)
+    let docRef = doc(firestore, 'providers', docId)
+   
       updateDoc(docRef, {
-        branch: [updateVal]
+        branch
       })
       .then((res) => {
         navigate('/')
         console.log(res)
-      })
+      }) 
   };
   
 
@@ -40,7 +50,11 @@ const Index = () => {
       <div className={styles.container}>
         <div className={styles.formContainer}>
           <div>
-          <h1 className={styles.pageTitleThree}>Branch Details</h1>
+          <Link to="/" style={{display: 'flex', alignItems: 'center', gap: 20, marginBottom: 50}}>
+            <AiOutlineArrowLeft size={30} style={{marginBottom: 5, color: 'gray'}} />
+            <h1 className={styles.pageTitle}>Branch Details</h1>
+          </Link>
+         
           <FinalForm loading={loading} form={form} handleFinish={handleFinish}  />
           </div>
         </div>

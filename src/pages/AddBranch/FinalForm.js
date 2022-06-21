@@ -114,7 +114,7 @@ const ThirdForm = ({ form, handleFinish }) => {
             <span className={styles.formLabell}>Role</span>
             <Form.Item name={`userType ${i + 1}`}>
               <Select size="large" initialvalues="lucy" onChange={() => console.log()}>
-                <Option value="jack">Jack</Option>
+                <Option value="Hospital">Jack</Option>
                 <Option value="lucy">Lucy</Option>
                 <Option value="Yiminghe">yiminghe</Option>
               </Select>

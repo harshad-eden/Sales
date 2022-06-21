@@ -12,7 +12,6 @@
 
 .pageTitle{
     color: #f87d4e;
-    margin-bottom: 50px;
     font-size: 30px;
     text-transform: uppercase;
     border-bottom: 2px solid #f3dcd3;
@@ -20,15 +19,6 @@
     width: fit-content;
 }
 
-.pageTitleThree{
-    color: #f87d4e;
-    margin-bottom: 30px;
-    font-size: 30px;
-    text-transform: uppercase;
-    border-bottom: 2px solid #f3dcd3;
-    border-bottom-style: dashed;
-    width: fit-content;
-}
 
 .formLabel{
     color: rgb(119, 116, 116);

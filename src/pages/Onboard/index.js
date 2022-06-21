@@ -1,14 +1,15 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Main from '../../layout/Main';
 import styles from './index.module.css';
-import { Button, Form } from 'antd';
+import {  Form } from 'antd';
 import InitialForm from './InitailForm';
 import { firestore, storage } from '../../firebase';
-import { collection, addDoc, getDocs } from 'firebase/firestore';
+import { collection, addDoc } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import FormTwo from './FormTwo';
 import { v4 as uuidv4 } from 'uuid';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
+import { AiOutlineArrowLeft } from 'react-icons/ai'
 
 const Index = () => {
   const navigate = useNavigate()
@@ -73,7 +74,10 @@ const Index = () => {
     if (step === 0) {
       return (
         <div>
-          <h1 className={styles.pageTitle}>Service Provider Details</h1>
+          <Link to="/" style={{display: 'flex', alignItems: 'center', gap: 20, marginBottom: 50}}>
+            <AiOutlineArrowLeft size={30} style={{marginBottom: 5, color: 'gray'}} />
+            <h1 className={styles.pageTitle}>Service Provider Details</h1>
+          </Link>
           <InitialForm setImgFile={setImgFile} state={state} form={form} handleFinish={handleFirstForm} />
         </div>
       );
@@ -81,7 +85,11 @@ const Index = () => {
     if (step === 1) {
       return (
         <div>
-          <h1 className={styles.pageTitleThree}>Service Details</h1>
+           <Link to="/" style={{display: 'flex', alignItems: 'center', gap: 20, marginBottom: 50}}>
+            <AiOutlineArrowLeft size={30} style={{marginBottom: 5, color: 'gray'}} />
+            <h1 className={styles.pageTitle}>Service Details</h1>
+          </Link>
+         
           <FormTwo loading={loading}  setStep={setStep} handleFinish={handleFinish} setDocumentFile={setDocumentFile}/>
         </div>
       );
