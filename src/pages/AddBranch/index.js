@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Main from '../../layout/Main';
 import styles from './index.module.css';
-import { Button, Form } from 'antd';
+import { Button, Form, notification } from 'antd';
 import FinalForm from './FinalForm';
 import { firestore, } from '../../firebase';
 import { updateDoc, doc, } from 'firebase/firestore';
@@ -20,6 +20,11 @@ const Index = () => {
   const [loading, setLoading] = useState(false);  
 
  
+  const openNotification = (msg) => {
+    notification.open({
+      message: msg,
+    });
+  };
 
 
   //HandleSubmit
@@ -41,13 +46,13 @@ const Index = () => {
        branch: branch
       })
       .then((res) => {
+      openNotification('Form successfully Submitted')
+       setInterval(() => {
         navigate('/')
-        console.log(res)
+       }, 1000);
+      }).catch(er => {
+        openNotification('Form submission failed')
       })
-
-    
-
-
  
       };
   

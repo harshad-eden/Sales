@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Main from '../../layout/Main';
 import styles from './index.module.css';
-import {  Form } from 'antd';
+import {  Form, notification } from 'antd';
 import InitialForm from './InitailForm';
 import { firestore, storage } from '../../firebase';
 import { collection, addDoc } from 'firebase/firestore';
@@ -26,12 +26,18 @@ const Index = () => {
     setState(value)
     setStep(1);
   };
+
+  const openNotification = (msg) => {
+    notification.open({
+      message: msg
+    });
+  };
   
 
 
   //HandleSubmit
   const handleFinish = async () => {
-    setLoading(true)
+    
     let uuid = uuidv4()
     let firebaseImgUrl
     let firebaseDocUrl
@@ -45,28 +51,36 @@ const Index = () => {
       const docRef = ref(storage, `documents/${uuid}-${documentFile.name}`)
       let imgSapnshot =  await uploadBytes(docRef, documentFile)
       firebaseDocUrl = await getDownloadURL(imgSapnshot.ref).then( url =>url)
+
+      if(!imgFile && firebaseDocUrl || firebaseImgUrl && firebaseDocUrl){
+        let updatedValue = {
+          ...state,
+          document: firebaseDocUrl,
+          logo: firebaseImgUrl ? firebaseImgUrl : false,
+          uuid,
+          status: 'Inactive',
+          createdAt: new Date()
+        }
+        
+        try {
+          setLoading(true)
+          addDoc(providersCollectionref, updatedValue);
+          openNotification('Form successfully Submitted')
+          setInterval(() => {
+            navigate('/')
+          }, 1000);
+        } catch (error) {
+          openNotification('Form submition failed')
+          setLoading(false)
+          alert(error)
+          console.log(error);
+        }
+      }   
     } else {
-      alert('Please upload doc')
+      return alert('Please upload doc')
     }
 
-    if(!imgFile && firebaseDocUrl || firebaseImgUrl && firebaseDocUrl){
-      let updatedValue = {
-        ...state,
-        document: firebaseDocUrl,
-        logo: firebaseImgUrl ? firebaseImgUrl : false,
-        uuid,
-        status: 'Inactive',
-        createdAt: new Date()
-      }
-      
-      try {
-        addDoc(providersCollectionref, updatedValue);
-        navigate('/')
-      } catch (error) {
-        alert(error)
-        console.log(error);
-      }
-    }   
+   
     
   };
 

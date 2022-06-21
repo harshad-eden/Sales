@@ -27,7 +27,7 @@ const Links = ({ form, handleFinish, state, setImgFile }) => {
             Service provider type <span style={{ color: '#f87d4e' }}>*</span>
           </span>
           <Form.Item name="providerType" rules={[{ required: true }]}>
-            <Select size="large" defaultValue="Hospital" onChange={() => console.log()}>
+            <Select size="large" onChange={() => console.log()}>
             <Option value="Hospital">Hospital</Option>
                 <Option value="Independent Clinic">Independent Clinic</Option>
                 <Option value="Diagnostic, Pharmacy">Diagnostic</Option>

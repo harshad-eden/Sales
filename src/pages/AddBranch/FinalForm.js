@@ -9,9 +9,6 @@ import { MdPersonRemove } from 'react-icons/md'
 const ThirdForm = ({ form, handleFinish }) => {
   const [users, setUsers] = useState(1);
 
-
-  
-
   return (
     <Form form={form} onFinish={handleFinish}>
       <div className={styles.formDiv}>
