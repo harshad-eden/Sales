@@ -11,11 +11,6 @@ const Index = () => {
   const {state} = useLocation();
   const navigate = useNavigate()
 
-
-  
-
-
-
   return (
     <Main pageName="Dashboard">
       <div className={styles.container}>
@@ -38,43 +33,54 @@ const Index = () => {
               </div>
             </div>
 
-            <div style={{ display: 'flex', gap: 20, justifyContent: 'center', marginTop: 10, marginBottom: 10 }}>
+            <div style={{ display: 'flex', gap: 20, justifyContent: 'center', marginTop: 15, marginBottom: 15 }}>
               <Button disabled onClick={() => navigate(`/${state.id}`, {state: state})} size="large" type="" style={{ width: '90%' }}>
                 Edit
               </Button>
               <Button type="primary" onClick={() => navigate(`/addbranch/${state.id}`)} size="large" style={{ width: '90%' }}>
                 Add branch
               </Button>
-            </div>
+            </div> 
             
-              <p style={{marginBottom: 5}}>Status: {state.status}</p>
-              <p style={{marginBottom: 5}}>Contact Number: {state.providerContactNumber}</p>
-              <p style={{marginBottom: 5}}>Services: <a  href={state.document}>{state.document}</a> </p>
+              <p className={styles.itemLabel}>Status: <span style={{fontWeight: 'normal'}}>{state.status}</span> </p>
+              <p className={styles.itemLabel}>Contact Number: <span style={{fontWeight: 'normal'}}>{state.providerContactNumber}</span> </p>
+              <p className={styles.itemLabel}>Services: <a  href={state.document}>{state.document}</a> </p>
 
               <div>
-              <h4>Admin</h4>
+              <h4>Admin Details</h4>
               <p style={{marginBottom: 5}}>Name: {state.superAdminName}</p>
               <p >Email: {state.superAdminEmail}</p> 
             </div>
              
             <h4>Address</h4>
             <p>{state.providerAddress}</p>
-            <Divider />
+           
             {state.branch?.length > 0 && 
              <>
-             <h4>Branches</h4>
+              <Divider />
+             <h4>Branch Details</h4>
              <div className={styles.wrapper}>
                 {state.branch.map((item, index) => (
                     <div key={index} style={{ backgroundColor: '#d8f0db', padding: 20, position: 'relative', borderRadius: 10 }}>
-                    <p style={{marginBottom: 0}}>Branch Name: {item.branchName && item.branchName}</p>
-                    <p style={{marginBottom: 0}}>Branch Admin Name: {item.branchAdminName}</p>
-                    <p style={{marginBottom: 0}}>Branch Admin Email: {item.branchAdminEmail}</p>
-                    <p style={{marginBottom: 0}}>Branch Contact Number: {item.branchContactNumber}</p>
-                    <p style={{marginBottom: 0}}>Name Of Beneficiary: {item.nameOfBeneficiary}</p>
-                    <p style={{marginBottom: 0}}>Name Of AccountNumber: {item.accountNumber}</p>
-                    <p style={{marginBottom: 0}}>User Email One: {item['userEmail 1']}</p>
-                    <p style={{marginBottom: 0}}>User Type One: {item['userType 1']}</p>
-                    <p style={{marginBottom: 0}}>Branch Address: {item.branchAddress}</p>
+                    <p className={styles.itemLabel}>Branch Name: 
+                    {item.branchName && <span style={{fontWeight: 'normal'}}>{ item.branchName}</span>}
+                    </p>
+                    <p className={styles.itemLabel}> Branch Admin Name: 
+                    <span style={{fontWeight: 'normal'}}>{item.branchAdminName}</span> </p>
+                    <p className={styles.itemLabel}>Branch Admin Email: 
+                    <span style={{fontWeight: 'normal'}}>{item.branchAdminEmail}</span></p>
+                    <p className={styles.itemLabel}>Branch Contact Number:
+                    <span style={{fontWeight: 'normal'}}>{item.branchContactNumber}</span> </p>
+                    <p className={styles.itemLabel}>Name Of Beneficiary: 
+                    <span style={{fontWeight: 'normal'}}>{item.nameOfBeneficiary}</span> </p>
+                    <p className={styles.itemLabel}>Name Of AccountNumber:
+                    <span style={{fontWeight: 'normal'}}>{item.accountNumber}</span> </p>
+                    <p className={styles.itemLabel}>User Email One:
+                    <span style={{fontWeight: 'normal'}}>{item['userEmail 1']}</span> </p>
+                    <p className={styles.itemLabel}>User Type One: 
+                    <span style={{fontWeight: 'normal'}}>{item['userType 1']}</span> </p>
+                    <p className={styles.itemLabel}>Branch Address: 
+                    <span style={{fontWeight: 'normal'}}>{item.branchAddress}</span></p>
                  </div>
                 ))}
              </div>
