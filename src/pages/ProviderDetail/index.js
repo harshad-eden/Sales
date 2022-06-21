@@ -5,11 +5,26 @@ import styles from './index.module.css';
 import {  Link } from 'react-router-dom';
 import {AiOutlineArrowLeft} from 'react-icons/ai'
 import { Button } from 'antd';
+import { Carousel } from 'antd';
 // import { Document } from 'react-pdf'
 
 const Index = () => {
   const {state} = useLocation();
   const navigate = useNavigate()
+
+  const contentStyle = {
+    minHeight: '160px',
+    color: '#fff',
+    lineHeight: '160px',
+    textAlign: 'center',
+    background: '#364d79',
+  };
+
+
+  const onChange = (currentSlide) => {
+    console.log(currentSlide);
+  };
+
 
 
   return (
@@ -46,6 +61,36 @@ const Index = () => {
              
             <h4>Address</h4>
             <p>{state.providerAddress}</p>
+
+           
+
+            {/* {state.branch.length > 0 && 
+            
+             <>
+             <h4>Branches</h4>
+             <div style={{maxWidth: 500, margin: 'auto', marginBottom: 20, marginTop: 20}}>
+             <Carousel afterChange={onChange}>
+                {state.branch.map((item, index) => (
+                  <div key={index}>
+                   <div style={contentStyle}>
+                    <p style={{marginBottom: 0}}>Branche Name: {item.branchName && item.branchName}</p>
+                    <p style={{marginBottom: 0}}>Branche Address: {item.branchAddress}</p>
+                    <p style={{marginBottom: 0}}>Branch Admin Name: {item.branchAdminName}</p>
+                    <p style={{marginBottom: 0}}>Branch Admin Email: {item.branchAdminEmail}</p>
+                    <p style={{marginBottom: 0}}>Branch Contact Number: {item.branchContactNumber}</p>
+                    <p style={{marginBottom: 0}}>Name Of Beneficiary: {item.nameOfBeneficiary}</p>
+                    <p style={{marginBottom: 0}}>Name Of AccountNumber: {item.accountNumber}</p>
+                    <p style={{marginBottom: 0}}>User Email One: {item['userEmail 1']}</p>
+                    <p style={{marginBottom: 0}}>User Type One: {item['userType 1']}</p>
+                   </div>
+                 </div>
+                ))}
+               </Carousel>
+             </div>
+             </>
+             } */}
+
+           
             <div style={{ display: 'flex', gap: 20, justifyContent: 'center' }}>
               <Button disabled onClick={() => navigate(`/${state.id}`, {state: state})} size="large" type="" style={{ width: '90%' }}>
                 Edit

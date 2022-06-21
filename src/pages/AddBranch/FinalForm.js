@@ -113,10 +113,9 @@ const ThirdForm = ({ form, handleFinish }) => {
           <div className={styles.formitem}>
             <span className={styles.formLabell}>Role</span>
             <Form.Item name={`userType ${i + 1}`}>
-              <Select size="large" initialvalues="lucy" onChange={() => console.log()}>
-                <Option value="Hospital">Jack</Option>
-                <Option value="lucy">Lucy</Option>
-                <Option value="Yiminghe">yiminghe</Option>
+              <Select size="large" defaultValue="Front-desk" onChange={() => console.log()}>
+                <Option value="Front-desk">Front-desk</Option>
+                <Option value="Claim team">Claim team</Option>
               </Select>
             </Form.Item>
           </div>
