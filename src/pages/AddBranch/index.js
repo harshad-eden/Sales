@@ -19,6 +19,8 @@ const Index = () => {
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);  
 
+ 
+
 
   //HandleSubmit
   const handleFinish = async (value) => {
@@ -27,20 +29,16 @@ const Index = () => {
       ...value,
       docId
     }
-    // if(state){
-    //   branch = [...state, updateVal]
-    // } else {
-    //   branch = [updateVal]
-    // }
-    branch = [updateVal]
+    if(state){
+      branch = [...state, updateVal]
+    } else {
+      branch = [updateVal]
+    }
+   
     setLoading(true)
     let docRef = doc(firestore, 'providers', docId)
-    // let arrUnion = docRef.update({
-    //   branch: firestore.branch.arrayUnion(branch)
-    // });
-    
       updateDoc(docRef, {
-        branch
+       branch: branch
       })
       .then((res) => {
         navigate('/')
