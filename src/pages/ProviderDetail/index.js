@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { AiOutlineArrowLeft } from 'react-icons/ai';
 import { Button, Divider } from 'antd';
 
+
 const Index = () => {
   const { state } = useLocation();
   const navigate = useNavigate();
@@ -127,16 +128,16 @@ const Index = () => {
                       <span style={{ fontWeight: 'normal' }}>{item.accountNumber}</span>{' '}
                     </p>
                     {item.users?.map((item, index) => (
-                      <>
-                        <p key={index} className={styles.itemLabel}>
+                      <div key={index}>
+                        <p className={styles.itemLabel}>
                           User email:
                           <span style={{ fontWeight: 'normal' }}>{item.userEmail}</span>{' '}
                         </p>
-                        <p key={index} className={styles.itemLabel}>
+                        <p className={styles.itemLabel}>
                           User role:
                           <span style={{ fontWeight: 'normal' }}>{item.userRole}</span>{' '}
                         </p>
-                      </>
+                      </div>
                     ))}
 
                     <p className={styles.itemLabel}>

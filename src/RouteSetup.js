@@ -18,7 +18,7 @@ const RouteSetup = () => {
         <Route path="/" element={<Providers /> } />
         <Route path="/:detail" element={<ProviderDetail />} />
         <Route path="/onboard" element={<Onboard />} />
-        <Route path="/addbranch/:docId" element={<AddBranch />} />
+        <Route path="/addbranch/:docid" element={<AddBranch />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Suspense>

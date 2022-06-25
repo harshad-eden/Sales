@@ -5,6 +5,7 @@ import { AiOutlineFilePdf } from 'react-icons/ai';
 import { FilePdfOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 
+
 const GridSection = ({ state }) => {
   const navigate = useNavigate();
 
@@ -44,11 +45,7 @@ const GridSection = ({ state }) => {
                   </p>
                 </div>
               </div>
-              {/* <div>
-              <h4>Admin</h4>
-              <p style={{marginBottom: 5}}>Name: {item.superAdminName}</p>
-              <p >Email: {item.superAdminEmail}</p> 
-              </div> */}
+              
               <div>
                 <p style={{ marginBottom: 5 }}>Contact Number: {item.providerContactNumber}</p>
               </div>

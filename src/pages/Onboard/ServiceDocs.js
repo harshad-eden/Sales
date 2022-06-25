@@ -4,7 +4,10 @@ import { message, Upload, Button } from 'antd';
 import styles from './index.module.css';
 const { Dragger } = Upload;
 
-const App = ({ setStep, handleFinish, setDocumentFile, loading }) => {
+const App = ({ setStep, handleFinish, setDocumentFile, loading, documentFile }) => {
+  console.log('documentFile', documentFile  ? false : true )
+
+  let buttonDisable = documentFile  ? false : true
   return (
     <div>
       <div>
@@ -17,7 +20,7 @@ const App = ({ setStep, handleFinish, setDocumentFile, loading }) => {
           beforeUpload={() => false}
           onChange={(e) => setDocumentFile(e.fileList[0].originFileObj)}
           style={{ height: 500 }}
-          accept=".doc,.docx,.pdf,.excel"
+          accept=".doc,.docx,.pdf,.csv,.xlsx, .xls,"
         >
           <p className="ant-upload-drag-icon">
             <InboxOutlined />
@@ -32,6 +35,7 @@ const App = ({ setStep, handleFinish, setDocumentFile, loading }) => {
           Prev
         </Button>
         <Button
+          disabled={buttonDisable}
           loading={loading}
           onClick={() => handleFinish()}
           size="middle"

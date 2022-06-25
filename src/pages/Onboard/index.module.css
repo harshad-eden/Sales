@@ -106,6 +106,10 @@
     padding: 0.5rem;
   }
 
+  .pageTitle{
+    font-size: 22px
+  }
+
   .formDiv {
     display: flex;
     flex-direction: column;

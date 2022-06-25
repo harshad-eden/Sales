@@ -27,8 +27,8 @@ const Links = ({ form, handleFinish, state, setImgFile }) => {
             <Select size="large" onChange={() => console.log()}>
               <Option value="Hospital">Hospital</Option>
               <Option value="Independent Clinic">Independent Clinic</Option>
-              <Option value="Diagnostic, Pharmacy">Diagnostic</Option>
-              <Option value="Diagnostic, Pharmacy">Pharmacy</Option>
+              <Option value="Diagnostic">Diagnostic</Option>
+              <Option value="Pharmacy">Pharmacy</Option>
             </Select>
           </Form.Item>
         </div>

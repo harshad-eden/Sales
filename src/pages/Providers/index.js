@@ -15,21 +15,21 @@ const Index = () => {
   const [state, setState] = useState();
   const [tempState, setTempState] = useState();
   const providersCollectionref = collection(firestore, 'providers');
-
-  let unsubscribe;
+  
 
   useEffect(() => {
-    function getData() {
-      getDocs(providersCollectionref).then((snap) => {
-        let providers = [];
-        snap.forEach((doc) => {
-          providers.push({ ...doc.data(), id: doc.id });
-        });
-        setState(providers);
+    let unsubscribe = getDocs(providersCollectionref).then((snap) => {
+      let providers = [];
+      snap.forEach((doc) => {
+        providers.push({ ...doc.data(), id: doc.id });
       });
-    }
-    getData();
-  }, [state]);
+      setState(providers);
+    });
+
+    return () => unsubscribe
+  }, []);
+
+  console.log(state)
 
   const suffix = (
     <AudioOutlined

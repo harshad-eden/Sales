@@ -13,7 +13,7 @@ const Index = () => {
   const { state } = useLocation();
   const navigate = useNavigate();
 
-  const { docId } = useParams();
+  const { docid } = useParams();
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
 
@@ -25,10 +25,11 @@ const Index = () => {
 
   //HandleSubmit
   const handleFinish = async (value) => {
+    setLoading(true);
     let branch;
     let updateVal = {
       ...value,
-      docId,
+      docid,
     };
     if (state) {
       branch = [...state, updateVal];
@@ -37,15 +38,13 @@ const Index = () => {
     }
 
     setLoading(true);
-    let docRef = doc(firestore, 'providers', docId);
+    let docRef = doc(firestore, 'providers', docid);
     updateDoc(docRef, {
       branch: branch,
     })
       .then((res) => {
         openNotification('Form successfully Submitted');
-        setInterval(() => {
-          navigate('/');
-        }, 1000);
+        navigate('/');
       })
       .catch((er) => {
         openNotification('Form submission failed');
