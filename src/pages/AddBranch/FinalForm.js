@@ -68,19 +68,38 @@ const ThirdForm = ({ form, handleFinish }) => {
         <div className={styles.formDiv}>
           <div className={styles.formitem}>
             <span className={styles.formLabell}>
+              Name of beneficiary <span style={{ color: '#f87d4e' }}>*</span>
+            </span>
+            <Form.Item name="nameOfBeneficiary" rules={[{ required: true }]}>
+              <Input size="large" placeholder="Name of beneficiary" className="ant-custom-input" />
+            </Form.Item>
+          </div>
+          <div className={styles.formitem}>
+            <span className={styles.formLabell}>
               Account number <span style={{ color: '#f87d4e' }}>*</span>
             </span>
             <Form.Item name="accountNumber" rules={[{ required: true }]}>
               <Input size="large" placeholder="Account number" className="ant-custom-input" />
             </Form.Item>
           </div>
+        </div>
+
+        <div className={styles.formDiv}>
+          <div className={styles.formitem}>
+            <span className={styles.formLabell}>
+              Swift code <span style={{ color: '#f87d4e' }}>*</span>
+            </span>
+            <Form.Item name="swiftCode" rules={[{ required: true }]}>
+              <Input size="large" placeholder="Swift code" className="ant-custom-input" />
+            </Form.Item>
+          </div>
 
           <div className={styles.formitem}>
             <span className={styles.formLabell}>
-              Name of beneficiary <span style={{ color: '#f87d4e' }}>*</span>
+              Bank Name <span style={{ color: '#f87d4e' }}>*</span>
             </span>
-            <Form.Item name="nameOfBeneficiary" rules={[{ required: true }]}>
-              <Input size="large" placeholder="Name of beneficiary" className="ant-custom-input" />
+            <Form.Item name="bankName" rules={[{ required: true }]}>
+              <Input size="large" placeholder="Bank name" className="ant-custom-input" />
             </Form.Item>
           </div>
         </div>

@@ -15,7 +15,6 @@ const Index = () => {
   const [state, setState] = useState();
   const [tempState, setTempState] = useState();
   const providersCollectionref = collection(firestore, 'providers');
-  
 
   useEffect(() => {
     let unsubscribe = getDocs(providersCollectionref).then((snap) => {
@@ -26,10 +25,8 @@ const Index = () => {
       setState(providers);
     });
 
-    return () => unsubscribe
+    return () => unsubscribe;
   }, []);
-
-  console.log(state)
 
   const suffix = (
     <AudioOutlined

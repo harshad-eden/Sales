@@ -11,6 +11,8 @@ import { AiOutlineArrowLeft } from 'react-icons/ai';
 
 const Index = () => {
   const { state } = useLocation();
+  const { branches, providerName } = state;
+
   const navigate = useNavigate();
 
   const { docid } = useParams();
@@ -31,8 +33,8 @@ const Index = () => {
       ...value,
       docid,
     };
-    if (state) {
-      branch = [...state, updateVal];
+    if (branches) {
+      branch = [...branches, updateVal];
     } else {
       branch = [updateVal];
     }
@@ -61,7 +63,7 @@ const Index = () => {
               style={{ display: 'flex', alignItems: 'center', gap: 20, marginBottom: 50 }}
             >
               <AiOutlineArrowLeft size={30} style={{ marginBottom: 5, color: 'gray' }} />
-              <h1 className={styles.pageTitle}>Branch Details</h1>
+              <h1 className={styles.pageTitle}>Add Branch Details - {providerName}</h1>
             </Link>
 
             <FinalForm loading={loading} form={form} handleFinish={handleFinish} />

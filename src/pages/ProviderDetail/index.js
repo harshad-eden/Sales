@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 import { AiOutlineArrowLeft } from 'react-icons/ai';
 import { Button, Divider } from 'antd';
 
-
 const Index = () => {
   const { state } = useLocation();
   const navigate = useNavigate();
@@ -126,6 +125,14 @@ const Index = () => {
                     <p className={styles.itemLabel}>
                       Name Of AccountNumber:
                       <span style={{ fontWeight: 'normal' }}>{item.accountNumber}</span>{' '}
+                    </p>
+                    <p className={styles.itemLabel}>
+                      Swift Code:
+                      <span style={{ fontWeight: 'normal' }}>{item.swiftCode}</span>{' '}
+                    </p>
+                    <p className={styles.itemLabel}>
+                      Bank Name:
+                      <span style={{ fontWeight: 'normal' }}>{item.bankName}</span>{' '}
                     </p>
                     {item.users?.map((item, index) => (
                       <div key={index}>

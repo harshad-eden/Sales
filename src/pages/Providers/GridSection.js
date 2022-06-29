@@ -1,10 +1,7 @@
 import React from 'react';
 import { Button } from 'antd';
 import styles from './index.module.css';
-import { AiOutlineFilePdf } from 'react-icons/ai';
-import { FilePdfOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
-
 
 const GridSection = ({ state }) => {
   const navigate = useNavigate();
@@ -45,7 +42,7 @@ const GridSection = ({ state }) => {
                   </p>
                 </div>
               </div>
-              
+
               <div>
                 <p style={{ marginBottom: 5 }}>Contact Number: {item.providerContactNumber}</p>
               </div>
@@ -63,7 +60,12 @@ const GridSection = ({ state }) => {
                 <Button
                   type="primary"
                   onClick={() =>
-                    navigate(`/addbranch/${item.id}`, { state: item.branch ? item.branch : false })
+                    navigate(`/addbranch/${item.id}`, {
+                      state: {
+                        branches: item.branch ? item.branch : [],
+                        providerName: item.providerName,
+                      },
+                    })
                   }
                   size="large"
                   style={{ width: '90%' }}
