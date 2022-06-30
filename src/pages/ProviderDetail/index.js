@@ -56,7 +56,14 @@ const Index = () => {
             </Button>
             <Button
               type="primary"
-              onClick={() => navigate(`/addbranch/${state.id}`)}
+              onClick={() =>
+                navigate(`/addbranch/${state.id}`, {
+                  state: {
+                    branches: state.branch ? state.branch : [],
+                    providerName: state.providerName,
+                  },
+                })
+              }
               size="large"
               style={{ width: '90%' }}
             >
