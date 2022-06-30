@@ -57,7 +57,7 @@ const Index = () => {
     <Main pageName="Add Branch">
       <div className={styles.container}>
         <div className={styles.formContainer}>
-          <div>
+          <div style={{ marginBottom: 80 }}>
             <Link
               to="/"
               style={{ display: 'flex', alignItems: 'center', gap: 20, marginBottom: 50 }}
