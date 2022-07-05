@@ -1,12 +1,14 @@
 /* eslint-disable quotes */
-
 import { Form, Select, Input, Button, Upload } from 'antd';
 import styles from './index.module.css';
 const { Option } = Select;
 const { TextArea } = Input;
 import { UploadOutlined } from '@ant-design/icons';
+import { InboxOutlined } from '@ant-design/icons';
 
-const Links = ({ form, handleFinish, state, setImgFile }) => {
+const { Dragger } = Upload;
+
+const Links = ({ form, handleFinish, state, setImgFile, setContractFile }) => {
   return (
     <Form initialValues={state} form={form} onFinish={handleFinish}>
       <div className={styles.formDiv}>
@@ -52,7 +54,7 @@ const Links = ({ form, handleFinish, state, setImgFile }) => {
             <Input
               type="email"
               size="large"
-              placeholder="Admin Email"
+              placeholder="Admin email"
               className="ant-custom-input"
             />
           </Form.Item>
@@ -92,6 +94,58 @@ const Links = ({ form, handleFinish, state, setImgFile }) => {
             </Upload>
           </Form.Item>
         </div>
+      </div>
+
+      <div style={{ marginBottom: 30 }}>
+        <span className={styles.formLabel}>
+          Upload contracts <span style={{ color: '#f87d4e' }}>*</span>
+        </span>
+        <Dragger
+          beforeUpload={() => false}
+          onChange={(e) => setContractFile(e.fileList[0].originFileObj)}
+          style={{ height: 500 }}
+          accept=".doc,.docx,.pdf,.csv,.xlsx, .xls,"
+        >
+          <p className="ant-upload-drag-icon">
+            <InboxOutlined />
+          </p>
+          <p className="ant-upload-text">Click or drag file to this area to upload</p>
+          <p className="ant-upload-hint">Upload format: pdf/excel/doc format</p>
+        </Dragger>
+      </div>
+
+      <div className={styles.formDiv}>
+        <div className={styles.formitem}>
+          <span className={styles.formLabel}>
+            State <span style={{ color: '#f87d4e' }}>*</span>
+          </span>
+          <Form.Item name="state" rules={[{ required: true }]}>
+            <Input size="large" placeholder="State" className="ant-custom-input" />
+          </Form.Item>
+        </div>
+
+        <div className={styles.formitem}>
+          <span className={styles.formLabel}>
+            Zip code<span style={{ color: '#f87d4e' }}>*</span>
+          </span>
+          <Form.Item name="zip" rules={[{ required: true }]}>
+            <Input type="text" size="large" placeholder="ZIP code" className="ant-custom-input" />
+          </Form.Item>
+        </div>
+      </div>
+
+      <div>
+        <span className={styles.formLabel}>
+          Street Address<span style={{ color: '#f87d4e' }}>*</span>
+        </span>
+        <Form.Item name="streetAddress" rules={[{ required: true }]}>
+          <Input
+            type="text"
+            size="large"
+            placeholder="Street address"
+            className="ant-custom-input"
+          />
+        </Form.Item>
       </div>
 
       <div>

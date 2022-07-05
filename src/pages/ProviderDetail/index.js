@@ -35,7 +35,6 @@ const Index = () => {
               <p style={{ marginBottom: 0 }}>Branches: {state.branch ? state.branch?.length : 0}</p>
             </div>
           </div>
-
           <div
             style={{
               display: 'flex',
@@ -70,7 +69,6 @@ const Index = () => {
               Add branch
             </Button>
           </div>
-
           <p className={styles.itemLabel}>
             Status: <span style={{ fontWeight: 'normal' }}>{state.status}</span>{' '}
           </p>
@@ -81,16 +79,17 @@ const Index = () => {
           <p className={styles.itemLabel}>
             Services: <a href={state.document}>{state.document}</a>{' '}
           </p>
-
           <div>
             <h4>Admin Details</h4>
             <p style={{ marginBottom: 5 }}>Name: {state.superAdminName}</p>
             <p>Email: {state.superAdminEmail}</p>
           </div>
-
           <h4>Address</h4>
-          <p>{state.providerAddress}</p>
+          <p style={{ marginBottom: 2 }}> Zip code : {state?.zip}</p>
+          <p style={{ marginBottom: 2 }}> State : {state?.zip}</p>
+          <p style={{ marginBottom: 2 }}>Street Address: {state?.streetAddress}</p>
 
+          <p>{state.providerAddress}</p>
           {state.branch?.length > 0 && (
             <>
               <Divider />

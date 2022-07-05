@@ -18,6 +18,7 @@ const Index = () => {
   const [step, setStep] = useState(0);
   const [state, setState] = useState(0);
   const [imgFile, setImgFile] = useState(false);
+  const [contractFile, setContractFile] = useState(false);
   const [documentFile, setDocumentFile] = useState(false);
   const providersCollectionref = collection(firestore, 'providers');
 
@@ -39,22 +40,31 @@ const Index = () => {
     setLoading(true);
     let firebaseImgUrl;
     let firebaseDocUrl;
+    let firebaseContractUrl;
+
     if (imgFile) {
       const imgRef = ref(storage, `images/${uuid}-${imgFile.name}`);
       let imgSapnshot = await uploadBytes(imgRef, imgFile);
       firebaseImgUrl = await getDownloadURL(imgSapnshot.ref).then((url) => url);
     }
 
+    if (contractFile) {
+      const contractRef = ref(storage, `contracts/${uuid}-${contractFile.name}`);
+      let contractSnapshot = await uploadBytes(contractRef, contractFile);
+      firebaseContractUrl = await getDownloadURL(contractSnapshot.ref).then((url) => url);
+    }
+
     if (documentFile) {
       const docRef = ref(storage, `documents/${uuid}-${documentFile.name}`);
-      let imgSapnshot = await uploadBytes(docRef, documentFile);
-      firebaseDocUrl = await getDownloadURL(imgSapnshot.ref).then((url) => url);
+      let docSnapshot = await uploadBytes(docRef, documentFile);
+      firebaseDocUrl = await getDownloadURL(docSnapshot.ref).then((url) => url);
 
       if ((!imgFile && firebaseDocUrl) || (firebaseImgUrl && firebaseDocUrl)) {
         let updatedValue = {
           ...state,
           document: firebaseDocUrl,
           logo: firebaseImgUrl ? firebaseImgUrl : false,
+          contractFile: firebaseContractUrl ? firebaseContractUrl : false,
           uuid,
           status: 'Inactive',
           createdAt: new Date(),
@@ -89,6 +99,7 @@ const Index = () => {
             state={state}
             form={form}
             handleFinish={handleFirstForm}
+            setContractFile={setContractFile}
           />
         </div>
       );
