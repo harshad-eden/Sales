@@ -79,15 +79,19 @@ const Index = () => {
           <p className={styles.itemLabel}>
             Services: <a href={state.document}>{state.document}</a>{' '}
           </p>
+          <p className={styles.itemLabel}>
+            Contract: <a href={state?.contractFile}>{state?.contractFile}</a>{' '}
+          </p>
           <div>
             <h4>Admin Details</h4>
             <p style={{ marginBottom: 5 }}>Name: {state.superAdminName}</p>
             <p>Email: {state.superAdminEmail}</p>
           </div>
           <h4>Address</h4>
+          <p style={{ marginBottom: 2 }}> Country : {state?.country}</p>
+          <p style={{ marginBottom: 2 }}> City : {state?.city}</p>
           <p style={{ marginBottom: 2 }}> Zip code : {state?.zip}</p>
-          <p style={{ marginBottom: 2 }}> State : {state?.zip}</p>
-          <p style={{ marginBottom: 2 }}>Street Address: {state?.streetAddress}</p>
+          <p style={{ marginBottom: 2 }}>Address line 1: {state?.addressLineOne}</p>
 
           <p>{state.providerAddress}</p>
           {state.branch?.length > 0 && (

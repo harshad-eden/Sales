@@ -117,10 +117,10 @@ const Links = ({ form, handleFinish, state, setImgFile, setContractFile }) => {
       <div className={styles.formDiv}>
         <div className={styles.formitem}>
           <span className={styles.formLabel}>
-            State <span style={{ color: '#f87d4e' }}>*</span>
+            City <span style={{ color: '#f87d4e' }}>*</span>
           </span>
-          <Form.Item name="state" rules={[{ required: true }]}>
-            <Input size="large" placeholder="State" className="ant-custom-input" />
+          <Form.Item name="city" rules={[{ required: true }]}>
+            <Input size="large" placeholder="City" className="ant-custom-input" />
           </Form.Item>
         </div>
 
@@ -132,13 +132,22 @@ const Links = ({ form, handleFinish, state, setImgFile, setContractFile }) => {
             <Input type="text" size="large" placeholder="ZIP code" className="ant-custom-input" />
           </Form.Item>
         </div>
+
+        <div className={styles.formitem}>
+          <span className={styles.formLabel}>
+            Country<span style={{ color: '#f87d4e' }}>*</span>
+          </span>
+          <Form.Item name="country" rules={[{ required: true }]}>
+            <Input type="text" size="large" placeholder="Country" className="ant-custom-input" />
+          </Form.Item>
+        </div>
       </div>
 
       <div>
         <span className={styles.formLabel}>
-          Street Address<span style={{ color: '#f87d4e' }}>*</span>
+          Address Line 1<span style={{ color: '#f87d4e' }}>*</span>
         </span>
-        <Form.Item name="streetAddress" rules={[{ required: true }]}>
+        <Form.Item name="addressLineOne" rules={[{ required: true }]}>
           <Input
             type="text"
             size="large"
