@@ -7,6 +7,7 @@ const Onboard = lazy(() => import('./pages/Onboard'));
 const AddBranch = lazy(() => import('./pages/AddBranch'));
 const ProviderDetail = lazy(() => import('./pages/ProviderDetail'));
 const ProviderEdit = lazy(() => import('./pages/ProviderEdit'));
+const EditBranch = lazy(() => import('./pages/EditBranch'));
 const NotFound = lazy(() => import('./pages/404'));
 
 const RouteSetup = () => {
@@ -18,6 +19,7 @@ const RouteSetup = () => {
         <Route path="/onboard" element={<Onboard />} />
         <Route path="/addbranch/:docid" element={<AddBranch />} />
         <Route path="/edit/:docId" element={<ProviderEdit />} />
+        <Route path="/editbranch/:docId" element={<EditBranch />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Suspense>

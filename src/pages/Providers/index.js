@@ -9,6 +9,8 @@ import { AudioOutlined } from '@ant-design/icons';
 import GridSection from './GridSection';
 import { Link } from 'react-router-dom';
 
+import ColumnItem from './ColumnItem';
+
 const { Search } = Input;
 
 const Index = () => {
@@ -48,6 +50,29 @@ const Index = () => {
     }
   };
 
+  let activeState = state?.map((item) => item.status === 'active');
+
+  let imgs = [
+    {
+      img: <AudioOutlined />,
+      color: '#f87d4e',
+      title: 'Total Providers',
+      count: state && state?.length,
+    },
+    {
+      img: <AudioOutlined />,
+      color: '#3ab44d',
+      title: 'Active',
+      count: activeState && activeState?.length,
+    },
+    {
+      img: <AudioOutlined />,
+      color: '#8e3ab4',
+      title: 'In-active',
+      count: state && state?.length - activeState.length,
+    },
+  ];
+
   return (
     <Main pageName="Providers">
       <div className={styles.container}>
@@ -66,7 +91,19 @@ const Index = () => {
             <div className={styles.whiteBox}>New Provider</div>
           </Link>
         </div>
-
+        <h3>Summary</h3>
+        <div
+          style={{
+            display: 'flex',
+            gap: 20,
+            alignItems: 'center',
+            width: '100%',
+            marginBottom: 40,
+          }}
+        >
+          <ColumnItem imgs={imgs} />
+        </div>
+        <h3>Providers</h3>
         <GridSection state={tempState ? tempState : state} />
       </div>
     </Main>
