@@ -58,13 +58,19 @@ const Index = () => {
       <div className={styles.container}>
         <div className={styles.formContainer}>
           <div style={{ marginBottom: 80 }}>
-            <Link
-              to="/"
-              style={{ display: 'flex', alignItems: 'center', gap: 20, marginBottom: 50 }}
+            <div
+              onClick={() => navigate(-1)}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: 20,
+                marginBottom: 50,
+                cursor: 'pointer',
+              }}
             >
               <AiOutlineArrowLeft size={30} style={{ marginBottom: 5, color: 'gray' }} />
               <h1 className={styles.pageTitle}>Add Branch Details - {providerName}</h1>
-            </Link>
+            </div>
 
             <FinalForm loading={loading} form={form} handleFinish={handleFinish} />
           </div>
