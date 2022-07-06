@@ -18,9 +18,27 @@ const App = ({
   setImgFile,
   setContractFile,
 }) => {
+  console.log('documentFile', documentFile ? false : true);
+
   let buttonDisable = documentFile ? false : true;
   return (
     <div>
+      {/* <div className={styles.formitem}>
+        <span className={styles.formLabel}>Logo</span>
+        <Upload
+          accept=".jpg,.jpeg,.png"
+          beforeUpload={() => false}
+          onChange={(e) => setImgFile(e.fileList[0].originFileObj)}
+        >
+          <Button
+            size="large"
+            style={{ width: '100%', borderRadius: 6, fontSize: 14 }}
+            icon={<UploadOutlined />}
+          >
+            Click to Upload
+          </Button>
+        </Upload>
+      </div> */}
       <div style={{ marginBottom: 30 }}>
         <span className={styles.formLabel}>Upload Logo</span>
         <Dragger
@@ -36,6 +54,43 @@ const App = ({
           <p className="ant-upload-hint">Upload format: png/jpg/jpeg format</p>
         </Dragger>
       </div>
+
+      {/* <div style={{ position: 'relative', width: '10%', marginBottom: 30 }}>
+        <div
+          style={{
+            width: 120,
+            height: 120,
+            borderRadius: '50%',
+            backgroundColor: 'white',
+            position: 'relative',
+          }}
+        ></div>
+        <label
+          style={{
+            position: 'absolute',
+            backgroundColor: '#f2f2f2',
+            right: 0,
+            bottom: 0,
+            height: 20,
+            width: 20,
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            cursor: 'pointer',
+            borderRadius: '50%',
+          }}
+        >
+          <input
+            onChange={(e) => console.log(e.target.files[0])}
+            style={{ display: 'none' }}
+            type="file"
+            id="img"
+            name="img"
+            accept="image/*"
+          />
+          <CameraOutlined />
+        </label>
+      </div> */}
 
       <div style={{ marginBottom: 30 }}>
         <span className={styles.formLabel}>Upload contracts</span>
