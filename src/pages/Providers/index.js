@@ -50,7 +50,9 @@ const Index = () => {
     }
   };
 
-  let activeState = state?.map((item) => item.status === 'active');
+  let activeState = state?.filter((item) => item.status === 'active');
+
+  console.log('activeState', activeState);
 
   let imgs = [
     {
