@@ -49,10 +49,9 @@ const Index = () => {
             }}
           >
             <Button
-              disabled
-              onClick={() => navigate(`/${state.id}`, { state: state })}
+              onClick={() => navigate(`/edit/${state.id}`, { state: { prevState: state } })}
               size="large"
-              type=""
+              type="dashed"
               style={{ width: '90%' }}
             >
               Edit

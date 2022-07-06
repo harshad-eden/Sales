@@ -27,7 +27,6 @@ const Index = () => {
 
   //HandleSubmit
   const handleFinish = async (value) => {
-    console.log(value);
     setLoading(true);
     let branch;
     let updateVal = {
@@ -40,7 +39,6 @@ const Index = () => {
       branch = [updateVal];
     }
 
-    setLoading(true);
     let docRef = doc(firestore, 'providers', docid);
     updateDoc(docRef, {
       branch: branch,
