@@ -42,7 +42,7 @@ const Index = () => {
     let firebaseDocUrl;
     let firebaseContractUrl;
 
-    console.log(imgFile, contractFile, documentFile);
+    console.log(state);
 
     if (imgFile) {
       const imgRef = ref(storage, `images/${uuid}-${imgFile.name}`);
@@ -68,7 +68,6 @@ const Index = () => {
           logo: firebaseImgUrl ? firebaseImgUrl : false,
           contractFile: firebaseContractUrl ? firebaseContractUrl : false,
           uuid,
-          status: 'Inactive',
           createdAt: new Date(),
         };
 

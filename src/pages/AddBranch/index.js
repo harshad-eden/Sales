@@ -27,6 +27,7 @@ const Index = () => {
 
   //HandleSubmit
   const handleFinish = async (value) => {
+    console.log(value);
     setLoading(true);
     let branch;
     let updateVal = {

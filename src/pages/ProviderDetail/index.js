@@ -147,23 +147,23 @@ const Index = () => {
                       )}
                     </p>
                     <p className={styles.itemLabel}>
-                      {' '}
-                      Admin name:
-                      <span style={{ fontWeight: 'normal', marginLeft: 5 }}>
-                        {item.branchAdminName}
-                      </span>{' '}
+                      Type:
+                      <span style={{ fontWeight: 'normal', marginLeft: 5 }}>{item.branchType}</span>
                     </p>
                     <p className={styles.itemLabel}>
-                      Admin email:
-                      <span style={{ fontWeight: 'normal', marginLeft: 5 }}>
-                        {item.branchAdminEmail}
-                      </span>
+                      Status:
+                      <span style={{ fontWeight: 'normal', marginLeft: 5 }}>{item.status}</span>
                     </p>
+
                     <p className={styles.itemLabel}>
                       Contact number:
                       <span style={{ fontWeight: 'normal', marginLeft: 5 }}>
-                        {item.branchContactNumber}
-                      </span>{' '}
+                        {item.contactNumber}
+                      </span>
+                      <p className={styles.itemLabel}>
+                        Comment:
+                        <span style={{ fontWeight: 'normal', marginLeft: 5 }}>{item.comment}</span>
+                      </p>
                     </p>
                     <p style={{ textDecoration: 'underline', color: 'gray', marginBottom: 5 }}>
                       Payment Details
@@ -171,29 +171,33 @@ const Index = () => {
                     <p className={styles.itemLabel}>
                       Name of beneficiary:
                       <span style={{ fontWeight: 'normal', marginLeft: 5 }}>
-                        {item.nameOfBeneficiary}
-                      </span>{' '}
+                        {item.beneficiaryName}
+                      </span>
                     </p>
                     <p className={styles.itemLabel}>
-                      Name of account number:
+                      Account number:
                       <span style={{ fontWeight: 'normal', marginLeft: 5 }}>
                         {item.accountNumber}
-                      </span>{' '}
+                      </span>
                     </p>
                     <p className={styles.itemLabel}>
                       Swift code:
-                      <span style={{ fontWeight: 'normal', marginLeft: 5 }}>
-                        {item.swiftCode}
-                      </span>{' '}
+                      <span style={{ fontWeight: 'normal', marginLeft: 5 }}>{item.swiftCode}</span>
                     </p>
                     <p className={styles.itemLabel}>
                       Bank name:
-                      <span style={{ fontWeight: 'normal', marginLeft: 5 }}>
-                        {item.bankName}
-                      </span>{' '}
+                      <span style={{ fontWeight: 'normal', marginLeft: 5 }}>{item.bankName}</span>
                     </p>
                     <p style={{ textDecoration: 'underline', color: 'gray', marginBottom: 5 }}>
-                      Users
+                      User Details
+                    </p>
+                    <p className={styles.itemLabel}>
+                      Admin name:
+                      <span style={{ fontWeight: 'normal', marginLeft: 5 }}>{item.adminName}</span>
+                    </p>
+                    <p className={styles.itemLabel}>
+                      Admin email:
+                      <span style={{ fontWeight: 'normal', marginLeft: 5 }}>{item.adminEmail}</span>
                     </p>
                     {item.users?.map((item, index) => (
                       <div key={index}>
@@ -201,13 +205,13 @@ const Index = () => {
                           User email:
                           <span style={{ fontWeight: 'normal', marginLeft: 5 }}>
                             {item.userEmail}
-                          </span>{' '}
+                          </span>
                         </p>
                         <p className={styles.itemLabel}>
                           User role:
                           <span style={{ fontWeight: 'normal', marginLeft: 5 }}>
                             {item.userRole}
-                          </span>{' '}
+                          </span>
                         </p>
                       </div>
                     ))}

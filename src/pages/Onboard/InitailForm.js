@@ -59,7 +59,7 @@ const Links = ({ form, handleFinish, state }) => {
               Status <span style={{ color: '#f87d4e' }}>*</span>
             </span>
             <Form.Item name="status" rules={[{ required: true }]}>
-              <Select size="large" onChange={() => console.log()}>
+              <Select size="large">
                 <Option value="active">Active</Option>
                 <Option value="inactive">Inactive</Option>
               </Select>
