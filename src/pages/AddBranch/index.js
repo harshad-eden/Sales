@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Main from '../../layout/Main';
 import styles from './index.module.css';
 import { Button, Form, notification } from 'antd';
-import FinalForm from './FinalForm';
+import FinalForm from './Form';
 import { firestore } from '../../firebase';
 import { updateDoc, doc } from 'firebase/firestore';
 import { v4 as uuidv4 } from 'uuid';

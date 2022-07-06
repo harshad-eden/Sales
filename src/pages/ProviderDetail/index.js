@@ -5,6 +5,7 @@ import styles from './index.module.css';
 import { Link } from 'react-router-dom';
 import { AiOutlineArrowLeft } from 'react-icons/ai';
 import { Button, Divider } from 'antd';
+import { DownloadOutlined } from '@ant-design/icons';
 
 const Index = () => {
   const { state } = useLocation();
@@ -33,6 +34,8 @@ const Index = () => {
               <h3 style={{ marginBottom: 5 }}>{state.providerName}</h3>
               <p style={{ marginBottom: 0 }}>Type: {state.providerType}</p>
               <p style={{ marginBottom: 0 }}>Branches: {state.branch ? state.branch?.length : 0}</p>
+              <p style={{ marginBottom: 0 }}>Status: {state.status}</p>
+              <p style={{ marginBottom: 0 }}>Contact: {state.providerContactNumber}</p>
             </div>
           </div>
           <div
@@ -42,6 +45,7 @@ const Index = () => {
               justifyContent: 'center',
               marginTop: 15,
               marginBottom: 15,
+              width: '100%',
             }}
           >
             <Button
@@ -69,31 +73,56 @@ const Index = () => {
               Add branch
             </Button>
           </div>
-          <p className={styles.itemLabel}>
-            Status: <span style={{ fontWeight: 'normal' }}>{state.status}</span>{' '}
-          </p>
-          <p className={styles.itemLabel}>
-            Contact Number:{' '}
-            <span style={{ fontWeight: 'normal' }}>{state.providerContactNumber}</span>{' '}
-          </p>
-          <p className={styles.itemLabel}>
-            Services: <a href={state.document}>{state.document}</a>{' '}
-          </p>
-          <p className={styles.itemLabel}>
-            Contract: <a href={state?.contractFile}>{state?.contractFile}</a>{' '}
-          </p>
           <div>
-            <h4>Admin Details</h4>
-            <p style={{ marginBottom: 5 }}>Name: {state.superAdminName}</p>
-            <p>Email: {state.superAdminEmail}</p>
-          </div>
-          <h4>Address</h4>
-          <p style={{ marginBottom: 2 }}> Country : {state?.country}</p>
-          <p style={{ marginBottom: 2 }}> City : {state?.city}</p>
-          <p style={{ marginBottom: 2 }}> Zip code : {state?.zip}</p>
-          <p style={{ marginBottom: 2 }}>Address line 1: {state?.addressLineOne}</p>
+            <p style={{ textDecoration: 'underline', color: 'gray', marginBottom: 13 }}>
+              Download documents
+            </p>
 
-          <p>{state.providerAddress}</p>
+            <div style={{ display: 'flex', gap: 10, marginBottom: 15 }}>
+              <a href={state.document}>
+                <Button size="small" type="dashed" icon={<DownloadOutlined />}>
+                  Services
+                </Button>
+              </a>
+
+              {state.contractFile && (
+                <a href={state?.contractFile}>
+                  <Button size="small" type="dashed" icon={<DownloadOutlined />}>
+                    Contract
+                  </Button>
+                </a>
+              )}
+            </div>
+
+            <div>
+              <p style={{ textDecoration: 'underline', color: 'gray', marginBottom: 13 }}>
+                Admin Details
+              </p>
+
+              <p style={{ marginBottom: 5 }}>Name: {state.superAdminName}</p>
+              <p>Email: {state.superAdminEmail}</p>
+            </div>
+
+            <div>
+              <p style={{ textDecoration: 'underline', color: 'gray', marginBottom: 13 }}>
+                Office user details
+              </p>
+
+              <p style={{ marginBottom: 5 }}>Name: {state?.userName}</p>
+              <p>Email: {state?.userEmail}</p>
+            </div>
+
+            <p style={{ textDecoration: 'underline', color: 'gray', marginBottom: 13 }}>
+              Address Details
+            </p>
+
+            <p style={{ marginBottom: 2 }}> Country : {state?.country}</p>
+            <p style={{ marginBottom: 2 }}> City : {state?.city}</p>
+            <p style={{ marginBottom: 2 }}> Zip code : {state?.zip}</p>
+            <p style={{ marginBottom: 2 }}>Address line </p>
+            <p>{state.providerAddress}</p>
+          </div>
+
           {state.branch?.length > 0 && (
             <>
               <Divider />
@@ -110,57 +139,92 @@ const Index = () => {
                     }}
                   >
                     <p className={styles.itemLabel}>
-                      Branch Name:
+                      Name:
                       {item.branchName && (
-                        <span style={{ fontWeight: 'normal' }}>{item.branchName}</span>
+                        <span style={{ fontWeight: 'normal', marginLeft: 5 }}>
+                          {item.branchName}
+                        </span>
                       )}
                     </p>
                     <p className={styles.itemLabel}>
                       {' '}
-                      Branch Admin Name:
-                      <span style={{ fontWeight: 'normal' }}>{item.branchAdminName}</span>{' '}
+                      Admin name:
+                      <span style={{ fontWeight: 'normal', marginLeft: 5 }}>
+                        {item.branchAdminName}
+                      </span>{' '}
                     </p>
                     <p className={styles.itemLabel}>
-                      Branch Admin Email:
-                      <span style={{ fontWeight: 'normal' }}>{item.branchAdminEmail}</span>
+                      Admin email:
+                      <span style={{ fontWeight: 'normal', marginLeft: 5 }}>
+                        {item.branchAdminEmail}
+                      </span>
                     </p>
                     <p className={styles.itemLabel}>
-                      Branch Contact Number:
-                      <span style={{ fontWeight: 'normal' }}>{item.branchContactNumber}</span>{' '}
+                      Contact number:
+                      <span style={{ fontWeight: 'normal', marginLeft: 5 }}>
+                        {item.branchContactNumber}
+                      </span>{' '}
+                    </p>
+                    <p style={{ textDecoration: 'underline', color: 'gray', marginBottom: 5 }}>
+                      Payment Details
                     </p>
                     <p className={styles.itemLabel}>
-                      Name Of Beneficiary:
-                      <span style={{ fontWeight: 'normal' }}>{item.nameOfBeneficiary}</span>{' '}
+                      Name of beneficiary:
+                      <span style={{ fontWeight: 'normal', marginLeft: 5 }}>
+                        {item.nameOfBeneficiary}
+                      </span>{' '}
                     </p>
                     <p className={styles.itemLabel}>
-                      Name Of AccountNumber:
-                      <span style={{ fontWeight: 'normal' }}>{item.accountNumber}</span>{' '}
+                      Name of account number:
+                      <span style={{ fontWeight: 'normal', marginLeft: 5 }}>
+                        {item.accountNumber}
+                      </span>{' '}
                     </p>
                     <p className={styles.itemLabel}>
-                      Swift Code:
-                      <span style={{ fontWeight: 'normal' }}>{item.swiftCode}</span>{' '}
+                      Swift code:
+                      <span style={{ fontWeight: 'normal', marginLeft: 5 }}>
+                        {item.swiftCode}
+                      </span>{' '}
                     </p>
                     <p className={styles.itemLabel}>
-                      Bank Name:
-                      <span style={{ fontWeight: 'normal' }}>{item.bankName}</span>{' '}
+                      Bank name:
+                      <span style={{ fontWeight: 'normal', marginLeft: 5 }}>
+                        {item.bankName}
+                      </span>{' '}
+                    </p>
+                    <p style={{ textDecoration: 'underline', color: 'gray', marginBottom: 5 }}>
+                      Users
                     </p>
                     {item.users?.map((item, index) => (
                       <div key={index}>
                         <p className={styles.itemLabel}>
                           User email:
-                          <span style={{ fontWeight: 'normal' }}>{item.userEmail}</span>{' '}
+                          <span style={{ fontWeight: 'normal', marginLeft: 5 }}>
+                            {item.userEmail}
+                          </span>{' '}
                         </p>
                         <p className={styles.itemLabel}>
                           User role:
-                          <span style={{ fontWeight: 'normal' }}>{item.userRole}</span>{' '}
+                          <span style={{ fontWeight: 'normal', marginLeft: 5 }}>
+                            {item.userRole}
+                          </span>{' '}
                         </p>
                       </div>
                     ))}
-
-                    <p className={styles.itemLabel}>
-                      Branch Address:
-                      <span style={{ fontWeight: 'normal' }}>{item.branchAddress}</span>
+                    <p style={{ textDecoration: 'underline', color: 'gray', marginBottom: 5 }}>
+                      Address Details
                     </p>
+
+                    <div>
+                      <p style={{ marginBottom: 2 }}> Country : {item?.country}</p>
+                      <p style={{ marginBottom: 2 }}> City : {item?.city}</p>
+                      <p style={{ marginBottom: 2 }}> Zip code : {item?.zip}</p>
+
+                      <p className={styles.itemLabel}>
+                        Branch Address:
+                        <span style={{ fontWeight: 'normal' }}>{item.branchAddress}</span>
+                      </p>
+                    </div>
                   </div>
                 ))}
               </div>

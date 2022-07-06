@@ -177,6 +177,39 @@ const ThirdForm = ({ form, handleFinish }) => {
         )}
       </Form.List>
 
+      <p style={{ textDecoration: 'underline', color: 'gray', marginBottom: 13 }}>
+        Address details
+      </p>
+
+      <div className={styles.formDiv}>
+        <div className={styles.formitem}>
+          <span className={styles.formLabel}>
+            City <span style={{ color: '#f87d4e' }}>*</span>
+          </span>
+          <Form.Item name="city" rules={[{ required: true }]}>
+            <Input size="large" placeholder="City" className="ant-custom-input" />
+          </Form.Item>
+        </div>
+
+        <div className={styles.formitem}>
+          <span className={styles.formLabel}>
+            Zip code<span style={{ color: '#f87d4e' }}>*</span>
+          </span>
+          <Form.Item name="zip" rules={[{ required: true }]}>
+            <Input type="text" size="large" placeholder="ZIP code" className="ant-custom-input" />
+          </Form.Item>
+        </div>
+
+        <div className={styles.formitem}>
+          <span className={styles.formLabel}>
+            Country<span style={{ color: '#f87d4e' }}>*</span>
+          </span>
+          <Form.Item name="country" rules={[{ required: true }]}>
+            <Input type="text" size="large" placeholder="Country" className="ant-custom-input" />
+          </Form.Item>
+        </div>
+      </div>
+
       <div>
         <span className="form-label">
           Address <span style={{ color: '#f87d4e' }}>*</span>

@@ -61,6 +61,30 @@ const Links = ({ form, handleFinish, state, setImgFile, setContractFile }) => {
         </div>
       </div>
 
+      {/* <p style={{ textDecoration: 'underline', color: 'gray', marginBottom: 13 }}>
+        Official details
+      </p> */}
+      <div className={styles.formDiv}>
+        <div className={styles.formitem}>
+          <span className={styles.formLabel}>User name</span>
+          <Form.Item name="userName">
+            <Input size="large" placeholder="User name" className="ant-custom-input" />
+          </Form.Item>
+        </div>
+
+        <div className={styles.formitem}>
+          <span className={styles.formLabel}>User email</span>
+          <Form.Item name="userEmail">
+            <Input
+              type="email"
+              size="large"
+              placeholder="User email"
+              className="ant-custom-input"
+            />
+          </Form.Item>
+        </div>
+      </div>
+
       <div className={styles.formDiv}>
         <div className={styles.formitem}>
           <span className={styles.formLabel}>
@@ -114,6 +138,10 @@ const Links = ({ form, handleFinish, state, setImgFile, setContractFile }) => {
         </Dragger>
       </div>
 
+      <p style={{ textDecoration: 'underline', color: 'gray', marginBottom: 13 }}>
+        Address Details
+      </p>
+
       <div className={styles.formDiv}>
         <div className={styles.formitem}>
           <span className={styles.formLabel}>
@@ -145,21 +173,7 @@ const Links = ({ form, handleFinish, state, setImgFile, setContractFile }) => {
 
       <div>
         <span className={styles.formLabel}>
-          Address Line 1<span style={{ color: '#f87d4e' }}>*</span>
-        </span>
-        <Form.Item name="addressLineOne" rules={[{ required: true }]}>
-          <Input
-            type="text"
-            size="large"
-            placeholder="Street address"
-            className="ant-custom-input"
-          />
-        </Form.Item>
-      </div>
-
-      <div>
-        <span className={styles.formLabel}>
-          Address <span style={{ color: '#f87d4e' }}>*</span>
+          Address Line 1 <span style={{ color: '#f87d4e' }}>*</span>
         </span>
         <Form.Item name="providerAddress" rules={[{ required: true }]}>
           <TextArea rows={4} placeholder="Address" />
