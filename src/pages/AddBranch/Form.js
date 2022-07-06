@@ -15,9 +15,7 @@ const ThirdForm = ({ form, handleFinish }) => {
       onFinish={handleFinish}
       initialValues={{ users: [{ userEmail: '', userRole: '' }] }}
     >
-      <p style={{ textDecoration: 'underline', color: 'gray', marginBottom: 13 }}>
-        Provider Details
-      </p>
+      <p style={{ textDecoration: 'underline', color: 'gray', marginBottom: 13 }}>Branch Details</p>
       <div className={styles.formDiv}>
         <div className={styles.formitem}>
           <span className={styles.formLabell}>
@@ -69,6 +67,11 @@ const ThirdForm = ({ form, handleFinish }) => {
           </Form.Item>
         </div>
       </div>
+
+      <span className={styles.formLabell}>Comment</span>
+      <Form.Item name="comment">
+        <Input style={{ borderRadius: 10 }} size="large" placeholderr="Address" />
+      </Form.Item>
 
       <Form.List style={{ width: '100%' }} name="users">
         {(fields, { add, remove }) => (
@@ -191,7 +194,7 @@ const ThirdForm = ({ form, handleFinish }) => {
 
         <div className={styles.formDiv}>
           <div className={styles.formitem}>
-            <span className={styles.formLabel}>
+            <span className={styles.formLabell}>
               Swift code <span style={{ color: '#f87d4e' }}>*</span>
             </span>
             <Form.Item name="swiftCode" rules={[{ required: true }]}>
@@ -201,7 +204,7 @@ const ThirdForm = ({ form, handleFinish }) => {
 
           <div className={styles.formitem}>
             <span className={styles.formLabell}>
-              Bank Name <span style={{ color: '#f87d4e' }}>*</span>
+              Bank name <span style={{ color: '#f87d4e' }}>*</span>
             </span>
             <Form.Item name="bankName" rules={[{ required: true }]}>
               <Input size="large" placeholderr="Bank name" className="ant-custom-input" />
@@ -249,11 +252,6 @@ const ThirdForm = ({ form, handleFinish }) => {
         </span>
         <Form.Item name="branchAddress">
           <TextArea style={{ borderRadius: 10 }} rows={4} placeholderr="Branch address" required />
-        </Form.Item>
-
-        <span className={styles.formLabell}>Comment</span>
-        <Form.Item name="providerAddress">
-          <TextArea style={{ borderRadius: 10 }} rows={4} placeholderr="Address" />
         </Form.Item>
 
         <div style={{ float: 'right', display: 'flex' }}>

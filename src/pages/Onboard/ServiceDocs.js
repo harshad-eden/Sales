@@ -1,11 +1,6 @@
 import { useState } from 'react';
-import {
-  InboxOutlined,
-  UploadOutlined,
-  FileImageOutlined,
-  CameraOutlined,
-} from '@ant-design/icons';
-import { message, Upload, Button } from 'antd';
+import { InboxOutlined, FileImageOutlined } from '@ant-design/icons';
+import { Upload, Button } from 'antd';
 import styles from './index.module.css';
 const { Dragger } = Upload;
 
@@ -24,8 +19,9 @@ const App = ({
       <div style={{ marginBottom: 30 }}>
         <span className={styles.formLabel}>Upload Logo</span>
         <Dragger
+          onRemove={() => setDocumentFile(null)}
           beforeUpload={() => false}
-          onChange={(e) => setContractFile(e.fileList[0].originFileObj)}
+          onChange={(e) => setImgFile(e.fileList[0].originFileObj)}
           style={{ height: 300 }}
           accept=".jpg,.jpeg,.png"
         >
@@ -40,6 +36,7 @@ const App = ({
       <div style={{ marginBottom: 30 }}>
         <span className={styles.formLabel}>Upload contracts</span>
         <Dragger
+          onRemove={() => setDocumentFile(null)}
           beforeUpload={() => false}
           onChange={(e) => setContractFile(e.fileList[0].originFileObj)}
           style={{ height: 500 }}
@@ -64,6 +61,7 @@ const App = ({
         </span>
 
         <Dragger
+          onRemove={() => setDocumentFile(null)}
           beforeUpload={() => false}
           onChange={(e) => setDocumentFile(e.fileList[0].originFileObj)}
           style={{ height: 500 }}

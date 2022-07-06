@@ -8,7 +8,7 @@ import { InboxOutlined } from '@ant-design/icons';
 
 const { Dragger } = Upload;
 
-const Links = ({ form, handleFinish, state, setImgFile, setContractFile }) => {
+const Links = ({ form, handleFinish, state }) => {
   return (
     <>
       <Form initialValues={state} form={form} onFinish={handleFinish}>
@@ -66,6 +66,11 @@ const Links = ({ form, handleFinish, state, setImgFile, setContractFile }) => {
             </Form.Item>
           </div>
         </div>
+
+        <span className={styles.formLabell}>Comment</span>
+        <Form.Item name="comment">
+          <Input style={{ borderRadius: 10 }} size="large" placeholderr="Address" />
+        </Form.Item>
 
         <p style={{ textDecoration: 'underline', color: 'gray', marginBottom: 13 }}>User Details</p>
 
@@ -161,11 +166,6 @@ const Links = ({ form, handleFinish, state, setImgFile, setContractFile }) => {
             Address Line 1 <span style={{ color: '#f87d4e' }}>*</span>
           </span>
           <Form.Item name="providerAddress" rules={[{ required: true }]}>
-            <TextArea style={{ borderRadius: 10 }} rows={4} placeholderr="Address" />
-          </Form.Item>
-
-          <span className={styles.formLabell}>Comment</span>
-          <Form.Item name="providerAddress">
             <TextArea style={{ borderRadius: 10 }} rows={4} placeholderr="Address" />
           </Form.Item>
 

@@ -42,6 +42,8 @@ const Index = () => {
     let firebaseDocUrl;
     let firebaseContractUrl;
 
+    console.log(imgFile, contractFile, documentFile);
+
     if (imgFile) {
       const imgRef = ref(storage, `images/${uuid}-${imgFile.name}`);
       let imgSapnshot = await uploadBytes(imgRef, imgFile);
@@ -118,6 +120,8 @@ const Index = () => {
             documentFile={documentFile}
             handleFinish={handleFinish}
             setDocumentFile={setDocumentFile}
+            setImgFile={setImgFile}
+            setContractFile={setContractFile}
           />
         </div>
       );
