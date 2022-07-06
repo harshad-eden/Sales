@@ -17,7 +17,7 @@ const Links = ({ form, handleFinish, state, setImgFile, setContractFile }) => {
         </p>
         <div className={styles.formDiv}>
           <div className={styles.formitem}>
-            <span className={styles.formLabel}>
+            <span className={styles.formLabell}>
               Name <span style={{ color: '#f87d4e' }}>*</span>
             </span>
             <Form.Item name="providerName" rules={[{ required: true }]}>
@@ -26,7 +26,7 @@ const Links = ({ form, handleFinish, state, setImgFile, setContractFile }) => {
           </div>
 
           <div className={styles.formitem}>
-            <span className={styles.formLabel}>
+            <span className={styles.formLabell}>
               Type <span style={{ color: '#f87d4e' }}>*</span>
             </span>
             <Form.Item name="providerType" rules={[{ required: true }]}>
@@ -42,7 +42,7 @@ const Links = ({ form, handleFinish, state, setImgFile, setContractFile }) => {
 
         <div className={styles.formDiv}>
           <div className={styles.formitem}>
-            <span className={styles.formLabel}>
+            <span className={styles.formLabell}>
               Contact Number <span style={{ color: '#f87d4e' }}>*</span>
             </span>
             <Form.Item name="providerContactNumber" rules={[{ required: true }]}>
@@ -55,7 +55,7 @@ const Links = ({ form, handleFinish, state, setImgFile, setContractFile }) => {
             </Form.Item>
           </div>
           <div className={styles.formitem}>
-            <span className={styles.formLabel}>
+            <span className={styles.formLabell}>
               Status <span style={{ color: '#f87d4e' }}>*</span>
             </span>
             <Form.Item name="status" rules={[{ required: true }]}>
@@ -71,7 +71,7 @@ const Links = ({ form, handleFinish, state, setImgFile, setContractFile }) => {
 
         <div className={styles.formDiv}>
           <div className={styles.formitem}>
-            <span className={styles.formLabel}>
+            <span className={styles.formLabell}>
               Admin name <span style={{ color: '#f87d4e' }}>*</span>
             </span>
             <Form.Item name="superAdminName" rules={[{ required: true }]}>
@@ -80,7 +80,7 @@ const Links = ({ form, handleFinish, state, setImgFile, setContractFile }) => {
           </div>
 
           <div className={styles.formitem}>
-            <span className={styles.formLabel}>
+            <span className={styles.formLabell}>
               Admin email <span style={{ color: '#f87d4e' }}>*</span>
             </span>
             <Form.Item name="superAdminEmail" rules={[{ required: true }]}>
@@ -99,14 +99,14 @@ const Links = ({ form, handleFinish, state, setImgFile, setContractFile }) => {
       </p> */}
         <div className={styles.formDiv}>
           <div className={styles.formitem}>
-            <span className={styles.formLabel}>User name</span>
+            <span className={styles.formLabell}>User name</span>
             <Form.Item name="userName">
               <Input size="large" placeholderr="User name" className="ant-custom-input" />
             </Form.Item>
           </div>
 
           <div className={styles.formitem}>
-            <span className={styles.formLabel}>User email</span>
+            <span className={styles.formLabell}>User email</span>
             <Form.Item name="userEmail">
               <Input
                 type="email"
@@ -124,7 +124,7 @@ const Links = ({ form, handleFinish, state, setImgFile, setContractFile }) => {
 
         <div className={styles.formDiv}>
           <div className={styles.formitem}>
-            <span className={styles.formLabel}>
+            <span className={styles.formLabell}>
               City <span style={{ color: '#f87d4e' }}>*</span>
             </span>
             <Form.Item name="city" rules={[{ required: true }]}>
@@ -133,7 +133,7 @@ const Links = ({ form, handleFinish, state, setImgFile, setContractFile }) => {
           </div>
 
           <div className={styles.formitem}>
-            <span className={styles.formLabel}>
+            <span className={styles.formLabell}>
               Zip code<span style={{ color: '#f87d4e' }}>*</span>
             </span>
             <Form.Item name="zip" rules={[{ required: true }]}>
@@ -147,7 +147,7 @@ const Links = ({ form, handleFinish, state, setImgFile, setContractFile }) => {
           </div>
 
           <div className={styles.formitem}>
-            <span className={styles.formLabel}>
+            <span className={styles.formLabell}>
               Country<span style={{ color: '#f87d4e' }}>*</span>
             </span>
             <Form.Item name="country" rules={[{ required: true }]}>
@@ -157,14 +157,14 @@ const Links = ({ form, handleFinish, state, setImgFile, setContractFile }) => {
         </div>
 
         <div>
-          <span className={styles.formLabel}>
+          <span className={styles.formLabell}>
             Address Line 1 <span style={{ color: '#f87d4e' }}>*</span>
           </span>
           <Form.Item name="providerAddress" rules={[{ required: true }]}>
             <TextArea style={{ borderRadius: 10 }} rows={4} placeholderr="Address" />
           </Form.Item>
 
-          <span className={styles.formLabel}>Comment</span>
+          <span className={styles.formLabell}>Comment</span>
           <Form.Item name="providerAddress">
             <TextArea style={{ borderRadius: 10 }} rows={4} placeholderr="Address" />
           </Form.Item>

@@ -15,93 +15,58 @@ const ThirdForm = ({ form, handleFinish }) => {
       onFinish={handleFinish}
       initialValues={{ users: [{ userEmail: '', userRole: '' }] }}
     >
+      <p style={{ textDecoration: 'underline', color: 'gray', marginBottom: 13 }}>
+        Provider Details
+      </p>
       <div className={styles.formDiv}>
         <div className={styles.formitem}>
-          <span className={styles.formLabell}>Branch name</span>
-          <Form.Item name="branchName" rules={[{ required: true }]}>
-            <Input size="large" placeholder="Branch Name" className="ant-custom-input" />
+          <span className={styles.formLabell}>
+            Name <span style={{ color: '#f87d4e' }}>*</span>
+          </span>
+          <Form.Item name="providerName" rules={[{ required: true }]}>
+            <Input size="large" placeholders="Provider name" className="ant-custom-input" />
           </Form.Item>
         </div>
 
         <div className={styles.formitem}>
           <span className={styles.formLabell}>
-            Contact number <span style={{ color: '#f87d4e' }}>*</span>
+            Type <span style={{ color: '#f87d4e' }}>*</span>
           </span>
-          <Form.Item name="branchContactNumber" rules={[{ required: true }]}>
+          <Form.Item name="providerType" rules={[{ required: true }]}>
+            <Select size="large" onChange={() => console.log()}>
+              <Option value="Hospital">Hospital</Option>
+              <Option value="Independent Clinic">Independent Clinic</Option>
+              <Option value="Diagnostic">Diagnostic</Option>
+              <Option value="Pharmacy">Pharmacy</Option>
+            </Select>
+          </Form.Item>
+        </div>
+      </div>
+
+      <div className={styles.formDiv}>
+        <div className={styles.formitem}>
+          <span className={styles.formLabell}>
+            Contact Number <span style={{ color: '#f87d4e' }}>*</span>
+          </span>
+          <Form.Item name="providerContactNumber" rules={[{ required: true }]}>
             <Input
               type="number"
               size="large"
-              placeholder="Provider name"
+              placeholderr="Contact number"
               className="ant-custom-input"
             />
           </Form.Item>
         </div>
-      </div>
-      <div className={styles.formDiv}>
         <div className={styles.formitem}>
           <span className={styles.formLabell}>
-            Name of branch admin <span style={{ color: '#f87d4e' }}>*</span>
+            Status <span style={{ color: '#f87d4e' }}>*</span>
           </span>
-          <Form.Item name="branchAdminName" rules={[{ required: true }]}>
-            <Input size="large" placeholder="Provider name" className="ant-custom-input" />
+          <Form.Item name="status" rules={[{ required: true }]}>
+            <Select size="large" onChange={() => console.log()}>
+              <Option value="active">Active</Option>
+              <Option value="inactive">Inactive</Option>
+            </Select>
           </Form.Item>
-        </div>
-
-        <div className={styles.formitem}>
-          <span className={styles.formLabell}>
-            Email of branch admin <span style={{ color: '#f87d4e' }}>*</span>
-          </span>
-          <Form.Item name="branchAdminEmail" rules={[{ required: true }]}>
-            <Input
-              type="email"
-              size="large"
-              placeholder="Branch admin email"
-              className="ant-custom-input"
-            />
-          </Form.Item>
-        </div>
-      </div>
-      <div>
-        <p style={{ textDecoration: 'underline', color: 'gray', marginBottom: 13 }}>
-          Payment details
-        </p>
-        <div className={styles.formDiv}>
-          <div className={styles.formitem}>
-            <span className={styles.formLabell}>
-              Name of beneficiary <span style={{ color: '#f87d4e' }}>*</span>
-            </span>
-            <Form.Item name="nameOfBeneficiary" rules={[{ required: true }]}>
-              <Input size="large" placeholder="Name of beneficiary" className="ant-custom-input" />
-            </Form.Item>
-          </div>
-          <div className={styles.formitem}>
-            <span className={styles.formLabell}>
-              Account number <span style={{ color: '#f87d4e' }}>*</span>
-            </span>
-            <Form.Item name="accountNumber" rules={[{ required: true }]}>
-              <Input size="large" placeholder="Account number" className="ant-custom-input" />
-            </Form.Item>
-          </div>
-        </div>
-
-        <div className={styles.formDiv}>
-          <div className={styles.formitem}>
-            <span className={styles.formLabell}>
-              Swift code <span style={{ color: '#f87d4e' }}>*</span>
-            </span>
-            <Form.Item name="swiftCode" rules={[{ required: true }]}>
-              <Input size="large" placeholder="Swift code" className="ant-custom-input" />
-            </Form.Item>
-          </div>
-
-          <div className={styles.formitem}>
-            <span className={styles.formLabell}>
-              Bank Name <span style={{ color: '#f87d4e' }}>*</span>
-            </span>
-            <Form.Item name="bankName" rules={[{ required: true }]}>
-              <Input size="large" placeholder="Bank name" className="ant-custom-input" />
-            </Form.Item>
-          </div>
         </div>
       </div>
 
@@ -117,9 +82,33 @@ const ThirdForm = ({ form, handleFinish }) => {
               }}
             >
               <p style={{ textDecoration: 'underline', marginBottom: 0, color: 'gray' }}>
-                Add users
+                User details
               </p>
               <Button onClick={() => add()} type="" icon={<UserAddOutlined />} size="small" />
+            </div>
+            <div className={styles.formDiv}>
+              <div className={styles.formitem}>
+                <span className={styles.formLabell}>
+                  Admin name <span style={{ color: '#f87d4e' }}>*</span>
+                </span>
+                <Form.Item name="branchAdminName" rules={[{ required: true }]}>
+                  <Input size="large" placeholderr="Provider name" className="ant-custom-input" />
+                </Form.Item>
+              </div>
+
+              <div className={styles.formitem}>
+                <span className={styles.formLabell}>
+                  Admin email <span style={{ color: '#f87d4e' }}>*</span>
+                </span>
+                <Form.Item name="branchAdminEmail" rules={[{ required: true }]}>
+                  <Input
+                    type="email"
+                    size="large"
+                    placeholderr="Branch admin email"
+                    className="ant-custom-input"
+                  />
+                </Form.Item>
+              </div>
             </div>
             {fields.map((field, index) => (
               <div className={styles.formDiv} key={field.key}>
@@ -135,7 +124,7 @@ const ThirdForm = ({ form, handleFinish }) => {
                       },
                     ]}
                   >
-                    <Input size="large" placeholder="User email" className="ant-custom-input" />
+                    <Input size="large" placeholderr="User email" className="ant-custom-input" />
                   </Form.Item>
                 </div>
 
@@ -177,45 +166,94 @@ const ThirdForm = ({ form, handleFinish }) => {
         )}
       </Form.List>
 
+      <div>
+        <p style={{ textDecoration: 'underline', color: 'gray', marginBottom: 13 }}>
+          Payment details
+        </p>
+        <div className={styles.formDiv}>
+          <div className={styles.formitem}>
+            <span className={styles.formLabell}>
+              Name of beneficiary <span style={{ color: '#f87d4e' }}>*</span>
+            </span>
+            <Form.Item name="nameOfBeneficiary" rules={[{ required: true }]}>
+              <Input size="large" placeholderr="Name of beneficiary" className="ant-custom-input" />
+            </Form.Item>
+          </div>
+          <div className={styles.formitem}>
+            <span className={styles.formLabell}>
+              Account number <span style={{ color: '#f87d4e' }}>*</span>
+            </span>
+            <Form.Item name="accountNumber" rules={[{ required: true }]}>
+              <Input size="large" placeholderr="Account number" className="ant-custom-input" />
+            </Form.Item>
+          </div>
+        </div>
+
+        <div className={styles.formDiv}>
+          <div className={styles.formitem}>
+            <span className={styles.formLabel}>
+              Swift code <span style={{ color: '#f87d4e' }}>*</span>
+            </span>
+            <Form.Item name="swiftCode" rules={[{ required: true }]}>
+              <Input size="large" placeholderr="Swift code" className="ant-custom-input" />
+            </Form.Item>
+          </div>
+
+          <div className={styles.formitem}>
+            <span className={styles.formLabell}>
+              Bank Name <span style={{ color: '#f87d4e' }}>*</span>
+            </span>
+            <Form.Item name="bankName" rules={[{ required: true }]}>
+              <Input size="large" placeholderr="Bank name" className="ant-custom-input" />
+            </Form.Item>
+          </div>
+        </div>
+      </div>
+
       <p style={{ textDecoration: 'underline', color: 'gray', marginBottom: 13 }}>
         Address details
       </p>
 
       <div className={styles.formDiv}>
         <div className={styles.formitem}>
-          <span className={styles.formLabel}>
+          <span className={styles.formLabell}>
             City <span style={{ color: '#f87d4e' }}>*</span>
           </span>
           <Form.Item name="city" rules={[{ required: true }]}>
-            <Input size="large" placeholder="City" className="ant-custom-input" />
+            <Input size="large" placeholderr="City" className="ant-custom-input" />
           </Form.Item>
         </div>
 
         <div className={styles.formitem}>
-          <span className={styles.formLabel}>
+          <span className={styles.formLabell}>
             Zip code<span style={{ color: '#f87d4e' }}>*</span>
           </span>
           <Form.Item name="zip" rules={[{ required: true }]}>
-            <Input type="text" size="large" placeholder="ZIP code" className="ant-custom-input" />
+            <Input type="text" size="large" placeholderr="ZIP code" className="ant-custom-input" />
           </Form.Item>
         </div>
 
         <div className={styles.formitem}>
-          <span className={styles.formLabel}>
+          <span className={styles.formLabell}>
             Country<span style={{ color: '#f87d4e' }}>*</span>
           </span>
           <Form.Item name="country" rules={[{ required: true }]}>
-            <Input type="text" size="large" placeholder="Country" className="ant-custom-input" />
+            <Input type="text" size="large" placeholderr="Country" className="ant-custom-input" />
           </Form.Item>
         </div>
       </div>
 
       <div>
-        <span className="form-label">
+        <span className={styles.formLabell}>
           Address <span style={{ color: '#f87d4e' }}>*</span>
         </span>
         <Form.Item name="branchAddress">
-          <TextArea rows={4} placeholder="Branch address" required />
+          <TextArea style={{ borderRadius: 10 }} rows={4} placeholderr="Branch address" required />
+        </Form.Item>
+
+        <span className={styles.formLabell}>Comment</span>
+        <Form.Item name="providerAddress">
+          <TextArea style={{ borderRadius: 10 }} rows={4} placeholderr="Address" />
         </Form.Item>
 
         <div style={{ float: 'right', display: 'flex' }}>
