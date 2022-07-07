@@ -62,6 +62,7 @@ const Links = ({ form, handleFinish, state }) => {
               <Select size="large">
                 <Option value="active">Active</Option>
                 <Option value="inactive">Inactive</Option>
+                <Option value="suspended">Suspended</Option>
               </Select>
             </Form.Item>
           </div>

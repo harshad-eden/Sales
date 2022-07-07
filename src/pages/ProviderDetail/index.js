@@ -121,14 +121,14 @@ const Index = () => {
             </p>
 
             <div style={{ display: 'flex', gap: 10, marginBottom: 15 }}>
-              <a href={state.document}>
+              <a target="_blank" href={state.document} rel="noreferrer">
                 <Button size="small" type="dashed" icon={<DownloadOutlined />}>
                   Services
                 </Button>
               </a>
 
               {state.contract && (
-                <a href={state?.contract}>
+                <a target="_blank" href={state?.contract} rel="noreferrer">
                   <Button size="small" type="dashed" icon={<DownloadOutlined />}>
                     Contract
                   </Button>
