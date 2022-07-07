@@ -68,7 +68,7 @@ const GridSection = ({ state }) => {
                 <Button
                   onClick={() => navigate(`/${item.id}`, { state: item })}
                   size="large"
-                  type=""
+                  type="dashed"
                   style={{ width: '90%' }}
                 >
                   View Detail

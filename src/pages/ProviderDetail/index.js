@@ -22,20 +22,63 @@ const Index = () => {
         </div>
 
         <div style={{ backgroundColor: 'white', padding: 20, borderRadius: 10 }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 15, marginBottom: 10 }}>
-            {state.logo ? (
-              <img style={{ height: 100, width: 100, borderRadius: 50 }} src={state.logo} alt="" />
-            ) : (
-              <div
-                style={{ height: 100, width: 100, backgroundColor: 'cornsilk', borderRadius: 50 }}
-              />
-            )}
+          <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: 30,
+                marginBottom: 10,
+                width: '80%',
+              }}
+            >
+              {state.logo ? (
+                <img
+                  style={{ height: 100, width: 100, borderRadius: 50, marginLeft: 15 }}
+                  src={state.logo}
+                  alt=""
+                />
+              ) : (
+                <div
+                  style={{
+                    height: 100,
+                    width: 100,
+                    backgroundColor: 'cornsilk',
+                    borderRadius: 50,
+                    marginLeft: 15,
+                  }}
+                />
+              )}
+
+              <div>
+                <h3 style={{ marginBottom: 5 }}>
+                  <strong>{state.providerName}</strong>
+                </h3>
+                <p className="providerType">{state.providerType}</p>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
+                  <div className="strongLabel">Branches:</div>
+                  <p style={{ marginBottom: 0 }}>{state.branch ? state.branch?.length : 0}</p>
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
+                  <div className="strongLabel">Contact:</div>
+                  <p style={{ marginBottom: 0 }}>{state.providerContactNumber}</p>
+                </div>
+                <div style={{ marginBottom: 0 }}>
+                  <span style={{ marginRight: 5 }} className="strongLabel">
+                    Address:
+                  </span>
+                  {state.providerAddress}
+                </div>
+              </div>
+            </div>
             <div>
-              <h3 style={{ marginBottom: 5 }}>{state.providerName}</h3>
-              <p style={{ marginBottom: 0 }}>Type: {state.providerType}</p>
-              <p style={{ marginBottom: 0 }}>Branches: {state.branch ? state.branch?.length : 0}</p>
-              <p style={{ marginBottom: 0 }}>Status: {state.status}</p>
-              <p style={{ marginBottom: 0 }}>Contact: {state.providerContactNumber}</p>
+              <Button
+                style={{ textTransform: 'capitalize', cursor: 'default' }}
+                type={state.status.toLowerCase() === 'active' ? 'primary' : 'danger'}
+                shape="round"
+              >
+                {state.status}
+              </Button>
             </div>
           </div>
           <div
@@ -98,8 +141,19 @@ const Index = () => {
                 Admin Details
               </p>
 
-              <p style={{ marginBottom: 5 }}>Name: {state.superAdminName}</p>
-              <p>Email: {state.superAdminEmail}</p>
+              <div style={{ marginBottom: 0 }}>
+                <span style={{ marginRight: 5 }} className="strongLabell">
+                  Name:
+                </span>
+                {state.superAdminName}
+              </div>
+
+              <div style={{ marginBottom: 10 }}>
+                <span style={{ marginRight: 5 }} className="strongLabell">
+                  Email:
+                </span>
+                {state.superAdminEmail}
+              </div>
             </div>
 
             <div>
@@ -107,21 +161,54 @@ const Index = () => {
                 Office user details
               </p>
 
-              <p style={{ marginBottom: 5 }}>Name: {state?.userName}</p>
-              <p>Email: {state?.userEmail}</p>
+              <div style={{ marginBottom: 0 }}>
+                <span style={{ marginRight: 5 }} className="strongLabell">
+                  Name:
+                </span>
+                {state.userName}
+              </div>
+
+              <div style={{ marginBottom: 10 }}>
+                <span style={{ marginRight: 5 }} className="strongLabell">
+                  Email:
+                </span>
+                {state.userEmail}
+              </div>
             </div>
 
             <p style={{ textDecoration: 'underline', color: 'gray', marginBottom: 13 }}>
               Address Details
             </p>
 
-            <p style={{ marginBottom: 2 }}> Country : {state?.country}</p>
-            <p style={{ marginBottom: 2 }}> City : {state?.city}</p>
-            <p style={{ marginBottom: 2 }}> Zip code : {state?.zip}</p>
-            <p style={{ marginBottom: 2 }}>Address line </p>
-            <p>{state.providerAddress}</p>
+            <div style={{ marginBottom: 0 }}>
+              <span style={{ marginRight: 5 }} className="strongLabell">
+                Country:
+              </span>
+              {state.country}
+            </div>
 
-            <p style={{ textDecoration: 'underline', color: 'gray', marginBottom: 13 }}>Comment</p>
+            <div style={{ marginBottom: 0 }}>
+              <span style={{ marginRight: 5 }} className="strongLabell">
+                city:
+              </span>
+              {state.city}
+            </div>
+
+            <div style={{ marginBottom: 0 }}>
+              <span style={{ marginRight: 5 }} className="strongLabell">
+                Zip:
+              </span>
+              {state.zip}
+            </div>
+
+            <div style={{ marginBottom: 10, width: 400 }}>
+              <span style={{ marginRight: 5 }} className="strongLabell">
+                Address line :
+              </span>
+              {state.providerAddress}mkmmkmkl ccewemcowjemncjonewcoewojcmnjowenmfojw dneodjneowjndm
+            </div>
+
+            <p style={{ textDecoration: 'underline', color: 'gray', marginBottom: 10 }}>Comment</p>
 
             <p>{state.comment}</p>
           </div>
