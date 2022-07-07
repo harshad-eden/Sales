@@ -232,6 +232,11 @@ const Index = () => {
                         <span style={{ fontWeight: 'normal' }}>{item.branchAddress}</span>
                       </p>
                     </div>
+
+                    <p style={{ textDecoration: 'underline', color: 'gray', marginBottom: 5 }}>
+                      Comment
+                    </p>
+                    <p>{item.comment}</p>
                   </div>
                 ))}
               </div>
