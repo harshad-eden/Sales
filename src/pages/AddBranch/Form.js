@@ -258,7 +258,7 @@ const ThirdForm = ({ form, handleFinish }) => {
 
         <div style={{ float: 'right', display: 'flex' }}>
           <Button style={{ borderRadius: 7 }} size="middle" type="primary" htmlType="submit">
-            submit
+            Submit
           </Button>
         </div>
       </div>

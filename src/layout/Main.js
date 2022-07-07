@@ -7,9 +7,9 @@ function Main({ children, pageName }) {
   return (
     <>
       <div style={{ display: 'flex' }}>
-        {/* <SideBar /> */}
+        <SideBar />
         <div className={styles.contain}>
-          {/* <Header pageName={pageName} /> */}
+          <Header pageName={pageName} />
           <div>{children}</div>
         </div>
       </div>

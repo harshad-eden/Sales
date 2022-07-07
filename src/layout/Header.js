@@ -6,9 +6,8 @@ const HeaderComponenet = ({ pageName }) => {
   const { Header: AntHeader } = Layout;
   return (
     <AntHeader style={{ backgroundColor: 'inherit' }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <h3 style={{ color: 'gray' }}>{pageName}</h3>
-        <FaUser size={20} />
+      <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center' }}>
+        <FaUser size={20} style={{ marginTop: 10 }} />
       </div>
     </AntHeader>
   );
