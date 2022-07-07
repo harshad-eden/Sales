@@ -30,10 +30,6 @@ input[type='file'] {
   cursor: pointer;
 }
 
-/* .ant-upload-list-text-container {
-  display: block;
-} */
-
 .uploadedFile {
   display: flex;
   align-items: center;
@@ -51,4 +47,17 @@ input[type='file'] {
   position: relative;
   box-shadow: 2px 2px 2px 1px rgba(229, 226, 226, 0.2);
   /* box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(235, 233, 233, 0.22); */
+}
+
+.providerType {
+  background-color: #f87d4e;
+  width: max-content;
+  padding: 2px 10px;
+  color: white;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+.strongLabel {
+  font-weight: 700;
 }

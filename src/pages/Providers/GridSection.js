@@ -14,30 +14,44 @@ const GridSection = ({ state }) => {
           .map((item, index) => (
             <div key={index} className="box">
               <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 15, marginBottom: 10 }}>
+                <div style={{ display: 'flex', gap: 15, marginBottom: 10 }}>
                   {item.logo ? (
                     <img
-                      style={{ height: 100, width: 100, borderRadius: 50 }}
+                      style={{ height: 130, width: 130, borderRadius: '50%' }}
                       src={item.logo}
                       alt=""
                     />
                   ) : (
                     <div
                       style={{
-                        height: 100,
-                        width: 100,
+                        height: 120,
+                        width: 120,
                         backgroundColor: 'cornsilk',
-                        borderRadius: 50,
+                        borderRadius: '50%',
                       }}
                     />
                   )}
 
-                  <div>
-                    <h3 style={{ marginBottom: 5 }}>{item.providerName}</h3>
-                    <p style={{ marginBottom: 0 }}>Type: {item.providerType}</p>
-                    <p style={{ marginBottom: 0 }}>
-                      Branches: {item.branch ? item.branch?.length : 0}
-                    </p>
+                  <div style={{ marginBottom: 25 }}>
+                    <h3 style={{ marginBottom: 5 }}>
+                      <strong>{item.providerName}</strong>
+                    </h3>
+                    <p className="providerType">{item.providerType}</p>
+
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
+                      <div className="strongLabel">Branches:</div>
+                      <p style={{ marginBottom: 0 }}>{item.branch ? item.branch?.length : 0}</p>
+                    </div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
+                      <div className="strongLabel">Contact:</div>
+                      <p style={{ marginBottom: 0 }}>{item.providerContactNumber}</p>
+                    </div>
+                    <div style={{ marginBottom: 0 }}>
+                      <span style={{ marginRight: 5 }} className="strongLabel">
+                        Address:
+                      </span>
+                      {item.providerAddress}
+                    </div>
                   </div>
                 </div>
 
@@ -50,12 +64,6 @@ const GridSection = ({ state }) => {
                 </Button>
               </div>
 
-              <div>
-                <strong>Contact number</strong>
-                <p style={{ marginBottom: 5 }}>{item.providerContactNumber}</p>
-              </div>
-              <strong>Address</strong>
-              <p>{item.providerAddress}</p>
               <div style={{ display: 'flex', gap: 20, justifyContent: 'center' }}>
                 <Button
                   onClick={() => navigate(`/${item.id}`, { state: item })}
