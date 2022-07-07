@@ -12,10 +12,7 @@ const GridSection = ({ state }) => {
         state
           .sort((a, b) => a.providerName.localeCompare(b.providerName))
           .map((item, index) => (
-            <div
-              key={index}
-              style={{ backgroundColor: 'white', padding: 20, position: 'relative' }}
-            >
+            <div key={index} className="box">
               <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 15, marginBottom: 10 }}>
                   {item.logo ? (
@@ -45,6 +42,7 @@ const GridSection = ({ state }) => {
                 </div>
 
                 <Button
+                  style={{ textTransform: 'capitalize', cursor: 'default' }}
                   type={item.status.toLowerCase() === 'active' ? 'primary' : 'danger'}
                   shape="round"
                 >
@@ -53,9 +51,10 @@ const GridSection = ({ state }) => {
               </div>
 
               <div>
-                <p style={{ marginBottom: 5 }}>Contact number: {item.providerContactNumber}</p>
+                <strong>Contact number</strong>
+                <p style={{ marginBottom: 5 }}>{item.providerContactNumber}</p>
               </div>
-              <h4>Address</h4>
+              <strong>Address</strong>
               <p>{item.providerAddress}</p>
               <div style={{ display: 'flex', gap: 20, justifyContent: 'center' }}>
                 <Button
@@ -64,7 +63,7 @@ const GridSection = ({ state }) => {
                   type=""
                   style={{ width: '90%' }}
                 >
-                  View in detail
+                  View Detail
                 </Button>
                 <Button
                   type="primary"
@@ -79,7 +78,7 @@ const GridSection = ({ state }) => {
                   size="large"
                   style={{ width: '90%' }}
                 >
-                  Add branch
+                  Add Branch
                 </Button>
               </div>
             </div>
