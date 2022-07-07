@@ -85,7 +85,7 @@ const Index = () => {
               </a>
 
               {state.contractFile && (
-                <a href={state?.contractFile}>
+                <a href={state?.contract}>
                   <Button size="small" type="dashed" icon={<DownloadOutlined />}>
                     Contract
                   </Button>

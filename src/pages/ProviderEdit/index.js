@@ -30,7 +30,7 @@ const Index = () => {
   useEffect(() => {
     setImgFile(prevState.logo);
     setDocumentFile(prevState.document);
-    setContractFile(prevState.contractFile);
+    setContractFile(prevState.contract);
   }, []);
 
   const handleFirstForm = (value) => {
@@ -132,11 +132,13 @@ const Index = () => {
           <ServiceDocs
             loading={loading}
             setStep={setStep}
+            prevState={prevState}
             documentFile={documentFile}
             handleFinish={handleFinish}
             setDocumentFile={setDocumentFile}
             setImgFile={setImgFile}
             setContractFile={setContractFile}
+            files={[imgFile, contractFile, documentFile]}
           />
         </div>
       );

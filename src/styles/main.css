@@ -30,6 +30,17 @@ input[type='file'] {
   cursor: pointer;
 }
 
-/* .ant-upload-list-text-container{
-  display: none;
+/* .ant-upload-list-text-container {
+  display: block;
 } */
+
+.uploadedFile {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 2px;
+}
+
+.uploadedFile:hover {
+  background-color: rgb(242, 240, 240);
+}
