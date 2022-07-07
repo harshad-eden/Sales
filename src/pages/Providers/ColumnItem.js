@@ -27,11 +27,11 @@ const ColumnItem = ({ imgs }) => {
       >
         <p
           style={{
-            marginBottom: 3,
+            marginBottom: 5,
             fontSize: 12,
             lineHeight: 0,
             color: '#020202',
-            fontWeight: 300,
+            fontWeight: 600,
           }}
         >
           {item.title}
