@@ -53,7 +53,7 @@ const GridSection = ({ state }) => {
               </div>
 
               <div>
-                <p style={{ marginBottom: 5 }}>Contact Number: {item.providerContactNumber}</p>
+                <p style={{ marginBottom: 5 }}>Contact number: {item.providerContactNumber}</p>
               </div>
               <h4>Address</h4>
               <p>{item.providerAddress}</p>

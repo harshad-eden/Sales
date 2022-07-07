@@ -84,7 +84,7 @@ const Index = () => {
                 </Button>
               </a>
 
-              {state.contractFile && (
+              {state.contract && (
                 <a href={state?.contract}>
                   <Button size="small" type="dashed" icon={<DownloadOutlined />}>
                     Contract
@@ -120,6 +120,10 @@ const Index = () => {
             <p style={{ marginBottom: 2 }}> Zip code : {state?.zip}</p>
             <p style={{ marginBottom: 2 }}>Address line </p>
             <p>{state.providerAddress}</p>
+
+            <p style={{ textDecoration: 'underline', color: 'gray', marginBottom: 13 }}>Comment</p>
+
+            <p>{state.comment}</p>
           </div>
 
           {state.branch?.length > 0 && (
