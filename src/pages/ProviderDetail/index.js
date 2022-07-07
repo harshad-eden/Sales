@@ -205,7 +205,7 @@ const Index = () => {
               <span style={{ marginRight: 5 }} className="strongLabell">
                 Address line :
               </span>
-              {state.providerAddress}mkmmkmkl ccewemcowjemncjonewcoewojcmnjowenmfojw dneodjneowjndm
+              {state.providerAddress}
             </div>
 
             <p style={{ textDecoration: 'underline', color: 'gray', marginBottom: 10 }}>Comment</p>
