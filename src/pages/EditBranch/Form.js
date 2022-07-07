@@ -63,6 +63,7 @@ const ThirdForm = ({ form, handleFinish }) => {
             <Select size="large" onChange={() => console.log()}>
               <Option value="active">Active</Option>
               <Option value="inactive">Inactive</Option>
+              <Option value="suspended">Suspended</Option>
             </Select>
           </Form.Item>
         </div>
