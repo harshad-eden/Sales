@@ -65,3 +65,234 @@ input[type='file'] {
 .strongLabell {
   font-weight: 500;
 }
+
+.fieldLabel {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.wFull {
+  width: 100%;
+}
+
+.wHalf {
+  width: 50%;
+}
+
+.mtLarge {
+  margin-top: 30px;
+}
+
+.mbLarge {
+  margin-bottom: 30px;
+}
+
+.mlLarge {
+  margin-left: 30px;
+}
+
+.mrLarge {
+  margin-right: 30px;
+}
+
+.mbZero {
+  margin-bottom: 0px !important;
+}
+
+.mbFive {
+  margin-bottom: 5px !important;
+}
+
+.customAntInput {
+  border-radius: 22px !important;
+  height: 50px;
+}
+
+.custom-ant-button {
+  height: 50px !important;
+}
+
+.importantIcon {
+  object-fit: contain;
+  width: 10px;
+  height: 17px;
+  margin-right: 3px;
+}
+
+.dfaCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dfsBetween {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dGrid {
+  display: grid;
+  place-items: center;
+}
+
+.addBox {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.addBoxWhite {
+  display: grid;
+  place-items: center;
+  width: 170px;
+  height: 40px;
+  color: black;
+  background-color: #fff;
+}
+
+.activeTopNavLi {
+  border-bottom: #f87d4e 3px solid;
+}
+
+.ant-modal-content {
+  width: 470px;
+  border-radius: 23px !important;
+}
+.commonModal .ant-modal-content {
+  width: 370px !important;
+}
+
+.fileClaim .ant-modal-content {
+  width: 520px !important;
+}
+
+.ant-upload.ant-upload-drag {
+  border-radius: 20px !important;
+}
+
+.modalCloseIcon {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  z-index: 10;
+}
+
+.ant-modal-close {
+  display: none !important;
+}
+
+.ant-pagination.ant-pagination-mini .ant-pagination-item {
+  border-radius: 50%;
+  background-color: #f87d4e;
+}
+
+.ant-pagination-item-active a {
+  color: white !important;
+}
+
+.ant-radio-wrapper-checked span {
+  color: #f87d4e !important;
+  font-weight: 500;
+}
+
+.ant-divider-horizontal {
+  margin-top: 6px !important;
+  margin-bottom: 6px !important;
+}
+
+.ant-picker-input,
+.ant-picker.ant-picker-range {
+  display: flex;
+  flex-direction: row-reverse;
+}
+.ant-picker-input span.ant-picker-suffix,
+.ant-picker.ant-picker-range span.ant-picker-suffix {
+  margin-left: 0;
+  margin-right: 10px;
+  color: #f87d4e;
+}
+
+.ant-select .ant-select-selector {
+  border-radius: 20px !important;
+}
+
+.ant-select-arrow {
+  color: #f87d4e !important;
+}
+
+.ant-collapse-header-text {
+  width: 100%;
+  padding-bottom: 10px;
+  font-weight: 700;
+  border-bottom: 1px solid rgb(219, 217, 217) !important;
+}
+
+.support .ant-select-selection-placeholder {
+  font-size: 14px !important;
+}
+
+.support .ant-select-selector {
+  border: none !important;
+}
+
+/* Ant table css customization starts from here*/
+
+.ant-table-thead > tr > th {
+  background-color: white !important;
+  border-bottom: 4px solid #fce4d9 !important;
+}
+
+.ant-table-thead .ant-table-cell {
+  color: #f87d4e !important;
+  font-weight: bold;
+  padding-bottom: 6px !important;
+}
+
+.ant-table-cell {
+  font-size: 13px !important;
+}
+
+.dashBoardTable .ant-table-thead .ant-table-cell {
+  background-color: inherit !important;
+}
+
+.inpatientDetail .ant-table-thead .ant-table-cell {
+  background-color: inherit !important;
+}
+
+.ant-table-thead
+  > tr
+  > th:not(:last-child):not(.ant-table-selection-column):not(.ant-table-row-expand-icon-cell):not([colspan])::before {
+  background-color: inherit !important;
+}
+
+.ant-table-thead .ant-table-cell {
+  background-color: #fce4d9 !important;
+  color: #f87d4e !important;
+  font-weight: bold;
+  padding-bottom: 10px !important;
+}
+
+.ant-table-thead .ant-table-cell {
+  font-size: 13px !important;
+  cursor: auto;
+}
+
+.ant-table-cell {
+  font-size: 12px !important;
+}
+
+.ant-table-cell {
+  cursor: pointer;
+}
+
+.ant-table-filter-column {
+  justify-content: flex-start !important;
+}
+
+.ant-table-filter-column .ant-table-column-title {
+  flex: inherit;
+}
+
+/* Ant table css customization over here*/

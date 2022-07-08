@@ -1,4 +1,4 @@
-import RouteSetup from './RouteSetup';
+import RouteSetup from './router/RouteSetup';
 
 function App() {
   return (
