@@ -40,3 +40,9 @@
     gap: 45px;
   }
 }
+
+@media only screen and (max-width: 450px) {
+  .box {
+    width: 340px;
+  }
+}

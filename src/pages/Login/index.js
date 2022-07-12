@@ -1,31 +1,35 @@
 import React, { useState } from 'react';
 import styles from './index.module.css';
-import { Button, Form, Input } from 'antd';
+import { Button, Form, Input, notification } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../../firebase';
 
 const Login = () => {
   const [form] = Form.useForm();
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState();
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const onFinish = async (values) => {
-    console.log('values', values);
-
     try {
-      const user = await signInWithEmailAndPassword(auth, values.email, values.password);
-      console.log(user);
-      localStorage.setItem('auth', 'token');
+      setLoading(true);
+      const response = await signInWithEmailAndPassword(auth, values.email, values.password);
+      localStorage.setItem('auth', response.user.accessToken);
+      localStorage.setItem('user', response?.user.email);
       navigate('/');
     } catch (error) {
+      openNotification();
+      setLoading(false);
       console.log(error.message);
     }
   };
 
-  onAuthStateChanged(auth, (currentUser) => {
-    setUser(currentUser);
-  });
+  const openNotification = () => {
+    notification.error({
+      message: 'Authentication failed',
+    });
+  };
 
   return (
     <div className={styles.container}>
@@ -74,6 +78,7 @@ const Login = () => {
         </Form>
         <div className={styles.submitBtn}>
           <Button
+            loading={loading}
             onClick={() => form.submit()}
             className="custom-ant-button"
             shape="round"

@@ -78,7 +78,7 @@ const Links = ({ form, handleFinish, state }) => {
         <div className={styles.formDiv}>
           <div className={styles.formitem}>
             <span className={styles.formLabell}>
-              Admin name <span style={{ color: '#f87d4e' }}>*</span>
+              Super admin name <span style={{ color: '#f87d4e' }}>*</span>
             </span>
             <Form.Item name="superAdminName" rules={[{ required: true }]}>
               <Input size="large" placeholderr="Admin name" className="ant-custom-input" />
@@ -87,9 +87,34 @@ const Links = ({ form, handleFinish, state }) => {
 
           <div className={styles.formitem}>
             <span className={styles.formLabell}>
-              Admin email <span style={{ color: '#f87d4e' }}>*</span>
+              Super admin email <span style={{ color: '#f87d4e' }}>*</span>
             </span>
             <Form.Item name="superAdminEmail" rules={[{ required: true }]}>
+              <Input
+                type="email"
+                size="large"
+                placeholderr="Admin email"
+                className="ant-custom-input"
+              />
+            </Form.Item>
+          </div>
+        </div>
+
+        <div className={styles.formDiv}>
+          <div className={styles.formitem}>
+            <span className={styles.formLabell}>
+              Admin name <span style={{ color: '#f87d4e' }}>*</span>
+            </span>
+            <Form.Item name="adminName" rules={[{ required: true }]}>
+              <Input size="large" placeholderr="Admin name" className="ant-custom-input" />
+            </Form.Item>
+          </div>
+
+          <div className={styles.formitem}>
+            <span className={styles.formLabell}>
+              Admin email <span style={{ color: '#f87d4e' }}>*</span>
+            </span>
+            <Form.Item name="adminEmail" rules={[{ required: true }]}>
               <Input
                 type="email"
                 size="large"

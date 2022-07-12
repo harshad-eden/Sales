@@ -9,6 +9,10 @@ import { InboxOutlined } from '@ant-design/icons';
 const { Dragger } = Upload;
 
 const Links = ({ form, handleFinish, state, prevState }) => {
+  const admin = localStorage.getItem('user')?.includes('admin@sales.com');
+
+  console.log(admin);
+
   return (
     <>
       <Form initialValues={prevState} form={form} onFinish={handleFinish}>
@@ -30,7 +34,7 @@ const Links = ({ form, handleFinish, state, prevState }) => {
               Type <span style={{ color: '#f87d4e' }}>*</span>
             </span>
             <Form.Item name="providerType" rules={[{ required: true }]}>
-              <Select size="large" onChange={() => console.log()}>
+              <Select size="large">
                 <Option value="Hospital">Hospital</Option>
                 <Option value="Independent Clinic">Independent Clinic</Option>
                 <Option value="Diagnostic">Diagnostic</Option>
@@ -59,9 +63,10 @@ const Links = ({ form, handleFinish, state, prevState }) => {
               Status <span style={{ color: '#f87d4e' }}>*</span>
             </span>
             <Form.Item name="status" rules={[{ required: true }]}>
-              <Select size="large">
+              <Select disabled={admin ? false : true} size="large">
                 <Option value="active">Active</Option>
                 <Option value="inactive">Inactive</Option>
+                <Option value="suspended">Suspended</Option>
               </Select>
             </Form.Item>
           </div>
