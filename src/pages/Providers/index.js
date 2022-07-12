@@ -58,7 +58,7 @@ const Index = () => {
     {
       img: <AudioOutlined />,
       color: '#f87d4e',
-      title: 'Total Providers',
+      title: 'Providers',
       count: state && state?.length,
     },
     {

@@ -32,16 +32,17 @@
   background-color: #fff;
 }
 
-/* .addBox:hover{
-    color: #f87d4e;
-    border: 0.5px solid #f87d4e; 
-} */
-
 .wrapper {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(370px, 2fr));
   grid-gap: 1.5rem;
   margin-bottom: 70px;
+}
+
+@media only screen and (max-width: 1200px) {
+  .wrapper {
+    grid-template-columns: repeat(auto-fit, minmax(340px, 2fr));
+  }
 }
 
 @media only screen and (max-width: 1000px) {
@@ -51,7 +52,7 @@
   }
 
   .wrapper {
-    grid-template-columns: repeat(auto-fit, minmax(270px, 2fr));
+    grid-template-columns: repeat(auto-fit, minmax(350px, 2fr));
   }
 }
 
@@ -77,10 +78,22 @@
   .container {
     padding: 1rem;
   }
+
+  .LgStatusButton {
+    display: none !important;
+  }
+
+  .topMenu {
+    margin: 0px 0px 60px 0px;
+  }
 }
 
 @media only screen and (max-width: 400px) {
   .container {
     padding: 0.5rem;
+  }
+
+  .topMenu {
+    margin: 0px 0px 60px 0px;
   }
 }

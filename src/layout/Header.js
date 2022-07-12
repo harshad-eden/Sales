@@ -4,7 +4,8 @@ import { LogoutOutlined, UserOutlined } from '@ant-design/icons';
 import { Dropdown, Menu, message } from 'antd';
 import { signOut } from 'firebase/auth';
 import { auth } from '../firebase';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import styles from './layout.module.css';
 
 const HeaderComponenet = ({ pageName }) => {
   const { Header: AntHeader } = Layout;
@@ -36,13 +37,22 @@ const HeaderComponenet = ({ pageName }) => {
   );
 
   return (
-    <AntHeader style={{ backgroundColor: 'inherit' }}>
+    <div style={{ backgroundColor: 'inherit' }}>
+      {/* <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <Link to="/onboard" className={styles.addBoxMob}>
+          <img src="/icons/plusSign.webp" style={{ height: 35 }} alt="" />
+          <div className={styles.whiteBoxMob}>New Provider</div>
+        </Link>
+        <Dropdown.Button overlay={menu} placement="bottom" icon={<UserOutlined />}>
+          Admin
+        </Dropdown.Button>
+      </div> */}
       <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center' }}>
         <Dropdown.Button overlay={menu} placement="bottom" icon={<UserOutlined />}>
           Admin
         </Dropdown.Button>
       </div>
-    </AntHeader>
+    </div>
   );
 };
 

@@ -30,13 +30,40 @@
   color: black;
 }
 
+.addBoxMob {
+  display: none;
+}
+
+.whiteBoxMob {
+  display: none;
+}
+
+@media only screen and (max-width: 1000px) {
+  .sideBar {
+    display: none;
+  }
+}
+
 @media only screen and (max-width: 600px) {
   .contain {
     width: 95%;
     margin: 10px auto;
   }
 
-  .sideBar {
-    display: none;
+  .addBoxMob {
+    display: flex;
+    font-size: 14px;
+    width: 140px;
+    margin-bottom: 20px;
+  }
+
+  .whiteBoxMob {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 170px;
+    height: 35px;
+    color: black;
+    background-color: #fff;
   }
 }
