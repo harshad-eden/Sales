@@ -35,8 +35,6 @@ const Index = () => {
       }
     });
 
-    console.log(updatedValue);
-
     let docRef = doc(firestore, 'providers', data.id);
     updateDoc(docRef, {
       branch: updatedValue,

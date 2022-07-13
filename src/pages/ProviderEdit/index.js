@@ -4,13 +4,12 @@ import styles from './index.module.css';
 import { Form, notification } from 'antd';
 import InitialForm from './editFirstForm';
 import { firestore, storage } from '../../firebase';
-import { collection, addDoc } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import ServiceDocs from './ServiceDocs';
-import { v4 as uuidv4 } from 'uuid';
 import { useNavigate, Link, useLocation, useParams } from 'react-router-dom';
 import { AiOutlineArrowLeft } from 'react-icons/ai';
 import { updateDoc, doc } from 'firebase/firestore';
+import { sendEmail } from '../../components/SendEmail';
 
 const Index = () => {
   const {
@@ -25,7 +24,6 @@ const Index = () => {
   const [imgFile, setImgFile] = useState(false);
   const [contractFile, setContractFile] = useState(false);
   const [documentFile, setDocumentFile] = useState(false);
-  const providersCollectionref = collection(firestore, 'providers');
 
   useEffect(() => {
     setImgFile(prevState.logo);
@@ -93,11 +91,11 @@ const Index = () => {
 
     let docRef = doc(firestore, 'providers', docId);
     updateDoc(docRef, updatedValue)
-      .then((res) => {
+      .then(() => {
         openNotification('Form successfully Submitted');
         navigate('/');
       })
-      .catch((er) => {
+      .catch(() => {
         openNotification('Form submission failed');
       });
   };
