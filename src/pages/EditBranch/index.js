@@ -11,11 +11,11 @@ import { AiOutlineArrowLeft } from 'react-icons/ai';
 
 const Index = () => {
   const { state } = useLocation();
-  const { branches, providerName } = state;
+  const { item, data } = state;
 
   const navigate = useNavigate();
 
-  const { docid } = useParams();
+  const { docId } = useParams();
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
 
@@ -27,21 +27,19 @@ const Index = () => {
 
   //HandleSubmit
   const handleFinish = async (value) => {
-    setLoading(true);
-    let branch;
-    let updateVal = {
-      ...value,
-      docid,
-    };
-    if (branches) {
-      branch = [...branches, updateVal];
-    } else {
-      branch = [updateVal];
-    }
+    let updatedValue = data.branch.map((item) => {
+      if (item.uuid === docId) {
+        return (item = { ...value, uuid: item.uuid });
+      } else {
+        return item;
+      }
+    });
 
-    let docRef = doc(firestore, 'providers', docid);
+    console.log(updatedValue);
+
+    let docRef = doc(firestore, 'providers', data.id);
     updateDoc(docRef, {
-      branch: branch,
+      branch: updatedValue,
     })
       .then((res) => {
         openNotification('Form successfully Submitted');
@@ -68,10 +66,10 @@ const Index = () => {
               }}
             >
               <AiOutlineArrowLeft size={30} style={{ marginBottom: 5, color: 'gray' }} />
-              <h1 className={styles.pageTitle}>Add Branch Details - {providerName}</h1>
+              <h1 className={styles.pageTitle}>Edit Branch Details - {item.branchName}</h1>
             </div>
 
-            <FinalForm loading={loading} form={form} handleFinish={handleFinish} />
+            <FinalForm prevState={item} loading={loading} form={form} handleFinish={handleFinish} />
           </div>
         </div>
       </div>

@@ -25,7 +25,7 @@ const RouteSetup = () => {
           }
         />
         <Route
-          path="/:detail"
+          path="/:docId"
           element={
             <PrivateRoute>
               <ProviderDetail />

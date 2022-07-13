@@ -1,33 +1,31 @@
 /* eslint-disable no-unused-vars */
 import { useState, useEffect } from 'react';
-import { firestore } from '../../firebase';
-import { collection, getDocs } from 'firebase/firestore';
-import Main from '../../layout/Main';
-import styles from './index.module.css';
+import { collection, getDoc } from 'firebase/firestore';
 import { Input } from 'antd';
 import { AudioOutlined } from '@ant-design/icons';
-import GridSection from './GridSection';
 import { Link } from 'react-router-dom';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { firestore } from '../../firebase';
+import Main from '../../layout/Main';
+import styles from './index.module.css';
 import ColumnItem from './ColumnItem';
+import GridSection from './GridSection';
+import { loadProviders } from '../../store/providerSlice';
 
 const { Search } = Input;
 
 const Index = () => {
-  const [state, setState] = useState();
+  const dispatch = useDispatch();
+  // const [state, setState] = useState([]);
   const [tempState, setTempState] = useState();
   const providersCollectionref = collection(firestore, 'providers');
 
-  useEffect(() => {
-    let unsubscribe = getDocs(providersCollectionref).then((snap) => {
-      let providers = [];
-      snap.forEach((doc) => {
-        providers.push({ ...doc.data(), id: doc.id });
-      });
-      setState(providers);
-    });
+  const [...state] = useSelector((state) => state.providers?.data);
 
-    return () => unsubscribe;
+  // console.log('data', data);
+
+  useEffect(() => {
+    dispatch(loadProviders());
   }, []);
 
   const suffix = (
@@ -51,8 +49,6 @@ const Index = () => {
   };
 
   let activeState = state?.filter((item) => item.status === 'active');
-
-  console.log('activeState', activeState);
 
   let imgs = [
     {

@@ -3,17 +3,17 @@ import Main from '../../layout/Main';
 import { useLocation, useNavigate } from 'react-router-dom';
 import styles from './index.module.css';
 import { Link } from 'react-router-dom';
-import { AiOutlineArrowLeft } from 'react-icons/ai';
 import { Button, Divider } from 'antd';
-import { DownloadOutlined } from '@ant-design/icons';
+import { EditOutlined } from '@ant-design/icons';
 
-const Branches = ({ state }) => {
+const Branches = ({ data }) => {
+  const navigate = useNavigate();
   return (
     <>
       <Divider />
       <h4>Branch Details</h4>
       <div className={styles.wrapper}>
-        {state.branch.map((item, index) => (
+        {data.branch.map((item, index) => (
           <div
             key={index}
             style={{
@@ -23,6 +23,18 @@ const Branches = ({ state }) => {
               borderRadius: 10,
             }}
           >
+            <div style={{ position: 'absolute', right: 10, top: 10 }}>
+              <Button
+                onClick={() => navigate(`/editbranch/${item.uuid}`, { state: { item, data } })}
+                type="dashed"
+                size="small"
+                shape="round"
+                icon={<EditOutlined />}
+              >
+                Edit
+              </Button>
+            </div>
+
             <p className={styles.itemLabel}>
               Name:
               {item.branchName && (
@@ -38,14 +50,14 @@ const Branches = ({ state }) => {
               <span style={{ fontWeight: 'normal', marginLeft: 5 }}>{item.status}</span>
             </p>
 
-            <p className={styles.itemLabel}>
+            <div className={styles.itemLabel}>
               Contact number:
               <span style={{ fontWeight: 'normal', marginLeft: 5 }}>{item.contactNumber}</span>
               <p className={styles.itemLabel}>
                 Comment:
                 <span style={{ fontWeight: 'normal', marginLeft: 5 }}>{item.comment}</span>
               </p>
-            </p>
+            </div>
             <p style={{ textDecoration: 'underline', color: 'gray', marginBottom: 5 }}>
               Payment Details
             </p>

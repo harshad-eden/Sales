@@ -6,15 +6,11 @@ import styles from './index.module.css';
 import { UserAddOutlined } from '@ant-design/icons';
 import { MdPersonRemove } from 'react-icons/md';
 
-const ThirdForm = ({ form, handleFinish }) => {
+const ThirdForm = ({ form, handleFinish, prevState }) => {
   let roleTypes = ['Front-desk', 'Claim team'];
 
   return (
-    <Form
-      form={form}
-      onFinish={handleFinish}
-      initialValues={{ users: [{ userEmail: '', userRole: '' }] }}
-    >
+    <Form form={form} onFinish={handleFinish} initialValues={prevState}>
       <p style={{ textDecoration: 'underline', color: 'gray', marginBottom: 13 }}>Branch Details</p>
       <div className={styles.formDiv}>
         <div className={styles.formitem}>

@@ -31,7 +31,7 @@ const Index = () => {
     let branch;
     let updateVal = {
       ...value,
-      docid,
+      uuid: uuidv4(),
     };
     if (branches) {
       branch = [...branches, updateVal];

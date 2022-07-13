@@ -3,8 +3,6 @@ import { Form, Select, Input, Button, Upload } from 'antd';
 import styles from './index.module.css';
 const { Option } = Select;
 const { TextArea } = Input;
-import { UploadOutlined, CameraOutlined } from '@ant-design/icons';
-import { InboxOutlined } from '@ant-design/icons';
 
 const { Dragger } = Upload;
 
