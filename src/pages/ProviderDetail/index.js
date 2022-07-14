@@ -26,6 +26,8 @@ const Index = () => {
     }
   }, []);
 
+  console.log(data);
+
   return (
     <Main pageName="Dashboard">
       {data && (
