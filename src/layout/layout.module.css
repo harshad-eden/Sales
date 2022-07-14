@@ -38,6 +38,12 @@
   display: none;
 }
 
+.linkItemActive {
+  display: grid;
+  place-items: center;
+  font-weight: 600;
+}
+
 @media only screen and (max-width: 1000px) {
   .sideBar {
     display: none;

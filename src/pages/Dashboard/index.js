@@ -9,20 +9,18 @@ import { firestore } from '../../firebase';
 import Main from '../../layout/Main';
 import styles from './index.module.css';
 import ColumnItem from './ColumnItem';
-import GridSection from './GridSection';
+
 import { loadProviders } from '../../store/providerSlice';
+import Calnder from './Calnder';
+import GridSection from './GridSection';
 
 const { Search } = Input;
 
 const Index = () => {
   const dispatch = useDispatch();
-  // const [state, setState] = useState([]);
   const [tempState, setTempState] = useState();
-  const providersCollectionref = collection(firestore, 'providers');
 
   const [...state] = useSelector((state) => state.providers?.data);
-
-  // console.log('data', data);
 
   useEffect(() => {
     dispatch(loadProviders());
@@ -49,6 +47,8 @@ const Index = () => {
   };
 
   let activeState = state?.filter((item) => item.status === 'active');
+  let inactive = state?.filter((item) => item.status === 'inactive');
+  let suspended = state?.filter((item) => item.status === 'suspended');
 
   let imgs = [
     {
@@ -67,7 +67,13 @@ const Index = () => {
       img: <AudioOutlined />,
       color: '#8e3ab4',
       title: 'In-active',
-      count: state && state?.length - activeState.length,
+      count: state && inactive?.length,
+    },
+    {
+      img: <AudioOutlined />,
+      color: '#8e3ab4',
+      title: 'Suspended',
+      count: state && suspended?.length,
     },
   ];
 
@@ -89,9 +95,31 @@ const Index = () => {
             <div className={styles.whiteBox}>New Provider</div>
           </Link>
         </div>
+        <h3>Summary</h3>
 
-        <h3>Providers</h3>
-        <GridSection state={tempState ? tempState : state} />
+        <div
+          style={{
+            display: 'flex',
+            gap: 20,
+            alignItems: 'center',
+            width: '100%',
+            marginBottom: 40,
+          }}
+        >
+          <ColumnItem imgs={imgs} />
+        </div>
+
+        {tempState ? (
+          <div>
+            <h3>Providers</h3>
+            <GridSection state={tempState ? tempState : state} />
+          </div>
+        ) : (
+          <div>
+            <h3>Schedule service provider visits</h3>
+            <Calnder />
+          </div>
+        )}
       </div>
     </Main>
   );

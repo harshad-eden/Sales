@@ -4,6 +4,7 @@ import LoaderComponenet from '../components/Loader';
 import { PrivateRoute } from './PrivateRoute';
 
 const Providers = lazy(() => import('../pages/Providers'));
+const Dashboard = lazy(() => import('../pages/Dashboard'));
 const Onboard = lazy(() => import('../pages/Onboard'));
 const AddBranch = lazy(() => import('../pages/AddBranch'));
 const ProviderDetail = lazy(() => import('../pages/ProviderDetail'));
@@ -18,6 +19,14 @@ const RouteSetup = () => {
       <Routes>
         <Route
           path="/"
+          element={
+            <PrivateRoute>
+              <Dashboard />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/providers"
           element={
             <PrivateRoute>
               <Providers />

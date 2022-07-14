@@ -1,7 +1,7 @@
 import React from 'react';
 import { LogoutOutlined, UserOutlined } from '@ant-design/icons';
 import { Dropdown, Menu } from 'antd';
-
+import { BsBuilding } from 'react-icons/bs';
 import { useNavigate } from 'react-router-dom';
 // import styles from './layout.module.css';
 
@@ -9,6 +9,9 @@ const HeaderComponenet = () => {
   const navigate = useNavigate();
 
   const handleMenuClick = async (e) => {
+    if (e.key === '1') {
+      navigate('/providers');
+    }
     if (e.key === '2') {
       localStorage.clear();
       navigate('/login');
@@ -20,13 +23,18 @@ const HeaderComponenet = () => {
       onClick={handleMenuClick}
       items={[
         {
-          label: 'Profile',
+          label: 'Providers',
           key: '1',
+          icon: <BsBuilding />,
+        },
+        {
+          label: 'Profile',
+          key: '2',
           icon: <UserOutlined />,
         },
         {
           label: 'Logout',
-          key: '2',
+          key: '3',
           icon: <LogoutOutlined />,
         },
       ]}

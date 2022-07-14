@@ -3,9 +3,8 @@ import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import styles from './layout.module.css';
 import { MdOutlineDashboard } from 'react-icons/md';
-import { AiOutlineLogout } from 'react-icons/ai';
-import { GrAddCircle } from 'react-icons/gr';
 import { BsBuilding } from 'react-icons/bs';
+
 import Logo from '../icons/logo.png';
 
 const SideBar = () => {
@@ -15,9 +14,21 @@ const SideBar = () => {
         <img src={Logo} className={styles.logo} />
       </Link>
       <div className={styles.links}>
-        <NavLink className={styles.linkItem} to={'/'}>
+        <NavLink
+          className={({ isActive }) => (isActive ? styles.linkItemActive : styles.linkItem)}
+          to={'/'}
+        >
           <MdOutlineDashboard size={22} className={styles.icons} />
           <p>Dashboard</p>
+        </NavLink>
+      </div>
+      <div className={styles.links}>
+        <NavLink
+          className={({ isActive }) => (isActive ? styles.linkItemActive : styles.linkItem)}
+          to={'/providers'}
+        >
+          <BsBuilding size={22} className={styles.icons} />
+          <p>Providers</p>
         </NavLink>
       </div>
     </div>

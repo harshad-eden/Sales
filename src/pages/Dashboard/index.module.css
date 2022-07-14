@@ -1,0 +1,99 @@
+.container {
+  min-height: 100vh;
+  padding: 2.5% 7%;
+}
+
+.topMenu {
+  margin: 30px 0px 60px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.search {
+  width: 310px;
+  height: 35px;
+  border-radius: 20px;
+  background-color: #fff;
+}
+
+.addBox {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.whiteBox {
+  display: grid;
+  place-items: center;
+  width: 170px;
+  height: 35px;
+  color: black;
+  background-color: #fff;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(370px, 2fr));
+  grid-gap: 1.5rem;
+  margin-bottom: 70px;
+}
+
+@media only screen and (max-width: 1200px) {
+  .wrapper {
+    grid-template-columns: repeat(auto-fit, minmax(340px, 2fr));
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .container {
+    min-height: 100vh;
+    padding: 2.5% 0%;
+  }
+
+  .wrapper {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 2fr));
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .search {
+    width: 100%;
+  }
+  .topMenu {
+    margin: 12% 0%;
+    width: 100%;
+    flex-direction: column-reverse;
+    align-items: flex-start;
+  }
+
+  .addBox {
+    font-size: 14px;
+    width: 140px;
+    margin-bottom: 20px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .LgStatusButton {
+    display: none !important;
+  }
+
+  .topMenu {
+    margin: 0px 0px 60px 0px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .container {
+    padding: 0.5rem;
+  }
+
+  .topMenu {
+    margin: 0px 0px 60px 0px;
+  }
+}
