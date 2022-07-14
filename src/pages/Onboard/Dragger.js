@@ -14,7 +14,7 @@ const getBase64 = (file) => {
   });
 };
 
-const DraggerComponent = ({ setFile, name, accept, multiple }) => {
+const DraggerComponent = ({ setFile, name, accept, multiple, file }) => {
   const [fileList, setFileList] = useState([]);
   const [submitting, setSubmitting] = useState(false);
   const [previewVisible, setPreviewVisible] = useState(false);

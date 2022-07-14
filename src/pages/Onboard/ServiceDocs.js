@@ -5,12 +5,23 @@ import styles from './index.module.css';
 import DraggerComponent from './Dragger';
 const { Dragger } = Upload;
 
-const App = ({ setStep, handleFinish, setDocumentFile, loading, setImgFile, setContractFile }) => {
+const App = ({
+  setStep,
+  handleFinish,
+  setDocumentFile,
+  loading,
+  setImgFile,
+  setContractFile,
+  documentFile,
+  imgFile,
+  contractFile,
+}) => {
   return (
     <div>
       <div style={{ marginBottom: 30 }}>
         <span className={styles.formLabel}>Upload Logo</span>
         <DraggerComponent
+          file={imgFile}
           multiple={false}
           accept=".jpg,.jpeg,.png"
           name="images"
@@ -25,6 +36,7 @@ const App = ({ setStep, handleFinish, setDocumentFile, loading, setImgFile, setC
         </span>
 
         <DraggerComponent
+          file={documentFile}
           multiple={true}
           accept=".doc,.docx,.pdf,.csv,.xlsx, .xls,"
           name="contracts"
@@ -39,6 +51,7 @@ const App = ({ setStep, handleFinish, setDocumentFile, loading, setImgFile, setC
         </span>
 
         <DraggerComponent
+          file={contractFile}
           multiple={true}
           accept=".doc,.docx,.pdf,.csv,.xlsx, .xls,"
           name="services"

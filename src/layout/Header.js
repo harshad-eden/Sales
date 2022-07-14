@@ -12,7 +12,7 @@ const HeaderComponenet = () => {
     if (e.key === '1') {
       navigate('/providers');
     }
-    if (e.key === '2') {
+    if (e.key === '3') {
       localStorage.clear();
       navigate('/login');
     }

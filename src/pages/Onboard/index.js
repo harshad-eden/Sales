@@ -15,7 +15,7 @@ const Index = () => {
   const navigate = useNavigate();
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
-  const [step, setStep] = useState(0);
+  const [step, setStep] = useState(1);
   const [state, setState] = useState(0);
   const [imgFile, setImgFile] = useState(false);
   const [contractFile, setContractFile] = useState([]);
@@ -86,9 +86,11 @@ const Index = () => {
           <ServiceDocs
             loading={loading}
             setStep={setStep}
-            documentFile={documentFile}
             handleFinish={handleFinish}
             setDocumentFile={setDocumentFile}
+            imgFile={imgFile}
+            contractFile={contractFile}
+            documentFile={documentFile}
             setImgFile={setImgFile}
             setContractFile={setContractFile}
           />
