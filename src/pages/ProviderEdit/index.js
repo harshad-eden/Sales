@@ -19,7 +19,7 @@ const Index = () => {
   const navigate = useNavigate();
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
-  const [step, setStep] = useState(0);
+  const [step, setStep] = useState(1);
   const [state, setState] = useState(0);
   const [imgFile, setImgFile] = useState(false);
   const [contractFile, setContractFile] = useState(false);
@@ -44,50 +44,24 @@ const Index = () => {
 
   const handleFinish = async () => {
     setLoading(true);
-    let logoUrl;
+    let logo;
     let contractFileUrl;
     let documentUrl;
 
-    if (prevState.logo === imgFile) {
-      console.log('same-1');
-    } else {
-      const imgRef = ref(storage, `images/${docId}-${imgFile.name}`);
-      let imgSapnshot = await uploadBytes(imgRef, imgFile);
-      logoUrl = await getDownloadURL(imgSapnshot.ref).then((url) => url);
-    }
-
-    if (prevState.contractFile === contractFile) {
-      console.log('same-2');
-    } else {
-      if (contractFile) {
-        const contractRef = ref(storage, `contracts/${docId}-${contractFile.name}`);
-        let contractSnapshot = await uploadBytes(contractRef, contractFile);
-        contractFileUrl = await getDownloadURL(contractSnapshot.ref).then((url) => url);
+    if (imgFile) {
+      if (prevState.logo === imgFile) {
+        return null;
+      } else {
+        logo = imgFile;
       }
-    }
-
-    if (prevState.document === documentFile) {
-      console.log('same-3');
     } else {
-      const docRef = ref(storage, `documents/${docId}-${documentFile.name}`);
-      let docSnapshot = await uploadBytes(docRef, documentFile);
-      documentUrl = await getDownloadURL(docSnapshot.ref).then((url) => url);
+      logo = '';
     }
 
-    let logo = logoUrl ? logoUrl : null;
-    let contract = contractFileUrl ? contractFileUrl : null;
-    let document = documentUrl ? documentUrl : null;
-
-    let updatedValue = state;
-    if (logoUrl) {
-      updatedValue = { ...updatedValue, logo };
-    }
-    if (contract) {
-      updatedValue = { ...updatedValue, contract };
-    }
-    if (document) {
-      updatedValue = { ...updatedValue, document };
-    }
+    let updatedValue = {
+      ...state,
+      logo,
+    };
 
     let docRef = doc(firestore, 'providers', docId);
     updateDoc(docRef, updatedValue)

@@ -1,9 +1,6 @@
-import { useState } from 'react';
-import { InboxOutlined, FileImageOutlined } from '@ant-design/icons';
-import { Upload, Button } from 'antd';
+import { Button } from 'antd';
 import styles from './index.module.css';
 import DraggerComponent from './Dragger';
-const { Dragger } = Upload;
 
 const App = ({ setStep, handleFinish, setDocumentFile, loading, setImgFile, setContractFile }) => {
   return (

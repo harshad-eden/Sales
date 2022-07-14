@@ -37,9 +37,9 @@ input[type='file'] {
   margin-top: 2px;
 }
 
-.uploadedFile:hover {
+/* .uploadedFile:hover {
   background-color: rgb(242, 240, 240);
-}
+} */
 
 .box {
   background-color: white;
