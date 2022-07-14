@@ -44,50 +44,48 @@ const Index = () => {
 
   const handleFinish = async () => {
     setLoading(true);
-    let logoUrl;
-    let contractFileUrl;
-    let documentUrl;
 
-    if (prevState.logo === imgFile) {
-      console.log('same-1');
-    } else {
-      const imgRef = ref(storage, `images/${docId}-${imgFile.name}`);
-      let imgSapnshot = await uploadBytes(imgRef, imgFile);
-      logoUrl = await getDownloadURL(imgSapnshot.ref).then((url) => url);
+    // let logo;
+    // let contract;
+    // let document;
+
+    // if (imgFile) {
+    //   if (prevState.logo === imgFile) {
+    //     return null;
+    //   } else {
+    //     logo = imgFile[0];
+    //   }
+    // } else {
+    //   logo = '';
+    // }
+
+    // if (contractFile) {
+    //   if (prevState.contract === contractFile) {
+    //     return null;
+    //   } else {
+    //     contract = contractFile;
+    //   }
+    // } else {
+    //   contract = [];
+    // }
+
+    // if (documentFile) {
+    //   if (prevState.document === documentFile) {
+    //     return null;
+    //   } else {
+    //     document = documentFile;
+    //   }
+    // } else {
+    //   document = [];
+    // }
+
+    if (state.status !== prevState.status) {
+      sendEmail(prevState.providerName, prevState.status, state.status);
     }
 
-    if (prevState.contractFile === contractFile) {
-      console.log('same-2');
-    } else {
-      if (contractFile) {
-        const contractRef = ref(storage, `contracts/${docId}-${contractFile.name}`);
-        let contractSnapshot = await uploadBytes(contractRef, contractFile);
-        contractFileUrl = await getDownloadURL(contractSnapshot.ref).then((url) => url);
-      }
-    }
-
-    if (prevState.document === documentFile) {
-      console.log('same-3');
-    } else {
-      const docRef = ref(storage, `documents/${docId}-${documentFile.name}`);
-      let docSnapshot = await uploadBytes(docRef, documentFile);
-      documentUrl = await getDownloadURL(docSnapshot.ref).then((url) => url);
-    }
-
-    let logo = logoUrl ? logoUrl : null;
-    let contract = contractFileUrl ? contractFileUrl : null;
-    let document = documentUrl ? documentUrl : null;
-
-    let updatedValue = state;
-    if (logoUrl) {
-      updatedValue = { ...updatedValue, logo };
-    }
-    if (contract) {
-      updatedValue = { ...updatedValue, contract };
-    }
-    if (document) {
-      updatedValue = { ...updatedValue, document };
-    }
+    let updatedValue = {
+      ...state,
+    };
 
     let docRef = doc(firestore, 'providers', docId);
     updateDoc(docRef, updatedValue)
