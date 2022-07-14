@@ -1,21 +1,10 @@
 import { Button } from 'antd';
+import styles from './index.module.css';
 import React from 'react';
 
 const ColumnItem = ({ imgs }) => {
   return imgs.map((item, index) => (
-    <div
-      key={index}
-      style={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        gap: 15,
-        backgroundColor: 'white',
-        padding: 20,
-        borderRadius: 15,
-        width: '25%',
-      }}
-    >
+    <div key={index} className={styles.dashboardCol}>
       <div
         style={{
           width: '100%',
