@@ -5,6 +5,7 @@ import styles from './index.module.css';
 const { Dragger } = Upload;
 import { GrAttachment } from 'react-icons/gr';
 import DraggerComponent from './Dragger';
+import { getFileName } from './utils';
 
 const App = ({
   setStep,
@@ -23,18 +24,30 @@ const App = ({
   const [contractExist, setisContractExist] = useState();
 
   useEffect(() => {
-    if (files[0] && typeof files[0][0] === 'string') {
-      setisLogoExist(files[0][0].split('alt')[0]?.split('-').slice(-1)[0].slice(0, -1));
+    if (files[0] && typeof files[0] === 'string') {
+      setisLogoExist(getFileName(files[0]));
     } else {
       setisLogoExist(false);
     }
-    if (files[1] && typeof files[1] === 'string') {
-      setisContractExist(files[1]?.split('alt')[0]?.split('-').slice(-1)[0].slice(0, -1));
+    if (Array.isArray(files[1]) && files[1].length > 0) {
+      setisContractExist(
+        files[1].map((item, index) => (
+          <p style={{ marginBottom: 0 }} key={index}>
+            {getFileName(item)}
+          </p>
+        )),
+      );
     } else {
       setisContractExist(false);
     }
-    if (files[2] && typeof files[2] === 'string') {
-      setisDocExist(files[2]?.split('alt')[0]?.split('-').slice(-1)[0].slice(0, -1));
+    if (Array.isArray(files[2]) && files[1].length > 0) {
+      setisDocExist(
+        files[2].map((item, index) => (
+          <p style={{ marginBottom: 0 }} key={index}>
+            {getFileName(item)}
+          </p>
+        )),
+      );
     } else {
       setisDocExist(false);
     }
@@ -55,9 +68,9 @@ const App = ({
             <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
               <GrAttachment /> {isLogoExist}
             </div>
-            <div>
+            {/* <div>
               <DeleteOutlined onClick={() => setImgFile(false)} />
-            </div>
+            </div> */}
           </div>
         )}
       </div>

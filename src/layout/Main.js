@@ -5,7 +5,7 @@ import styles from './layout.module.css';
 
 function Main({ children, pageName }) {
   return (
-    <>
+    <div>
       <div style={{ display: 'flex' }}>
         <SideBar />
         <div className={styles.contain}>
@@ -13,7 +13,7 @@ function Main({ children, pageName }) {
           <div>{children}</div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

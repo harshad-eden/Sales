@@ -10,8 +10,8 @@ const MainDetails = ({ data }) => {
       </p>
 
       <div style={{ display: 'flex', gap: 10, marginBottom: 15 }}>
-        {data?.contractFile?.length > 0 &&
-          data.contractFile.map((item, index) => (
+        {data?.contract?.length > 0 &&
+          data.contract.map((item, index) => (
             <a key={index} target="_blank" href={item} rel="noreferrer">
               <Button size="small" type="dashed" icon={<DownloadOutlined />}>
                 Contract- {index + 1}
