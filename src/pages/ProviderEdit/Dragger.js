@@ -1,11 +1,11 @@
 /* eslint-disable quotes */
 import React, { useState } from 'react';
-import { Form, Upload, message, Button } from 'antd';
+import { Form, Upload, message } from 'antd';
 import { InboxOutlined } from '@ant-design/icons';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { storage } from '../../firebase';
 
-const DraggerComponent = ({ setFile, name, accept, multiple }) => {
+const DraggerComponent = ({ setFile, name, accept, multiple, setNewUpload }) => {
   const [fileList, setFileList] = useState([]);
   const [submitting, setSubmitting] = useState(false);
   const [newFile, setNewFile] = useState(false);
@@ -19,6 +19,7 @@ const DraggerComponent = ({ setFile, name, accept, multiple }) => {
     setFileList(fileList.filter((file) => file.status !== 'error'));
 
     if (fileList.length > 0) {
+      setNewUpload(true);
       var docs = [];
       let downloadUrl;
       try {

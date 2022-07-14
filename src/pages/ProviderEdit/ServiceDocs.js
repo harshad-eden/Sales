@@ -1,35 +1,25 @@
 import { useEffect, useState } from 'react';
-import { InboxOutlined, FileImageOutlined, DeleteOutlined } from '@ant-design/icons';
-import { Upload, Button } from 'antd';
+import { Button } from 'antd';
 import styles from './index.module.css';
-const { Dragger } = Upload;
 import { GrAttachment } from 'react-icons/gr';
 import DraggerComponent from './Dragger';
 import { getFileName } from './utils';
 
-const App = ({
-  setStep,
-  handleFinish,
-  setDocumentFile,
-  loading,
-  documentFile,
-  setImgFile,
-  setContractFile,
-  prevState,
-  files,
-}) => {
-  let buttonDisable = documentFile ? false : true;
+const App = ({ setStep, handleFinish, setDocumentFile, setImgFile, setContractFile, files }) => {
   const [isLogoExist, setisLogoExist] = useState();
+  const [logoNewUpload, setlogoNewUpload] = useState();
   const [isDocExist, setisDocExist] = useState();
+  const [isNewDocExist, setisNewDocExist] = useState();
   const [contractExist, setisContractExist] = useState();
+  const [contractNewExist, setisContractNewExist] = useState();
 
   useEffect(() => {
-    if (files[0] && typeof files[0] === 'string') {
+    if (files[0] && typeof files[0] === 'string' && !logoNewUpload) {
       setisLogoExist(getFileName(files[0]));
     } else {
       setisLogoExist(false);
     }
-    if (Array.isArray(files[1]) && files[1].length > 0) {
+    if (Array.isArray(files[1]) && files[1].length > 0 && !contractNewExist) {
       setisContractExist(
         files[1].map((item, index) => (
           <p style={{ marginBottom: 0 }} key={index}>
@@ -40,7 +30,7 @@ const App = ({
     } else {
       setisContractExist(false);
     }
-    if (Array.isArray(files[2]) && files[1].length > 0) {
+    if (Array.isArray(files[2]) && files[1].length > 0 && !isNewDocExist) {
       setisDocExist(
         files[2].map((item, index) => (
           <p style={{ marginBottom: 0 }} key={index}>
@@ -62,15 +52,13 @@ const App = ({
           accept=".jpg,.jpeg,.png"
           name="images"
           setFile={setImgFile}
+          setNewUpload={setlogoNewUpload}
         />
         {isLogoExist && (
           <div className="uploadedFile">
             <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
               <GrAttachment /> {isLogoExist}
             </div>
-            {/* <div>
-              <DeleteOutlined onClick={() => setImgFile(false)} />
-            </div> */}
           </div>
         )}
       </div>
@@ -82,15 +70,13 @@ const App = ({
           accept=".doc,.docx,.pdf,.csv,.xlsx, .xls,"
           name="contracts"
           setFile={setContractFile}
+          setNewUpload={setisContractNewExist}
         />
         {contractExist && (
           <div className="uploadedFile">
             <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
               <GrAttachment /> {contractExist}
             </div>
-            {/* <div>
-              <DeleteOutlined onClick={() => setContractFile(null)} />
-            </div> */}
           </div>
         )}
       </div>
@@ -106,6 +92,7 @@ const App = ({
           accept=".doc,.docx,.pdf,.csv,.xlsx, .xls,"
           name="services"
           setFile={setDocumentFile}
+          setNewUpload={setisNewDocExist}
         />
 
         {isDocExist && (
@@ -113,9 +100,6 @@ const App = ({
             <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
               <GrAttachment /> {isDocExist}
             </div>
-            {/* <div>
-              <DeleteOutlined onClick={() => setDocumentFile(null)} />
-            </div> */}
           </div>
         )}
       </div>
