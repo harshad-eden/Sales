@@ -11,7 +11,7 @@ import styles from './index.module.css';
 import ColumnItem from './ColumnItem';
 
 import { loadProviders } from '../../store/providerSlice';
-import Calnder from './Calnder';
+import Calnder from './Calendar';
 import GridSection from './GridSection';
 
 const { Search } = Input;

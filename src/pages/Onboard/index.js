@@ -41,15 +41,15 @@ const Index = () => {
       ...state,
       userName: state.userName ? state.userName : '',
       userEmail: state.userName ? state.userEmail : '',
-      logo: imgFile[0] ? imgFile[0] : '',
+      logo: imgFile ? imgFile : '',
       document: documentFile,
-      contractFile: contractFile,
+      contract: contractFile,
       createdAt: new Date(),
     };
     try {
       addDoc(providersCollectionref, updatedValue);
       openNotification('Form successfully Submitted');
-      navigate('/');
+      navigate('/providers');
     } catch (error) {
       openNotification('Form submition failed');
       setLoading(false);

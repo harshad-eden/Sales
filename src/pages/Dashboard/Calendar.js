@@ -1,7 +1,7 @@
 import { Calendar } from 'antd';
 import React from 'react';
 
-const App = () => {
+const CalendarComponent = () => {
   const onPanelChange = (value, mode) => {
     console.log(value.format('YYYY-MM-DD'), mode);
   };
@@ -13,4 +13,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default CalendarComponent;
