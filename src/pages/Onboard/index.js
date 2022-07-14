@@ -15,7 +15,7 @@ const Index = () => {
   const navigate = useNavigate();
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(0);
   const [state, setState] = useState(0);
   const [imgFile, setImgFile] = useState(false);
   const [contractFile, setContractFile] = useState([]);
