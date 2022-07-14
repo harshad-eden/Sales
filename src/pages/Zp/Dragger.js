@@ -1,59 +1,28 @@
 /* eslint-disable quotes */
 import React, { useState } from 'react';
-import { Form, Upload, Modal, message, Button } from 'antd';
+import { Form, Upload, message, Button } from 'antd';
 import { InboxOutlined } from '@ant-design/icons';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
-import { firestore, storage } from '../../firebase';
-import { collection, addDoc, updateDoc, doc } from 'firebase/firestore';
+import { storage } from '../../firebase';
 
-const getBase64 = (file) => {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => resolve(reader.result);
-    reader.onerror = (error) => reject(error);
-  });
-};
-
-const imageCollection = collection(firestore, 'images');
-
-const DraggerComponent = ({ docId }) => {
+const DraggerComponent = ({ setFile, name, accept, multiple }) => {
   const [fileList, setFileList] = useState([]);
   const [submitting, setSubmitting] = useState(false);
-  const [previewVisible, setPreviewVisible] = useState(false);
-  const [previewImage, setPreviewImage] = useState(false);
-  const [previewTitle, setPreviewTitle] = useState(false);
+  const [newFile, setNewFile] = useState(false);
 
   const { Dragger } = Upload;
 
-  const handleCancel = () => setPreviewVisible(false);
-
-  const handlePreview = async (file) => {
-    if (!file.url && !file.preview) {
-      file.preview = await getBase64(file.originFileObj);
+  const handleChange = ({ fileList }) => {
+    if (fileList.length > 0) {
+      setNewFile(true);
     }
-
-    setPreviewImage(file.url || file.preview);
-    setPreviewVisible(true);
-    setPreviewTitle(file.name || file.url.substring(file.url.lastIndexOf('/') + 1));
-  };
-
-  const beforeUpload = (file) => {
-    if (!['image/jpeg', 'image/png'].includes(file.type)) {
-      message.error(`${file.name} is not a valid image type`, 2);
-      return null;
-    }
-    return false;
-  };
-
-  const handleChange = ({ fileList }) =>
     setFileList(fileList.filter((file) => file.status !== 'error'));
+  };
 
   const onRemove = async (file) => {
     const index = fileList.indexOf(file);
     const newFileList = fileList.slice();
     newFileList.splice(index, 1);
-
     setFileList(newFileList);
   };
 
@@ -66,24 +35,19 @@ const DraggerComponent = ({ docId }) => {
         await Promise.all(
           fileList.map(async (file, index) => {
             try {
-              const imgRef = ref(storage, `test/${Date.now()}-${file.name}`);
-              let imgSapnshot = await uploadBytes(imgRef, file);
+              const imgRef = ref(storage, `${name}/${Date.now()}-${file.name}`);
+              let imgSapnshot = await uploadBytes(imgRef, file.originFileObj);
               downloadUrl = await getDownloadURL(imgSapnshot.ref).then((url) => url);
               docs.push(downloadUrl);
+
               if (fileList.length - 1 == index) {
-                let docRef = doc(firestore, 'providers', '3BYhJTRSWCmnPTX1p87R');
-                updateDoc(docRef, {
-                  services: docs,
-                }).catch(() => {
-                  alert('failed');
-                });
+                setFile(docs);
               }
             } catch (e) {
               console.log(e);
             }
           }),
         );
-        console.log('docs-2', docs);
         setFileList([]);
         message.success(`Images added successfully.`, 2);
       } catch (err) {
@@ -102,13 +66,12 @@ const DraggerComponent = ({ docId }) => {
       <Dragger
         listType="picture-card"
         fileList={fileList}
-        beforeUpload={beforeUpload}
-        onPreview={handlePreview}
+        beforeUpload={() => false}
         onChange={handleChange}
         onRemove={onRemove}
-        multiple={true}
+        multiple={multiple}
         maxCount={4}
-        // accept=".doc,.docx,.pdf,.csv,.xlsx, .xls,"
+        accept={accept}
       >
         <p className="ant-upload-drag-icon">
           <InboxOutlined />
@@ -120,11 +83,14 @@ const DraggerComponent = ({ docId }) => {
         </p>
       </Dragger>
       <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: 10 }}>
-        <Form.Item>
-          <Button shape="round" htmlType="submit">
-            {submitting ? 'Uploading' : 'Upload'}
-          </Button>
-        </Form.Item>
+        {console.log('newFile', newFile)}
+        {newFile && (
+          <Form.Item>
+            <Button shape="round" htmlType="submit">
+              {submitting ? 'Uploading' : 'Upload'}
+            </Button>
+          </Form.Item>
+        )}
       </div>
     </Form>
   );

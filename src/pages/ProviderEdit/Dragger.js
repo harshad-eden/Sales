@@ -1,54 +1,23 @@
 /* eslint-disable quotes */
 import React, { useState } from 'react';
-import { Form, Upload, Modal, message, Button } from 'antd';
+import { Form, Upload, message, Button } from 'antd';
 import { InboxOutlined } from '@ant-design/icons';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { storage } from '../../firebase';
-
-const getBase64 = (file) => {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => resolve(reader.result);
-    reader.onerror = (error) => reject(error);
-  });
-};
 
 const DraggerComponent = ({ setFile, name, accept, multiple }) => {
   const [fileList, setFileList] = useState([]);
   const [submitting, setSubmitting] = useState(false);
   const [newFile, setNewFile] = useState(false);
-  const [previewVisible, setPreviewVisible] = useState(false);
-  const [previewImage, setPreviewImage] = useState(false);
-  const [previewTitle, setPreviewTitle] = useState(false);
 
   const { Dragger } = Upload;
 
-  const handlePreview = async (file) => {
-    if (!file.url && !file.preview) {
-      file.preview = await getBase64(file.originFileObj);
-    }
-    setPreviewImage(file.url || file.preview);
-    setPreviewVisible(true);
-    setPreviewTitle(file.name || file.url.substring(file.url.lastIndexOf('/') + 1));
-  };
-
-  const handleChange = ({ fileList }) => {
+  const handleChange = async ({ fileList }) => {
     if (fileList.length > 0) {
       setNewFile(true);
     }
     setFileList(fileList.filter((file) => file.status !== 'error'));
-  };
 
-  const onRemove = async (file) => {
-    const index = fileList.indexOf(file);
-    const newFileList = fileList.slice();
-    newFileList.splice(index, 1);
-
-    setFileList(newFileList);
-  };
-
-  const handleFinish = async () => {
     if (fileList.length > 0) {
       var docs = [];
       let downloadUrl;
@@ -63,14 +32,18 @@ const DraggerComponent = ({ setFile, name, accept, multiple }) => {
               docs.push(downloadUrl);
 
               if (fileList.length - 1 == index) {
-                setFile(docs);
+                if (name === 'images') {
+                  setFile(docs[0]);
+                } else {
+                  setFile(docs);
+                }
               }
             } catch (e) {
               console.log(e);
             }
           }),
         );
-        setFileList([]);
+        // setFileList([]);
         message.success(`Images added successfully.`, 2);
       } catch (err) {
         console.log(err);
@@ -78,18 +51,22 @@ const DraggerComponent = ({ setFile, name, accept, multiple }) => {
       } finally {
         setSubmitting(false);
       }
-    } else {
-      message.error('No files selected');
     }
   };
 
+  const onRemove = async (file) => {
+    const index = fileList.indexOf(file);
+    const newFileList = fileList.slice();
+    newFileList.splice(index, 1);
+    setFileList(newFileList);
+  };
+
   return (
-    <Form onFinish={handleFinish}>
+    <Form>
       <Dragger
-        listType="picture-card"
+        // listType="picture-card"
         fileList={fileList}
         beforeUpload={() => false}
-        onPreview={handlePreview}
         onChange={handleChange}
         onRemove={onRemove}
         multiple={multiple}
@@ -105,7 +82,7 @@ const DraggerComponent = ({ setFile, name, accept, multiple }) => {
           other band files
         </p>
       </Dragger>
-      <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: 10 }}>
+      {/* <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: 10 }}>
         {console.log('newFile', newFile)}
         {newFile && (
           <Form.Item>
@@ -114,7 +91,7 @@ const DraggerComponent = ({ setFile, name, accept, multiple }) => {
             </Button>
           </Form.Item>
         )}
-      </div>
+      </div> */}
     </Form>
   );
 };

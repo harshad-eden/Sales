@@ -19,11 +19,11 @@ const Index = () => {
   const navigate = useNavigate();
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
-  const [step, setStep] = useState(0);
+  const [step, setStep] = useState(1);
   const [state, setState] = useState(0);
   const [imgFile, setImgFile] = useState(false);
-  const [contractFile, setContractFile] = useState([]);
-  const [documentFile, setDocumentFile] = useState([]);
+  const [contractFile, setContractFile] = useState(false);
+  const [documentFile, setDocumentFile] = useState(false);
 
   useEffect(() => {
     setImgFile(prevState.logo);
@@ -45,39 +45,39 @@ const Index = () => {
   const handleFinish = async () => {
     setLoading(true);
 
-    var logo;
-    let contract;
-    let document;
+    // let logo;
+    // let contract;
+    // let document;
 
-    if (imgFile) {
-      if (prevState.logo === imgFile) {
-        logo = imgFile;
-      } else {
-        logo = imgFile;
-      }
-    } else {
-      logo = '';
-    }
+    // if (imgFile) {
+    //   if (prevState.logo === imgFile) {
+    //     return null;
+    //   } else {
+    //     logo = imgFile[0];
+    //   }
+    // } else {
+    //   logo = '';
+    // }
 
-    if (contractFile) {
-      if (prevState.contract === contractFile) {
-        contract = contractFile;
-      } else {
-        contract = contractFile;
-      }
-    } else {
-      contract = [];
-    }
+    // if (contractFile) {
+    //   if (prevState.contract === contractFile) {
+    //     return null;
+    //   } else {
+    //     contract = contractFile;
+    //   }
+    // } else {
+    //   contract = [];
+    // }
 
-    if (documentFile) {
-      if (prevState.document === documentFile) {
-        document = documentFile;
-      } else {
-        document = documentFile;
-      }
-    } else {
-      document = [];
-    }
+    // if (documentFile) {
+    //   if (prevState.document === documentFile) {
+    //     return null;
+    //   } else {
+    //     document = documentFile;
+    //   }
+    // } else {
+    //   document = [];
+    // }
 
     // if (state.status !== prevState.status) {
     //   sendEmail(prevState.providerName, prevState.status, state.status);
@@ -85,18 +85,13 @@ const Index = () => {
 
     let updatedValue = {
       ...state,
-      logo,
-      contract,
-      document,
     };
-
-    console.log('updatedValue', updatedValue);
 
     let docRef = doc(firestore, 'providers', docId);
     updateDoc(docRef, updatedValue)
       .then(() => {
         openNotification('Form successfully Submitted');
-        navigate('/providers');
+        navigate('/');
       })
       .catch(() => {
         openNotification('Form submission failed');
@@ -107,10 +102,7 @@ const Index = () => {
     if (step === 0) {
       return (
         <div>
-          <Link
-            to="/providers"
-            style={{ display: 'flex', alignItems: 'center', gap: 20, marginBottom: 50 }}
-          >
+          <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: 20, marginBottom: 50 }}>
             <AiOutlineArrowLeft size={30} style={{ marginBottom: 5, color: 'gray' }} />
             <h1 className={styles.pageTitle}>Service Provider Details</h1>
           </Link>
@@ -128,10 +120,7 @@ const Index = () => {
     if (step === 1) {
       return (
         <div>
-          <Link
-            to="/providers"
-            style={{ display: 'flex', alignItems: 'center', gap: 20, marginBottom: 50 }}
-          >
+          <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: 20, marginBottom: 50 }}>
             <AiOutlineArrowLeft size={30} style={{ marginBottom: 5, color: 'gray' }} />
             <h1 className={styles.pageTitle}>Service Details</h1>
           </Link>
