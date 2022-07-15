@@ -51,13 +51,18 @@ const Branches = ({ data }) => {
             </p>
 
             <div className={styles.itemLabel}>
-              Contact number:
+              Contact:
               <span style={{ fontWeight: 'normal', marginLeft: 5 }}>{item.contactNumber}</span>
-              <p className={styles.itemLabel}>
-                Comment:
-                <span style={{ fontWeight: 'normal', marginLeft: 5 }}>{item.comment}</span>
-              </p>
             </div>
+            <div className={styles.itemLabel}>
+              Contact:
+              <span style={{ fontWeight: 'normal', marginLeft: 5 }}>{item.branchEmail}</span>
+            </div>
+            <p className={styles.itemLabel}>
+              Comment:
+              <span style={{ fontWeight: 'normal', marginLeft: 5 }}>{item.comment}</span>
+            </p>
+
             <p style={{ textDecoration: 'underline', color: 'gray', marginBottom: 5 }}>
               Payment Details
             </p>

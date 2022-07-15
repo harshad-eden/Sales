@@ -105,7 +105,9 @@ const Links = ({ form, handleFinish, state }) => {
           </div>
         </div>
 
-        <span className={styles.formLabell}>Contact Number</span>
+        <span className={styles.formLabell}>
+          Contact Number <span style={{ color: '#f87d4e' }}>*</span>
+        </span>
         <Form.Item name="adminContact" rules={[{ required: true }]}>
           <Input type="number" style={{ borderRadius: 10 }} size="large" placeholderr="Address" />
         </Form.Item>
