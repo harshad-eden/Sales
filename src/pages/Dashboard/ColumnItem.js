@@ -14,7 +14,6 @@ const ColumnItem = ({ imgs }) => {
         }}
       >
         <p className={styles.colText}>{item.title}</p>
-
         <p className={styles.count}>{item.count}</p>
       </div>
     </div>

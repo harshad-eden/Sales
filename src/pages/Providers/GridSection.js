@@ -16,22 +16,22 @@ const GridSection = ({ state }) => {
               <div style={{ display: 'flex', gap: 15, marginBottom: 10 }}>
                 {item.logo ? (
                   <img
-                    style={{ height: 130, width: 130, borderRadius: '50%' }}
+                    style={{ height: 100, width: 100, borderRadius: '50%' }}
                     src={item.logo}
                     alt=""
                   />
                 ) : (
                   <div
                     style={{
-                      height: 120,
-                      width: 120,
+                      height: 100,
+                      width: 100,
                       backgroundColor: 'cornsilk',
                       borderRadius: '50%',
                     }}
                   />
                 )}
 
-                <div style={{ marginBottom: 25, width: '70%' }}>
+                <div style={{ marginBottom: 25, width: '75%' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                     <h3 style={{ marginBottom: 5 }}>
                       <strong>{item.providerName}</strong>
