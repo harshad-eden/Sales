@@ -41,17 +41,17 @@ const Index = () => {
       branch = [updateVal];
     }
 
-    // let docRef = doc(firestore, 'providers', docid);
-    // updateDoc(docRef, {
-    //   branch: branch,
-    // })
-    //   .then((res) => {
-    //     openNotification('Form successfully Submitted');
-    //     navigate('/');
-    //   })
-    //   .catch((er) => {
-    //     openNotification('Form submission failed');
-    //   });
+    let docRef = doc(firestore, 'providers', docid);
+    updateDoc(docRef, {
+      branch: branch,
+    })
+      .then((res) => {
+        openNotification('Form successfully Submitted');
+        navigate('/');
+      })
+      .catch((er) => {
+        openNotification('Form submission failed');
+      });
   };
 
   return (
