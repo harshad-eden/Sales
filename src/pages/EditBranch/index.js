@@ -40,15 +40,9 @@ const Index = () => {
     //   sendEmail(item.providerName, item.status, value.status);
     // }
 
-    let newValue = {
-      ...updatedValue,
-      zip: value.zip ? value.zip : '',
-      comment: value.comment ? value.comment : '',
-    };
-
     let docRef = doc(firestore, 'providers', data.id);
     updateDoc(docRef, {
-      branch: newValue,
+      branch: updatedValue,
     })
       .then((res) => {
         openNotification('Form successfully Submitted');

@@ -26,6 +26,8 @@ const Index = () => {
     }
   }, []);
 
+  console.log('ppp', data.branch);
+
   return (
     <Main pageName="Dashboard">
       {data && (

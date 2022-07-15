@@ -27,8 +27,8 @@ const Index = () => {
 
   //HandleSubmit
   const handleFinish = async (value) => {
+    console.log('branches', branches);
     setLoading(true);
-    console.log(value);
     let branch;
     let updateVal = {
       ...value,
@@ -36,6 +36,7 @@ const Index = () => {
       zip: value.zip ? value.zip : '',
       comment: value.comment ? value.comment : '',
     };
+
     if (branches) {
       branch = [...branches, updateVal];
     } else {
