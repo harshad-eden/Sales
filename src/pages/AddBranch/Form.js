@@ -231,10 +231,8 @@ const ThirdForm = ({ form, handleFinish }) => {
         </div>
 
         <div className={styles.formitem}>
-          <span className={styles.formLabell}>
-            Zip code<span style={{ color: '#f87d4e' }}>*</span>
-          </span>
-          <Form.Item name="zip" rules={[{ required: true }]}>
+          <span className={styles.formLabell}>Zip code</span>
+          <Form.Item name="zip">
             <Input type="text" size="large" placeholderr="ZIP code" className="ant-custom-input" />
           </Form.Item>
         </div>

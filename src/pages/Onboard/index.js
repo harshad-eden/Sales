@@ -41,6 +41,7 @@ const Index = () => {
       userName: state.userName ? state.userName : '',
       userEmail: state.userName ? state.userEmail : '',
       logo: imgFile ? imgFile : '',
+      zip: state.zip ? state.zip : '',
       document: documentFile,
       contract: contractFile,
       createdAt: new Date(),

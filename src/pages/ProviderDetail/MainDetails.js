@@ -1,5 +1,6 @@
 import { Button } from 'antd';
 import { DownloadOutlined } from '@ant-design/icons';
+import styles from './index.module.css';
 import React from 'react';
 
 const MainDetails = ({ data }) => {
@@ -27,7 +28,7 @@ const MainDetails = ({ data }) => {
             </a>
           ))}
       </div>
-      <div>
+      {/* <div>
         <p style={{ textDecoration: 'underline', color: 'gray', marginBottom: 13 }}>
           Super Admin Details
         </p>
@@ -45,7 +46,7 @@ const MainDetails = ({ data }) => {
           </span>
           {data.superAdminEmail}
         </div>
-      </div>
+      </div> */}
       <div>
         <p style={{ textDecoration: 'underline', color: 'gray', marginBottom: 13 }}>
           Admin Details
@@ -58,14 +59,20 @@ const MainDetails = ({ data }) => {
           {data.adminName}
         </div>
 
-        <div style={{ marginBottom: 10 }}>
+        <div>
           <span style={{ marginRight: 5 }} className="strongLabell">
             Email:
           </span>
           {data.adminEmail}
         </div>
+        <div style={{ marginBottom: 10 }}>
+          <span style={{ marginRight: 5 }} className="strongLabell">
+            Contact:
+          </span>
+          {data.adminContact}
+        </div>
       </div>
-      <div>
+      {/* <div>
         <p style={{ textDecoration: 'underline', color: 'gray', marginBottom: 13 }}>
           Office user details
         </p>
@@ -83,7 +90,24 @@ const MainDetails = ({ data }) => {
           </span>
           {data.userEmail}
         </div>
-      </div>
+      </div> */}
+      <p style={{ textDecoration: 'underline', color: 'gray', marginBottom: 5 }}>Payment Details</p>
+      <p className={styles.itemLabel}>
+        Name of beneficiary:
+        <span style={{ fontWeight: 'normal', marginLeft: 5 }}>{data?.beneficiaryName}</span>
+      </p>
+      <p className={styles.itemLabel}>
+        Account number:
+        <span style={{ fontWeight: 'normal', marginLeft: 5 }}>{data?.accountNumber}</span>
+      </p>
+      <p className={styles.itemLabel}>
+        Swift code:
+        <span style={{ fontWeight: 'normal', marginLeft: 5 }}>{data?.swiftCode}</span>
+      </p>
+      <p className={styles.itemLabel}>
+        Bank name:
+        <span style={{ fontWeight: 'normal', marginLeft: 5 }}>{data?.bankName}</span>
+      </p>
       <p style={{ textDecoration: 'underline', color: 'gray', marginBottom: 13 }}>
         Address Details
       </p>

@@ -26,8 +26,6 @@ const Index = () => {
     }
   }, []);
 
-  console.log(data);
-
   return (
     <Main pageName="Dashboard">
       {data && (
@@ -83,6 +81,11 @@ const Index = () => {
                     <div className="strongLabel">Contact:</div>
                     <p style={{ marginBottom: 0 }}>{data.providerContactNumber}</p>
                   </div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
+                    <div className="strongLabel">Email:</div>
+                    <p style={{ marginBottom: 0 }}>{data.providerEmail}</p>
+                  </div>
+
                   <div style={{ marginBottom: 0 }}>
                     <span style={{ marginRight: 5 }} className="strongLabel">
                       Address:

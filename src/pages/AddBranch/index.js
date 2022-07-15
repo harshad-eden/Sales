@@ -33,6 +33,7 @@ const Index = () => {
     let updateVal = {
       ...value,
       uuid: uuidv4(),
+      zip: value.zip ? value.zip : '',
       comment: value.comment ? value.comment : '',
     };
     if (branches) {

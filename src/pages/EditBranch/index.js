@@ -8,6 +8,7 @@ import { updateDoc, doc } from 'firebase/firestore';
 
 import { useNavigate, useParams, Link, useLocation } from 'react-router-dom';
 import { AiOutlineArrowLeft } from 'react-icons/ai';
+import { sendEmail } from '../../components/SendEmail';
 
 const Index = () => {
   const { state } = useLocation();
@@ -35,9 +36,19 @@ const Index = () => {
       }
     });
 
+    // if (value.status !== item.status) {
+    //   sendEmail(item.providerName, item.status, value.status);
+    // }
+
+    let newValue = {
+      ...updatedValue,
+      zip: value.zip ? value.zip : '',
+      comment: value.comment ? value.comment : '',
+    };
+
     let docRef = doc(firestore, 'providers', data.id);
     updateDoc(docRef, {
-      branch: updatedValue,
+      branch: newValue,
     })
       .then((res) => {
         openNotification('Form successfully Submitted');
