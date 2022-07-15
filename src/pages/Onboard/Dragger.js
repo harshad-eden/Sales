@@ -1,13 +1,12 @@
 /* eslint-disable quotes */
 import React, { useState } from 'react';
-import { Form, Upload, Modal, message, Button } from 'antd';
+import { Form, Upload, message } from 'antd';
 import { InboxOutlined } from '@ant-design/icons';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { storage } from '../../firebase';
 
-const DraggerComponent = ({ setFile, name, accept, multiple, file, textOne }) => {
+const DraggerComponent = ({ setFile, name, accept, multiple, textOne }) => {
   const [fileList, setFileList] = useState([]);
-  const [submitting, setSubmitting] = useState(false);
 
   const { Dragger } = Upload;
 
@@ -18,7 +17,6 @@ const DraggerComponent = ({ setFile, name, accept, multiple, file, textOne }) =>
       var docs = [];
       let downloadUrl;
       try {
-        setSubmitting(true);
         await Promise.all(
           fileList.map(async (file, index) => {
             try {
@@ -43,8 +41,6 @@ const DraggerComponent = ({ setFile, name, accept, multiple, file, textOne }) =>
       } catch (err) {
         console.log(err);
         message.error(`Error adding images.`, 2);
-      } finally {
-        setSubmitting(false);
       }
     }
   };
@@ -75,13 +71,6 @@ const DraggerComponent = ({ setFile, name, accept, multiple, file, textOne }) =>
         <p className="ant-upload-text">Click or drag file to this area to upload</p>
         <p className="ant-upload-hint">{textOne}</p>
       </Dragger>
-      {/* <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: 10 }}>
-        <Form.Item>
-          <Button shape="round" htmlType="submit">
-            {submitting ? 'Uploading' : 'Upload'}
-          </Button>
-        </Form.Item>
-      </div> */}
     </Form>
   );
 };
