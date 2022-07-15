@@ -63,14 +63,14 @@
 
 @media only screen and (max-width: 1000px) {
   .container {
-    height: 100vh;
+    height: auto;
     padding: 0%;
   }
 }
 
 @media only screen and (max-width: 800px) {
   .container {
-    height: 100vh;
+    height: auto;
     padding: 0%;
   }
   .formContainer {

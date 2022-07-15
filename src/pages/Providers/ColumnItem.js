@@ -32,6 +32,7 @@ const ColumnItem = ({ imgs }) => {
             lineHeight: 0,
             color: '#020202',
             fontWeight: 600,
+            marginTop: 4,
           }}
         >
           {item.title}
