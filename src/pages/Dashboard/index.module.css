@@ -48,7 +48,20 @@
   padding: 20px;
   border-radius: 15px;
   width: 25%;
-  flex-wrap: wrap;
+}
+
+.count {
+  font-weight: 800;
+  font-size: 16px;
+  margin-bottom: 0px;
+}
+
+.colText {
+  margin-bottom: 5px;
+  font-size: 14px;
+  line-height: 2px;
+  color: #020202;
+  font-weight: 600;
 }
 
 @media only screen and (max-width: 1200px) {
@@ -102,16 +115,14 @@
 
 @media only screen and (max-width: 500px) {
   .dashboardCol {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     gap: 5px;
-    background-color: white;
-    padding: 10px;
+    padding: 3px;
     border-radius: 15px;
-    min-width: 100px;
-    flex-wrap: wrap;
-    width: 23%;
+    width: 25%;
+  }
+
+  .colText {
+    font-size: 10px;
   }
 }
 

@@ -5,7 +5,7 @@ import { InboxOutlined } from '@ant-design/icons';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { storage } from '../../firebase';
 
-const DraggerComponent = ({ setFile, name, accept, multiple, setNewUpload }) => {
+const DraggerComponent = ({ setFile, name, accept, multiple, setNewUpload, textOne }) => {
   const [fileList, setFileList] = useState([]);
   const [submitting, setSubmitting] = useState(false);
   const [newFile, setNewFile] = useState(false);
@@ -78,21 +78,8 @@ const DraggerComponent = ({ setFile, name, accept, multiple, setNewUpload }) => 
           <InboxOutlined />
         </p>
         <p className="ant-upload-text">Click or drag file to this area to upload</p>
-        <p className="ant-upload-hint">
-          Support for a single or bulk upload. Strictly prohibit from uploading company data or
-          other band files
-        </p>
+        <p className="ant-upload-hint">{textOne}</p>
       </Dragger>
-      {/* <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: 10 }}>
-        {console.log('newFile', newFile)}
-        {newFile && (
-          <Form.Item>
-            <Button shape="round" htmlType="submit">
-              {submitting ? 'Uploading' : 'Upload'}
-            </Button>
-          </Form.Item>
-        )}
-      </div> */}
     </Form>
   );
 };

@@ -53,6 +53,7 @@ const App = ({ setStep, handleFinish, setDocumentFile, setImgFile, setContractFi
           name="images"
           setFile={setImgFile}
           setNewUpload={setlogoNewUpload}
+          textOne="Upload format: png/jpg/jpeg"
         />
         {isLogoExist && (
           <div className="uploadedFile">
@@ -71,6 +72,7 @@ const App = ({ setStep, handleFinish, setDocumentFile, setImgFile, setContractFi
           name="contracts"
           setFile={setContractFile}
           setNewUpload={setisContractNewExist}
+          textOne="Upload format: pdf/excel/doc"
         />
         {contractExist && (
           <div className="uploadedFile">
@@ -93,6 +95,7 @@ const App = ({ setStep, handleFinish, setDocumentFile, setImgFile, setContractFi
           name="services"
           setFile={setDocumentFile}
           setNewUpload={setisNewDocExist}
+          textOne="Upload format: pdf/excel/doc"
         />
 
         {isDocExist && (

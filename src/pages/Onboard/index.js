@@ -3,11 +3,9 @@ import Main from '../../layout/Main';
 import styles from './index.module.css';
 import { Form, notification } from 'antd';
 import InitialForm from './InitailForm';
-import { firestore, storage } from '../../firebase';
+import { firestore } from '../../firebase';
 import { collection, addDoc } from 'firebase/firestore';
-import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import ServiceDocs from './ServiceDocs';
-import { v4 as uuidv4 } from 'uuid';
 import { useNavigate, Link } from 'react-router-dom';
 import { AiOutlineArrowLeft } from 'react-icons/ai';
 

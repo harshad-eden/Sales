@@ -26,6 +26,7 @@ const App = ({
           accept=".jpg,.jpeg,.png"
           name="images"
           setFile={setImgFile}
+          textOne="Upload format: png/jpg/jpeg"
         />
       </div>
 
@@ -41,6 +42,7 @@ const App = ({
           accept=".doc,.docx,.pdf,.csv,.xlsx, .xls,"
           name="contracts"
           setFile={setContractFile}
+          textOne="Upload format: pdf/excel/doc"
         />
       </div>
 
@@ -56,6 +58,7 @@ const App = ({
           accept=".doc,.docx,.pdf,.csv,.xlsx, .xls,"
           name="services"
           setFile={setDocumentFile}
+          textOne="Upload format: pdf/excel/doc"
         />
       </div>
 
