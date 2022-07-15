@@ -39,7 +39,7 @@ const DraggerComponent = ({ setFile, name, accept, multiple, file, textOne }) =>
           }),
         );
 
-        message.success(`Images added successfully.`, 2);
+        message.success(`File added successfully.`, 2);
       } catch (err) {
         console.log(err);
         message.error(`Error adding images.`, 2);

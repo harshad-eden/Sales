@@ -45,7 +45,7 @@ const DraggerComponent = ({ setFile, name, accept, multiple, setNewUpload, textO
           }),
         );
         // setFileList([]);
-        message.success(`Images added successfully.`, 2);
+        message.success(`File added successfully.`);
       } catch (err) {
         console.log(err);
         message.error(`Error adding images.`, 2);
