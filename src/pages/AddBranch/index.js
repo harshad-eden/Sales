@@ -28,10 +28,12 @@ const Index = () => {
   //HandleSubmit
   const handleFinish = async (value) => {
     setLoading(true);
+    console.log(value);
     let branch;
     let updateVal = {
       ...value,
       uuid: uuidv4(),
+      comment: value.comment ? value.comment : '',
     };
     if (branches) {
       branch = [...branches, updateVal];
@@ -39,17 +41,17 @@ const Index = () => {
       branch = [updateVal];
     }
 
-    let docRef = doc(firestore, 'providers', docid);
-    updateDoc(docRef, {
-      branch: branch,
-    })
-      .then((res) => {
-        openNotification('Form successfully Submitted');
-        navigate('/');
-      })
-      .catch((er) => {
-        openNotification('Form submission failed');
-      });
+    // let docRef = doc(firestore, 'providers', docid);
+    // updateDoc(docRef, {
+    //   branch: branch,
+    // })
+    //   .then((res) => {
+    //     openNotification('Form successfully Submitted');
+    //     navigate('/');
+    //   })
+    //   .catch((er) => {
+    //     openNotification('Form submission failed');
+    //   });
   };
 
   return (
