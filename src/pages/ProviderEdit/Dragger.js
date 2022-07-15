@@ -5,7 +5,15 @@ import { InboxOutlined } from '@ant-design/icons';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { storage } from '../../firebase';
 
-const DraggerComponent = ({ setFile, name, accept, multiple, setNewUpload, textOne }) => {
+const DraggerComponent = ({
+  setFile,
+  name,
+  accept,
+  multiple,
+  setNewUpload,
+  textOne,
+  setDocumentLoading,
+}) => {
   const [fileList, setFileList] = useState([]);
   const [submitting, setSubmitting] = useState(false);
   const [newFile, setNewFile] = useState(false);
@@ -19,6 +27,7 @@ const DraggerComponent = ({ setFile, name, accept, multiple, setNewUpload, textO
     setFileList(fileList.filter((file) => file.status !== 'error'));
 
     if (fileList.length > 0) {
+      setDocumentLoading(true);
       setNewUpload(true);
       var docs = [];
       let downloadUrl;
@@ -50,6 +59,7 @@ const DraggerComponent = ({ setFile, name, accept, multiple, setNewUpload, textO
         console.log(err);
         message.error(`Error adding images.`, 2);
       } finally {
+        setDocumentLoading(false);
         setSubmitting(false);
       }
     }

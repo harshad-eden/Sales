@@ -5,7 +5,7 @@ import { InboxOutlined } from '@ant-design/icons';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { storage } from '../../firebase';
 
-const DraggerComponent = ({ setFile, name, accept, multiple, textOne }) => {
+const DraggerComponent = ({ setFile, name, accept, multiple, textOne, setDocumentLoading }) => {
   const [fileList, setFileList] = useState([]);
 
   const { Dragger } = Upload;
@@ -17,6 +17,7 @@ const DraggerComponent = ({ setFile, name, accept, multiple, textOne }) => {
       var docs = [];
       let downloadUrl;
       try {
+        setDocumentLoading(true);
         await Promise.all(
           fileList.map(async (file, index) => {
             try {
@@ -36,11 +37,12 @@ const DraggerComponent = ({ setFile, name, accept, multiple, textOne }) => {
             }
           }),
         );
-
         message.success(`File added successfully.`);
       } catch (err) {
         console.log(err);
         message.error(`Error adding images.`, 2);
+      } finally {
+        setDocumentLoading(false);
       }
     }
   };

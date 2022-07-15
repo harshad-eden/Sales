@@ -12,6 +12,7 @@ const App = ({ setStep, handleFinish, setDocumentFile, setImgFile, setContractFi
   const [isNewDocExist, setisNewDocExist] = useState();
   const [contractExist, setisContractExist] = useState();
   const [contractNewExist, setisContractNewExist] = useState();
+  const [documentLoading, setDocumentLoading] = useState();
 
   useEffect(() => {
     if (files[0] && typeof files[0] === 'string' && !logoNewUpload) {
@@ -54,6 +55,7 @@ const App = ({ setStep, handleFinish, setDocumentFile, setImgFile, setContractFi
           setFile={setImgFile}
           setNewUpload={setlogoNewUpload}
           textOne="Upload format: png/jpg/jpeg"
+          setDocumentLoading={setDocumentLoading}
         />
         {isLogoExist && (
           <div className="uploadedFile">
@@ -73,6 +75,7 @@ const App = ({ setStep, handleFinish, setDocumentFile, setImgFile, setContractFi
           setFile={setContractFile}
           setNewUpload={setisContractNewExist}
           textOne="Upload format: pdf/excel/doc"
+          setDocumentLoading={setDocumentLoading}
         />
         {contractExist && (
           <div className="uploadedFile">
@@ -96,6 +99,7 @@ const App = ({ setStep, handleFinish, setDocumentFile, setImgFile, setContractFi
           setFile={setDocumentFile}
           setNewUpload={setisNewDocExist}
           textOne="Upload format: pdf/excel/doc"
+          setDocumentLoading={setDocumentLoading}
         />
 
         {isDocExist && (
@@ -112,8 +116,7 @@ const App = ({ setStep, handleFinish, setDocumentFile, setImgFile, setContractFi
           Prev
         </Button>
         <Button
-          // disabled={buttonDisable}
-          // loading={loading}
+          disabled={documentLoading ? true : false}
           onClick={() => handleFinish()}
           size="middle"
           type="primary"

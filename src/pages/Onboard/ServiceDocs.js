@@ -16,6 +16,8 @@ const App = ({
   imgFile,
   contractFile,
 }) => {
+  const [documentLoading, setDocumentLoading] = useState();
+  console.log('documentLoading', documentLoading);
   return (
     <div>
       <div style={{ marginBottom: 30 }}>
@@ -27,6 +29,7 @@ const App = ({
           name="images"
           setFile={setImgFile}
           textOne="Upload format: png/jpg/jpeg"
+          setDocumentLoading={setDocumentLoading}
         />
       </div>
 
@@ -43,6 +46,7 @@ const App = ({
           name="contracts"
           setFile={setContractFile}
           textOne="Upload format: pdf/excel/doc"
+          setDocumentLoading={setDocumentLoading}
         />
       </div>
 
@@ -59,6 +63,7 @@ const App = ({
           name="services"
           setFile={setDocumentFile}
           textOne="Upload format: pdf/excel/doc"
+          setDocumentLoading={setDocumentLoading}
         />
       </div>
 
@@ -67,6 +72,7 @@ const App = ({
           Prev
         </Button>
         <Button
+          disabled={documentLoading ? true : false}
           loading={loading}
           onClick={() => handleFinish()}
           size="middle"
