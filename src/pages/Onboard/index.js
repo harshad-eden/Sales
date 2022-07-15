@@ -37,6 +37,7 @@ const Index = () => {
     setLoading(true);
     let updatedValue = {
       ...state,
+      comment: state.comment ? state.comment : '',
       userName: state.userName ? state.userName : '',
       userEmail: state.userName ? state.userEmail : '',
       logo: imgFile ? imgFile : '',
